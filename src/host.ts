@@ -100,7 +100,7 @@ export interface IDAOData {
   /** Storage for BUILDER activity and Agents data. */
   daoMetaData?: IDAOMetaData;
 
-  /** SEGMENT 5: API data of DAO */
+  /** SEGMENT 6: API data of DAO */
 
   /** Hot data updates each minute */
   api?: IDAOAPIData;
