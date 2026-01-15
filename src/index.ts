@@ -10,7 +10,14 @@ import {
 import tokenlist from "./tokenlist.json";
 import { assets, getAsset } from "./assets";
 import { Activity } from "./activity";
-import { LifecyclePhase, Host, UnitStatus, UnitType, getDAOUnit } from "./host";
+import {
+  LifecyclePhase,
+  Host,
+  UnitStatus,
+  UnitType,
+  getDAOUnit,
+  IDAOData,
+} from "./host";
 import { daos } from "./storage/daos";
 import { daoMetaData } from "./storage/daoMetaData";
 
@@ -33,4 +40,4 @@ export {
   getDAOUnit,
 };
 
-export type { IChain, ChainStatusInfo };
+export type { IChain, ChainStatusInfo, IDAOData };
