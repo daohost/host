@@ -1,4 +1,10 @@
-# Host: A Cozy Home for DAOs
+# DAO.Host: Where DAOs Live & Work
+
+![GitHub Tag](https://img.shields.io/github/v/tag/stabilitydao/host)
+![NPM Version](https://img.shields.io/npm/v/%40stabilitydao%2Fhost?label=NPM%20version)
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/stabilitydao/host?label=code%20size)
+![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/%40stabilitydao%2Fhost?label=NPM%20unpacked%20size)
 
 <p align="left">
 <a href="https://dao.host">
@@ -6,25 +12,16 @@
 </a>
 </p>
 
-Unit Status: PROTOTYPE
+Unit Status: **BUILDING_PROTOTYPE**
 
 **Host** is an Operating System of Self-developing Decentralized Autonomous Organizations.
 
 This repository contains the core Host integration library and its typescript implementation.
 
-## Library contents
-
-- `src/api.ts` Host API types
-- `src/host.ts` Host typescript implementation.
-- `src/daos.ts` All deployed DAOs dump for apps.
-- `src/chains.ts` Blockchain data.
-- `src/tokenlist.json` Supported tokens.
-- `src/assets.ts` Extended assets data (description, website, colors).
-
 ## Use
 
 ```shell
-#coming soon
+yarn add @stabilitydao/host
 ```
 
 ## Develop

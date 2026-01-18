@@ -8,18 +8,23 @@ import {
   getChainByName,
 } from "./chains";
 import tokenlist from "./tokenlist.json";
-import { assets, getAsset } from "./assets";
+import { assets, getAsset, getTokenData, TokenData } from "./assets";
 import { Activity } from "./activity";
+import { IConveyor, IGithubIssue } from "./activity/builder";
 import {
   LifecyclePhase,
   Host,
   UnitStatus,
   UnitType,
   getDAOUnit,
+  getDAOUnitMetaData,
   IDAOData,
+  IUnit,
+  IUnitMetaData,
 } from "./host";
 import { daos } from "./storage/daos";
 import { daoMetaData } from "./storage/daoMetaData";
+import { RevenueChart } from "./api";
 
 export {
   chains,
@@ -38,6 +43,18 @@ export {
   daos,
   daoMetaData,
   getDAOUnit,
+  getDAOUnitMetaData,
+  getTokenData,
 };
 
-export type { IChain, ChainStatusInfo, IDAOData };
+export type {
+  IChain,
+  ChainStatusInfo,
+  IDAOData,
+  IUnit,
+  IUnitMetaData,
+  IConveyor,
+  IGithubIssue,
+  RevenueChart,
+  TokenData,
+};

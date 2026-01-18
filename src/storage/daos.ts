@@ -20,7 +20,9 @@ export const daos: IDAOData[] = [
     },
     deployments: {},
     chainSettings: {
-      bbRate: 10,
+      ["1"]: {
+        bbRate: 20,
+      },
     },
     initialChain: ChainName.ETHEREUM,
     units: [
@@ -58,7 +60,7 @@ export const daos: IDAOData[] = [
     unitsMetaData: [
       {
         name: "dao.host",
-        status: UnitStatus.BUILDING,
+        status: UnitStatus.BUILDING_PROTOTYPE,
         revenueShare: 100,
         type: UnitType.DEFI_PROTOCOL,
         //components: {},
@@ -116,7 +118,12 @@ export const daos: IDAOData[] = [
       },
     },
     chainSettings: {
-      bbRate: 100,
+      ["146"]: {
+        bbRate: 100,
+      },
+      ["9745"]: {
+        bbRate: 0,
+      },
     },
     initialChain: ChainName.SONIC,
     units: [
@@ -251,7 +258,9 @@ export const daos: IDAOData[] = [
     },
     deployments: {},
     chainSettings: {
-      bbRate: 50,
+      ["1"]: {
+        bbRate: 50,
+      },
     },
     initialChain: ChainName.ETHEREUM,
     units: [

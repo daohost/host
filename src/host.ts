@@ -8,7 +8,7 @@ import { IBuilderActivity } from "./activity/builder";
 import { Activity } from "./activity";
 import { IDAOAPIData } from "./api";
 
-export const HOST_DESCRIPTION = "A Cozy Home for DAOs";
+export const HOST_DESCRIPTION = "Where DAOs Live & Work";
 
 /**
  Represents a DAO running on Host.
@@ -53,7 +53,10 @@ export interface IDAOData {
   */
   deployments: IDAODeployments;
 
-  /** Settings of DAO for current chain. This is the only place to save settings of DAO for chains. */
+  /**
+   Settings of DAO for chains.
+   host-contracts: settings of current instance chain only. This is the only place to save settings of DAO for chains.
+   */
   chainSettings: IDAOChainSettings;
 
   /** IDs of Units running on current chain */
@@ -177,7 +180,9 @@ export interface IDAOParameters {
 }
 
 export interface IDAOChainSettings {
-  bbRate: number;
+  [chainId: string]: {
+    bbRate: number;
+  };
 }
 
 export interface IGovernanceSettings {
@@ -298,9 +303,11 @@ export enum UnitType {
   //SAAS = "SAAS",
 }
 
-/** Unit status can be changed automatically on DAO lifecycle phase changes or manually by DAO holders */
+/** Unit status can be changed manually by DAO holders. Revenue of a unit matter. */
 export enum UnitStatus {
   RESEARCH = "RESEARCH",
+  BUILDING_PROTOTYPE = "BUILDING_PROTOTYPE",
+  PROTOTYPE = "PROTOTYPE",
   BUILDING = "BUILDING",
   LIVE = "LIVE",
 }
@@ -415,7 +422,9 @@ export class Host {
       units: [],
       params,
       chainSettings: {
-        bbRate: 50,
+        [this.chainId]: {
+          bbRate: 50,
+        },
       },
       initialChain: chains[this.chainId].name,
       funding,

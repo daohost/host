@@ -43,7 +43,7 @@ export interface IDAOAPIData {
 
 export type Prices = {
   [symbol: string]: {
-    price: string;
+    priceUsd: string;
     priceChange: number;
   };
 };

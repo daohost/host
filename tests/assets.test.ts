@@ -1,5 +1,4 @@
-import { getAsset, assets } from "../src";
-import { tokenlist } from "../src";
+import { getAsset, assets, getTokenData, TokenData, tokenlist } from "../src";
 
 describe("testing assets", () => {
   test("getAsset", () => {
@@ -57,5 +56,14 @@ describe("testing assets", () => {
 
       expect(addressFound).toBe(true);
     }
+  });
+  test("getTokenData", () => {
+    let tokenInfo: TokenData | undefined = getTokenData(
+      "1",
+      "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    );
+    expect(tokenInfo).toBeDefined();
+    tokenInfo = getTokenData("0", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48");
+    expect(tokenInfo).toBeUndefined();
   });
 });
