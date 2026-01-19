@@ -49,6 +49,9 @@ export {
   getDAOUnit,
   getDAOUnitMetaData,
   getTokenData,
+  daoContractIndices,
+  HOST_DESCRIPTION,
+  DAO_FEATURES,
 };
 
 export type {
@@ -62,7 +65,4 @@ export type {
   RevenueChart,
   TokenData,
   IContractIndex,
-  daoContractIndices,
-  HOST_DESCRIPTION,
-  DAO_FEATURES,
 };
