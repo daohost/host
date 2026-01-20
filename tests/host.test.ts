@@ -11,7 +11,9 @@ import {
 import {
   ContractIndices,
   FundingType,
+  getBridgeTokens,
   getDAOUnitMetaData,
+  IBridgingTokens,
   IFunding,
   IUnitMetaData,
   IVesting,
@@ -745,6 +747,10 @@ describe("testing Host", () => {
   test("activities", () => {
     const defiActivity = activities[Activity.DEFI];
     expect(defiActivity.unitTypes[0]).toBe(UnitType.DEFI_PROTOCOL);
+  });
+
+  test("getBridgeTokens", () => {
+    getBridgeTokens(daos);
   });
 
   const _createDAO = (os: Host) => {
