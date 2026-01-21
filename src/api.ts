@@ -1,7 +1,38 @@
 import { IBuildersMemory } from "./activity/builder";
 
+export interface IAgentMemory {
+  /** Private memory data allow to show only overview by agent API */
+  private: boolean;
+  overview: {
+    [title: string]: string;
+  };
+  /** Timestamp when agent instance launched */
+  started: number;
+  /** Data specific for agent */
+  data: any;
+}
+
+export interface IHostAgentMemory extends IAgentMemory {
+  data: {
+    /** Prices of assets */
+    prices: Prices;
+
+    /** Total Value Locked in blockchains */
+    chainTvl: { [chainId: string]: number };
+
+    /** DAO runtime data. Updates each minute or faster. */
+    daos: {
+      [symbol: string]: IDAOAPIData;
+    };
+
+    /** Instant Updates by subscribing to github application webhooks */
+    builders: IBuildersMemory;
+  };
+}
+
 /**
  Hot memory with indexed and aggregated data. OS API reply.
+ @deprecated
  @interface
  */
 export interface IOSMemory {
