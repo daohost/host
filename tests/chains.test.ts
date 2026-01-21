@@ -5,8 +5,8 @@ import {
   ChainStatus,
   chainStatusInfo,
   getChainImage,
+  STATIC_BASE_URL,
 } from "../src";
-import { STATIC_BASE_URL } from "../src/host";
 
 describe("testing chains", () => {
   test("getChainByName", () => {

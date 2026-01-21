@@ -30,7 +30,7 @@ import {
 } from "./host";
 import { daos } from "./storage/daos";
 import { daoMetaData } from "./storage/daoMetaData";
-import { RevenueChart } from "./api";
+import { RevenueChart, IHostAgentMemory } from "./api";
 
 export {
   chains,
@@ -69,4 +69,5 @@ export type {
   RevenueChart,
   TokenData,
   IContractIndex,
+  IHostAgentMemory,
 };

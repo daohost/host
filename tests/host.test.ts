@@ -13,7 +13,6 @@ import {
   FundingType,
   getBridgeTokens,
   getDAOUnitMetaData,
-  IBridgingTokens,
   IFunding,
   IUnitMetaData,
   IVesting,
