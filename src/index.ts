@@ -31,6 +31,7 @@ import {
 import { daos } from "./storage/daos";
 import { daoMetaData } from "./storage/daoMetaData";
 import { RevenueChart, IHostAgentMemory } from "./api";
+import { hostDeployments } from "./deployments";
 
 export {
   chains,
@@ -56,6 +57,7 @@ export {
   DAO_FEATURES,
   getChainImage,
   STATIC_BASE_URL,
+  hostDeployments,
 };
 
 export type {
