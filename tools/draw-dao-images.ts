@@ -1,7 +1,7 @@
 import { createCanvas, loadImage } from "canvas";
 import * as fs from "fs";
 import * as path from "path";
-import { daos } from "../src";
+import { daos, STATIC_BASE_URL } from "../src";
 
 const tempDir = "./temp";
 const imagesDir = "./temp/images";
@@ -23,7 +23,7 @@ async function drawImages() {
       ctx.fillStyle = "##0D1117";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      const logoPath = dao.images.daoToken;
+      const logoPath = dao.images.token;
 
       if (!logoPath) {
         console.log(`No logo found for ${dao.name} DAO`);
@@ -70,7 +70,7 @@ async function drawImages() {
 }
 
 function getLogoUrl(path: string) {
-  return logoPrefix + path;
+  return STATIC_BASE_URL + "/os" + path;
 }
 
 drawImages();
