@@ -14,7 +14,7 @@ export const daos: IDAOData[] = [
     phase: LifecyclePhase.DRAFT,
     name: "DAO Host",
     symbol: "HOST",
-    socials: ["https://x.com/dao_host", "https://t.me/dao_host"],
+    socials: ["https://x.com/dao__host", "https://t.me/dao_host"],
     activity: [Activity.BUILDER, Activity.DEFI],
     images: {
       token: "/HOST.png",
@@ -38,8 +38,8 @@ export const daos: IDAOData[] = [
     funding: [
       {
         type: FundingType.SEED,
-        start: 1772323200, // Sunday, 1 March 2026
-        end: 1776211200, // Wednesday, 15 April 2026
+        start: 1775001600, // Wednesday, 1 April 2026
+        end: 1780272000, // Monday, 1 June 2026
         minRaise: 40000,
         maxRaise: 500000,
         raised: 0,
@@ -306,8 +306,8 @@ export const daos: IDAOData[] = [
     funding: [
       {
         type: FundingType.SEED,
-        start: 1772323200, // Sunday, 1 March 2026
-        end: 1780185600, // Sunday, 31 May 2026
+        start: 1777593600, // Friday, 1 May 2026
+        end: 1782864000, // Wednesday, 1 July 2026
         minRaise: 50000,
         maxRaise: 250000,
         raised: 0,

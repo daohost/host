@@ -73,10 +73,11 @@ export interface IDAOAPIDataV2 {
       staked: number;
       units: {
         [unitId: string]: {
-          pendingRevenue: number;
-          pendingRevenueAssetSymbol?: string;
-          pendingRevenueAssetAmount?: number;
-        };
+          pendingRevenueUSD: number;
+          pendingRevenueAssetAmount: number;
+          pendingRevenueAssetSymbol: string;
+          pendingRevenueAssetAddress?: string;
+        }[];
       };
     };
   };
