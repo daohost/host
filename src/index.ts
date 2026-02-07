@@ -9,7 +9,13 @@ import {
   getChainImage,
 } from "./chains";
 import tokenlist from "./tokenlist.json";
-import { assets, getAsset, getTokenData, TokenData } from "./assets";
+import {
+  assets,
+  getAsset,
+  getAssetBySymbol,
+  getTokenData,
+  TokenData,
+} from "./assets";
 import { Activity } from "./activity";
 import { IConveyor, IGithubIssueV2 } from "./activity/builder";
 import {
@@ -64,6 +70,7 @@ export {
   STATIC_BASE_URL,
   hostDeployments,
   getBridgeTokens,
+  getAssetBySymbol,
 };
 
 export type {

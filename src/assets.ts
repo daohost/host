@@ -1581,6 +1581,14 @@ export const getAsset = (
   return undefined;
 };
 
+export function getAssetBySymbol(symbol: string): Asset | undefined {
+  for (const asset of assets) {
+    if (asset.symbol.toLowerCase() == symbol.toLowerCase()) {
+      return asset;
+    }
+  }
+}
+
 export type TokenData = {
   address: `0x${string}`;
   name: string;

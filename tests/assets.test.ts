@@ -1,4 +1,11 @@
-import { getAsset, assets, getTokenData, TokenData, tokenlist } from "../src";
+import {
+  getAsset,
+  assets,
+  getTokenData,
+  TokenData,
+  tokenlist,
+  getAssetBySymbol,
+} from "../src";
 
 describe("testing assets", () => {
   test("getAsset", () => {
@@ -11,6 +18,9 @@ describe("testing assets", () => {
     expect(
       getAsset("8453", "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913")?.symbol,
     ).toBe("USDC");
+  });
+  test("getAssetBySymbol", () => {
+    expect(getAssetBySymbol("weth")?.symbol).toBe("WETH");
   });
   test("check if assets addresses exist in tokenlist.json", () => {
     const _tokenlist = tokenlist.tokens;
