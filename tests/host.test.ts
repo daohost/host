@@ -7,6 +7,7 @@ import {
   daoMetaData,
   Activity,
   LifecyclePhase,
+  getUnit,
 } from "../src";
 import {
   ContractIndices,
@@ -750,6 +751,11 @@ describe("testing Host", () => {
 
   test("getBridgeTokens", () => {
     getBridgeTokens(daos);
+  });
+
+  test("getUnit", () => {
+    const unit = getUnit(daos, "xstbl");
+    expect(unit).toBeDefined();
   });
 
   const _createDAO = (os: Host) => {

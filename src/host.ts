@@ -6,7 +6,7 @@ import { ChainName, chains, getChainByName } from "./chains";
 import { IAgent } from "./agents";
 import { IBuilderActivity } from "./activity/builder";
 import { Activity } from "./activity";
-import { IDAOAPIData } from "./api";
+import { IDAOAPIDataV2 } from "./api";
 import { getTokenData, TokenData } from "./assets";
 
 export const HOST_DESCRIPTION = "Where True DAOs Live & Work";
@@ -126,7 +126,7 @@ export interface IDAOData {
   /** SEGMENT 6: API data of DAO */
 
   /** Hot data updates each minute */
-  api?: IDAOAPIData;
+  api?: IDAOAPIDataV2;
 }
 
 export interface IDAOMetaData {
@@ -1300,6 +1300,16 @@ interface IRoadmapItem {
   phase: LifecyclePhase;
   start: number;
   end?: number;
+}
+
+export function getUnit(daos: IDAOData[], unitId: string): IUnit | undefined {
+  for (const dao of daos) {
+    for (const unit of dao.units) {
+      if (unit.unitId === unitId) {
+        return unit;
+      }
+    }
+  }
 }
 
 export function getDAOUnit(

@@ -92,6 +92,7 @@ export interface IGithubUser {
   img: string;
 }
 
+/** @deprecated Use IGithubIssueV2 */
 export interface IGithubIssue {
   repo: string;
   id: number;
@@ -138,6 +139,7 @@ export interface IConveyorStep {
   guide?: string;
 }
 
+/** @deprecated Use IBuildersMemoryV2 */
 export interface IBuildersMemory {
   [tokenSymbol: string]: {
     openIssues: {

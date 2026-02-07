@@ -11,14 +11,16 @@ import {
 import tokenlist from "./tokenlist.json";
 import { assets, getAsset, getTokenData, TokenData } from "./assets";
 import { Activity } from "./activity";
-import { IConveyor, IGithubIssue } from "./activity/builder";
+import { IConveyor, IGithubIssueV2 } from "./activity/builder";
 import {
   LifecyclePhase,
   Host,
   UnitStatus,
   UnitType,
   getDAOUnit,
+  getUnit,
   getDAOUnitMetaData,
+  getBridgeTokens,
   IDAOData,
   IUnit,
   IUnitMetaData,
@@ -50,6 +52,7 @@ export {
   daos,
   daoMetaData,
   getDAOUnit,
+  getUnit,
   getDAOUnitMetaData,
   getTokenData,
   daoContractIndices,
@@ -58,6 +61,7 @@ export {
   getChainImage,
   STATIC_BASE_URL,
   hostDeployments,
+  getBridgeTokens,
 };
 
 export type {
@@ -67,7 +71,7 @@ export type {
   IUnit,
   IUnitMetaData,
   IConveyor,
-  IGithubIssue,
+  IGithubIssueV2,
   RevenueChart,
   TokenData,
   IContractIndex,
