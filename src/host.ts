@@ -1345,6 +1345,20 @@ export function getDAOUnitMetaData(
   }
 }
 
+export function getUnitMetaData(
+  daos: IDAOData[],
+  unitId: string,
+): IUnitMetaData | undefined {
+  for (const dao of daos) {
+    for (let i = 0; i < dao.units.length; i++) {
+      const unit = dao.units[i];
+      if (unit.unitId === unitId) {
+        return dao.unitsMetaData[i];
+      }
+    }
+  }
+}
+
 export interface IBridgingTokens {
   [chainId: string]: {
     tokenData: TokenData;

@@ -8,6 +8,7 @@ import {
   Activity,
   LifecyclePhase,
   getUnit,
+  getUnitMetaData,
 } from "../src";
 import {
   ContractIndices,
@@ -756,6 +757,11 @@ describe("testing Host", () => {
   test("getUnit", () => {
     const unit = getUnit(daos, "xstbl");
     expect(unit).toBeDefined();
+  });
+
+  test("getUnitMetaData", () => {
+    const unitMetadata = getUnitMetaData(daos, "xstbl");
+    expect(unitMetadata).toBeDefined();
   });
 
   const _createDAO = (os: Host) => {
