@@ -2,8 +2,6 @@ import {
   daos,
   getDAOUnit,
   Host,
-  UnitStatus,
-  UnitType,
   daoMetaData,
   Activity,
   LifecyclePhase,
@@ -20,6 +18,7 @@ import {
   IVesting,
 } from "../src/host";
 import { activities } from "../src/activity";
+import { UnitStatus, UnitType } from "../src/host/types";
 
 describe("testing Host", () => {
   test("Lifecycle", () => {
