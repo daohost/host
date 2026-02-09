@@ -79,6 +79,7 @@ export interface IDAOAPIDataV2 {
           pendingRevenueAssetAddress?: string;
         }[];
       };
+      revenueTokens?: `0x${string}`[];
     };
   };
   /** Users / followers in tracked socials */
