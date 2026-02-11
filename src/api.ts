@@ -1,4 +1,4 @@
-import {IBuildersMemoryV2, IBuildersMemoryV3} from "./activity/builder";
+import { IBuildersMemoryV2, IBuildersMemoryV3 } from "./activity/builder";
 
 export interface IAgentMemory {
   /** When generated */
@@ -78,7 +78,6 @@ export interface IHostAgentMemoryV3 extends IAgentMemory {
     builders: IBuildersMemoryV3;
   };
 }
-
 
 export interface IDAOAPIDataV2 {
   /** Price from Stability interchain oracle */

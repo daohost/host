@@ -283,9 +283,7 @@ export const daos: IDAOData[] = [
           },
         ],
         pool: {
-          repos: [
-            "stabilitydao/lending-deploy",
-          ],
+          repos: ["stabilitydao/lending-deploy"],
           label: {
             name: "STBL:Lending",
             description:
@@ -345,9 +343,7 @@ export const daos: IDAOData[] = [
         type: UnitType.MEV_SEARCHER,
         emoji: "🧙",
         pool: {
-          repos: [
-            "stabilitydao/mevbot",
-          ],
+          repos: ["stabilitydao/mevbot"],
           label: {
             name: "MEVBOT:Ethereum",
             description: "Building MEVBOT for Ethereum chain",
