@@ -4,7 +4,7 @@
 
 import { ChainName, chains, getChainByName } from "./chains";
 import { IAgent } from "./agents";
-import { IBuilderActivity } from "./activity/builder";
+import {IBuilderActivity, IPool, IUnitPool} from "./activity/builder";
 import { Activity } from "./activity";
 import { IDAOAPIDataV2 } from "./api";
 import { getTokenData, TokenData } from "./assets";
@@ -120,7 +120,7 @@ export interface IDAOData {
 
   unitsMetaData: IUnitMetaData[];
 
-  /** SEGMENT 5: OFF-CHAIN custom data managed by DAO */
+  /** SEGMENT 5: OFF-CHAIN data on custom location */
 
   /** Storage for BUILDER activity and Agents data. */
   daoMetaData?: IDAOMetaData;
@@ -404,6 +404,7 @@ export interface IUnitMetaData {
   api?: string[];
   /** Components of the Unit. */
   //components?: { [category in UnitComponentCategory]?: UnitComponent[] };
+  pool?: IUnitPool;
 }
 
 export interface IUnitUILink {

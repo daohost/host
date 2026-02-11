@@ -21,6 +21,7 @@ export enum UnitStatus {
 }
 
 /** Supported categories of running units. */
+/** @deprecated Each Unit has own component categories */
 export enum UnitComponentCategory {
   CHAIN_SUPPORT = "CHAIN_SUPPORT",
   ENGINE_SUPPORT = "ENGINE_SUPPORT",

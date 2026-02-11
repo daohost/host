@@ -314,7 +314,7 @@ export const daoMetaData: { [symbol: string]: IDAOMetaData } = {
     },
     agents: [
       {
-        roles: [AgentRole.OPERATOR],
+        roles: [AgentRole.MEV_SEARCHER],
         name: "MEVBOT Agent",
         ...emptyRuntime,
         api: [],
