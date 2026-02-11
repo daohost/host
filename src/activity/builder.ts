@@ -139,23 +139,6 @@ export interface IConveyorStep {
   guide?: string;
 }
 
-/** @deprecated Use IBuildersMemoryV2 */
-export interface IBuildersMemory {
-  [tokenSymbol: string]: {
-    openIssues: {
-      total: { [repo: string]: number };
-      pools: { [poolName: string]: IGithubIssue[] };
-    };
-    conveyors: {
-      [conveyorName: string]: {
-        [taskId: string]: {
-          [stepName: string]: IGithubIssue[];
-        };
-      };
-    };
-  };
-}
-
 export interface IBuildersMemoryV2 {
   [tokenSymbol: string]: {
     openIssues: {
