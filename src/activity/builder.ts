@@ -6,8 +6,11 @@
 import { UnitComponentCategory } from "../host/types";
 
 /**
- BUILDER data.
+ BUILDER activity of a DAO.
+ Located at SEGMENT 5: OFF-CHAIN data on custom location
 
+ @see IDAOData
+ @see IDAOMetaData
  @alpha
  @interface
  */
@@ -168,15 +171,15 @@ export interface IBuildersMemoryV2 {
 export interface IBuildersMemoryV3 {
   [tokenSymbol: string]: {
     openIssues: {
-      [unitId: string]: IGithubIssueV2[],
+      [unitId: string]: IGithubIssueV2[];
     };
     repos: {
       [repo: string]: {
-        openIssues: number,
-        private: boolean,
-        access?: IGithubUser[],
-        stars?: number,
-      },
-    },
+        openIssues: number;
+        private: boolean;
+        access?: IGithubUser[];
+        stars?: number;
+      };
+    };
   };
 }
