@@ -131,9 +131,10 @@ export interface IDAOData {
   api?: IDAOAPIDataV2;
 }
 
-/** Storage for BUILDER activity and Agents data. */
+/** Storage for Agents data. */
 export interface IDAOMetaData {
-  /** DAOs engaging BUILDER activity settings  */
+  /** DAOs engaging BUILDER activity settings */
+  /** @deprecated after simplifying became empty */
   builderActivity?: IBuilderActivity;
 
   /** Operating agents managed by the organization. */
@@ -201,9 +202,16 @@ export interface IDAOParameters {
   totalSupply: number;
 }
 
+/**
+ Settings of DAO for chains.
+ host-contracts: settings of current instance chain only. This is the only place to save settings of DAO for chains.
+ */
 export interface IDAOChainSettings {
   [chainId: string]: {
+    /** Revenue percent goes to xToken buy-backs */
     bbRate: number;
+    /** GitHub organization (from socials) EVM multisig address */
+    multisig?: `0x${string}`;
   };
 }
 

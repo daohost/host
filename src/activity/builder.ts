@@ -9,6 +9,7 @@ import { UnitComponentCategory } from "../host/types";
  BUILDER activity of a DAO.
  Located at SEGMENT 5: OFF-CHAIN data on custom location
 
+ @deprecated after simplifying became empty
  @see IDAOData
  @see IDAOMetaData
  @alpha
@@ -16,11 +17,13 @@ import { UnitComponentCategory } from "../host/types";
  */
 export interface IBuilderActivity {
   /** Safe multisig account of dev team */
+  /** @deprecated Use IDAOChainSettings */
   multisig: string[];
   /** Tracked Github repositories where development going on */
   /** @deprecated Use repos in IUnitPool  */
   repo?: string[];
   /** Engineers */
+  /** @deprecated Workers management is task of GitHub organization (GitHub profile in socials)  */
   workers: IWorker[];
   /** Conveyors of unit components. */
   /** @deprecated Use IUnitPool  */
@@ -29,7 +32,7 @@ export interface IBuilderActivity {
   /** @deprecated Use IUnitPool  */
   pools?: IPool[];
   /** Total salaries paid */
-  /** @deprecated remove for simplifying  */
+  /** @deprecated Use GitHub organization (GitHub profile in socials) */
   burnRate: {
     /** Period of burning. Can be 1 month or any other. */
     period: string;
