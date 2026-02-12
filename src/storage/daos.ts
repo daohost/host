@@ -65,7 +65,6 @@ export const daos: IDAOData[] = [
         status: UnitStatus.BUILDING_PROTOTYPE,
         revenueShare: 100,
         type: UnitType.DEFI_PROTOCOL,
-        //components: {},
         emoji: "🍀",
         ui: [
           {
@@ -73,6 +72,19 @@ export const daos: IDAOData[] = [
             title: "dao.host",
           },
         ],
+        pool: {
+          repos: [
+            "stabilitydao/host",
+            "stabilitydao/host-contracts",
+            "stabilitydao/host-agent",
+            "stabilitydao/host-ui",
+          ],
+          label: {
+            name: "HOST:dao.host",
+            description: "Building Host",
+            color: "#00b243",
+          },
+        },
       },
     ],
   },
@@ -227,18 +239,6 @@ export const daos: IDAOData[] = [
         status: UnitStatus.LIVE,
         revenueShare: 100,
         type: UnitType.DEFI_PROTOCOL,
-        /*components: {
-          [UnitComponentCategory.DEFI_STRATEGY]: Object.keys(strategies).filter(
-            (s) =>
-              strategies[s as StrategyShortId].state !==
-              StrategyState.CANCELLED,
-          ) as StrategyShortId[],
-          [UnitComponentCategory.CHAIN_SUPPORT]: [
-            ChainName.SONIC,
-            ChainName.AVALANCHE,
-            ChainName.PLASMA,
-          ],
-        },*/
         emoji: "🧊",
         ui: [
           {
@@ -254,18 +254,27 @@ export const daos: IDAOData[] = [
             title: "Leverage Vaults",
           },
         ],
+        pool: {
+          repos: [
+            "stabilitydao/stability",
+            "stabilitydao/stability-contracts",
+            "stabilitydao/stability-ui",
+            "stabilitydao/stability-subgraph",
+            "stabilitydao/stability-node-pro",
+          ],
+          label: {
+            // symbol:unitName
+            name: "STBL:VaaS",
+            description: "New Stability VaaS product request / feature",
+            color: "#02a3fc",
+          },
+        },
       },
       {
         name: "Lending",
         status: UnitStatus.LIVE,
         revenueShare: 25,
         type: UnitType.DEFI_PROTOCOL,
-        /*components: {
-          [UnitComponentCategory.ENGINE_SUPPORT]: [
-            LendingEngine.AAVE_3_0_2,
-            LendingEngine.AAVE_3_5,
-          ],
-        },*/
         emoji: "🏦",
         ui: [
           {
@@ -273,6 +282,15 @@ export const daos: IDAOData[] = [
             title: "Markets",
           },
         ],
+        pool: {
+          repos: ["stabilitydao/lending-deploy"],
+          label: {
+            name: "STBL:Lending",
+            description:
+              "Lending feature, product request or maintenance issue",
+            color: "#3b15d2",
+          },
+        },
       },
     ],
   },
@@ -319,32 +337,20 @@ export const daos: IDAOData[] = [
     daoMetaDataLocation: "local",
     unitsMetaData: [
       {
-        name: "Ethereum",
+        name: "EthereumBot",
         status: UnitStatus.BUILDING_PROTOTYPE,
         revenueShare: 100,
         type: UnitType.MEV_SEARCHER,
         emoji: "🧙",
+        pool: {
+          repos: ["stabilitydao/mevbot"],
+          label: {
+            name: "MEVBOT:Ethereum",
+            description: "Building MEVBOT for Ethereum chain",
+            color: "#4cbaff",
+          },
+        },
       },
-      /*{
-        name: "Liquidator",
-        status: UnitStatus.RESEARCH,
-        revenueShare: 100,
-        type: UnitType.MEV_SEARCHER,
-        /!*components: {
-          [UnitComponentCategory.MEV_STRATEGY]: [],
-        },*!/
-        emoji: "🐺",
-      },
-      {
-        name: "Arbitrager",
-        status: UnitStatus.RESEARCH,
-        revenueShare: 100,
-        type: UnitType.MEV_SEARCHER,
-        /!*components: {
-          [UnitComponentCategory.MEV_STRATEGY]: [],
-        },*!/
-        emoji: "🦄",
-      },*/
     ],
   },
 ];

@@ -14,6 +14,7 @@ export interface IAgent {
 
 export const enum AgentRole {
   OPERATOR = "OPERATOR",
+  MEV_SEARCHER = "MEV_SEARCHER",
 }
 
 export interface IAgentRuntime {

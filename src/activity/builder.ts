@@ -6,23 +6,33 @@
 import { UnitComponentCategory } from "../host/types";
 
 /**
- BUILDER data.
+ BUILDER activity of a DAO.
+ Located at SEGMENT 5: OFF-CHAIN data on custom location
 
+ @deprecated after simplifying became empty
+ @see IDAOData
+ @see IDAOMetaData
  @alpha
  @interface
  */
 export interface IBuilderActivity {
   /** Safe multisig account of dev team */
+  /** @deprecated Use IDAOChainSettings */
   multisig: string[];
   /** Tracked Github repositories where development going on */
-  repo: string[];
+  /** @deprecated Use repos in IUnitPool  */
+  repo?: string[];
   /** Engineers */
+  /** @deprecated Workers management is task of GitHub organization (GitHub profile in socials)  */
   workers: IWorker[];
   /** Conveyors of unit components. */
-  conveyors: IConveyor[];
+  /** @deprecated Use IUnitPool  */
+  conveyors?: IConveyor[];
   /** Pools of development tasks. */
-  pools: IPool[];
+  /** @deprecated Use IUnitPool  */
+  pools?: IPool[];
   /** Total salaries paid */
+  /** @deprecated Use GitHub organization (GitHub profile in socials) */
   burnRate: {
     /** Period of burning. Can be 1 month or any other. */
     period: string;
@@ -48,6 +58,7 @@ export interface IWorker {
 
 /**
  * Pool of development tasks. A set of open github issues.
+ * @deprecated Use IUnitPool
  * @interface
  */
 export interface IPool {
@@ -64,7 +75,19 @@ export interface IPool {
 }
 
 /**
+ * Pool of development tasks for Unit. A set of open github issues.
+ * @interface
+ */
+export interface IUnitPool {
+  repos: string[];
+  /** Label on github repositories identifying relation to the pool. */
+  label: IGithubLabel;
+  contractorSymbol?: string;
+}
+
+/**
  * Conveyor belt for building a components for units.
+ * @deprecated All development work goes through IUnitPool for simplifying
  * @interface
  */
 export interface IConveyor {
@@ -92,16 +115,6 @@ export interface IGithubUser {
   img: string;
 }
 
-/** @deprecated Use IGithubIssueV2 */
-export interface IGithubIssue {
-  repo: string;
-  id: number;
-  title: string;
-  labels: IGithubLabel[];
-  assignees: IGithubUser;
-  body?: string;
-}
-
 export interface IGithubIssueV2 {
   repo: string;
   id: number;
@@ -116,6 +129,7 @@ export interface IGithubIssueV2 {
   body?: string;
 }
 
+/** @deprecated Use IUnitPool only */
 export const enum ArtifactType {
   URL_UI = "URL to UI page",
   URL_RELEASE = "Github package release link",
@@ -125,6 +139,7 @@ export const enum ArtifactType {
   CONTRACT_ADDRESS = "Address of deployed contract",
 }
 
+/** @deprecated Use IUnitPool only */
 export interface IConveyorStep {
   name: string;
   issues: {
@@ -139,23 +154,7 @@ export interface IConveyorStep {
   guide?: string;
 }
 
-/** @deprecated Use IBuildersMemoryV2 */
-export interface IBuildersMemory {
-  [tokenSymbol: string]: {
-    openIssues: {
-      total: { [repo: string]: number };
-      pools: { [poolName: string]: IGithubIssue[] };
-    };
-    conveyors: {
-      [conveyorName: string]: {
-        [taskId: string]: {
-          [stepName: string]: IGithubIssue[];
-        };
-      };
-    };
-  };
-}
-
+/** @deprecated Use IBuildersMemoryV3 */
 export interface IBuildersMemoryV2 {
   [tokenSymbol: string]: {
     openIssues: {
@@ -167,6 +166,22 @@ export interface IBuildersMemoryV2 {
         [taskId: string]: {
           [stepName: string]: IGithubIssueV2[];
         };
+      };
+    };
+  };
+}
+
+export interface IBuildersMemoryV3 {
+  [tokenSymbol: string]: {
+    openIssues: {
+      [unitId: string]: IGithubIssueV2[];
+    };
+    repos: {
+      [repo: string]: {
+        openIssues: number;
+        private: boolean;
+        access?: IGithubUser[];
+        stars?: number;
       };
     };
   };

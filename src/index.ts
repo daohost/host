@@ -17,7 +17,7 @@ import {
   TokenData,
 } from "./assets";
 import { Activity } from "./activity";
-import { IConveyor, IGithubIssueV2 } from "./activity/builder";
+import { IConveyor, IGithubIssueV2, IUnitPool } from "./activity/builder";
 import {
   LifecyclePhase,
   Host,
@@ -37,7 +37,7 @@ import {
 } from "./host";
 import { daos } from "./storage/daos";
 import { daoMetaData } from "./storage/daoMetaData";
-import { RevenueChart, IHostAgentMemory } from "./api";
+import { RevenueChart, IHostAgentMemory, IHostAgentMemoryV3 } from "./api";
 import { hostDeployments } from "./deployments";
 import { UnitStatus } from "./host/types";
 
@@ -77,10 +77,12 @@ export type {
   IDAOData,
   IUnit,
   IUnitMetaData,
+  IUnitPool,
   IConveyor,
   IGithubIssueV2,
   RevenueChart,
   TokenData,
   IContractIndex,
   IHostAgentMemory,
+  IHostAgentMemoryV3,
 };

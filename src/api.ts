@@ -1,4 +1,4 @@
-import { IBuildersMemory, IBuildersMemoryV2 } from "./activity/builder";
+import { IBuildersMemoryV2, IBuildersMemoryV3 } from "./activity/builder";
 
 export interface IAgentMemory {
   /** When generated */
@@ -41,6 +41,7 @@ export interface IAgentMemory {
   data: any;
 }
 
+/** @deprecated use IHostAgentMemoryV3 */
 export interface IHostAgentMemory extends IAgentMemory {
   data: {
     /** Prices of assets */
@@ -55,7 +56,26 @@ export interface IHostAgentMemory extends IAgentMemory {
     };
 
     /** Instant Updates by subscribing to github application webhooks */
+    /** @deprecated Use IBuildersMemoryV3 */
     builders: IBuildersMemoryV2;
+  };
+}
+
+export interface IHostAgentMemoryV3 extends IAgentMemory {
+  data: {
+    /** Prices of assets */
+    prices: Prices;
+
+    /** Total Value Locked in blockchains */
+    chainTvl: { [chainId: string]: number };
+
+    /** DAO runtime data. Updates each minute or faster. */
+    daos: {
+      [symbol: string]: IDAOAPIDataV2;
+    };
+
+    /** Instant Updates by subscribing to github application webhooks */
+    builders: IBuildersMemoryV3;
   };
 }
 
@@ -97,49 +117,6 @@ export interface IDAOHoldings {
   address: `0x${string}`;
   balance: string;
   percentage?: string;
-}
-
-/**
- Hot memory with indexed and aggregated data. OS API reply.
- @deprecated
- @interface
- */
-export interface IOSMemory {
-  /** Prices of assets */
-  prices: Prices;
-
-  /** Total Value Locked in blockchains */
-  chainTvl: { [chainId: string]: number };
-
-  /** DAO runtime data. Updates each minute or faster. */
-  daos: {
-    [symbol: string]: IDAOAPIData;
-  };
-
-  /** Instant Updates by subscribing to github application webhooks */
-  builders: IBuildersMemory;
-}
-
-/** @deprecated */
-export interface IDAOAPIData {
-  /** Price from Stability interchain oracle */
-  oraclePrice: string;
-  /** Coingecko price */
-  coingeckoPrice?: string;
-  /** Data for total revenue chart */
-  revenueChart: RevenueChart;
-  /** Extracted on-chain data */
-  onChainData: {
-    [chainId: string]: {
-      stakingAPR: number;
-      staked: number;
-      units: {
-        [unitId: string]: {
-          pendingRevenue: number;
-        };
-      };
-    };
-  };
 }
 
 export type Prices = {

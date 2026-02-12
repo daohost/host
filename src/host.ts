@@ -4,7 +4,7 @@
 
 import { ChainName, chains, getChainByName } from "./chains";
 import { IAgent } from "./agents";
-import { IBuilderActivity } from "./activity/builder";
+import { IBuilderActivity, IPool, IUnitPool } from "./activity/builder";
 import { Activity } from "./activity";
 import { IDAOAPIDataV2 } from "./api";
 import { getTokenData, TokenData } from "./assets";
@@ -120,7 +120,7 @@ export interface IDAOData {
 
   unitsMetaData: IUnitMetaData[];
 
-  /** SEGMENT 5: OFF-CHAIN custom data managed by DAO */
+  /** SEGMENT 5: OFF-CHAIN data on custom location */
 
   /** Storage for BUILDER activity and Agents data. */
   daoMetaData?: IDAOMetaData;
@@ -131,8 +131,10 @@ export interface IDAOData {
   api?: IDAOAPIDataV2;
 }
 
+/** Storage for Agents data. */
 export interface IDAOMetaData {
-  /** DAOs engaging BUILDER activity settings  */
+  /** DAOs engaging BUILDER activity settings */
+  /** @deprecated after simplifying became empty */
   builderActivity?: IBuilderActivity;
 
   /** Operating agents managed by the organization. */
@@ -200,9 +202,16 @@ export interface IDAOParameters {
   totalSupply: number;
 }
 
+/**
+ Settings of DAO for chains.
+ host-contracts: settings of current instance chain only. This is the only place to save settings of DAO for chains.
+ */
 export interface IDAOChainSettings {
   [chainId: string]: {
+    /** Revenue percent goes to xToken buy-backs */
     bbRate: number;
+    /** GitHub organization (from socials) EVM multisig address */
+    multisig?: `0x${string}`;
   };
 }
 
@@ -404,6 +413,7 @@ export interface IUnitMetaData {
   api?: string[];
   /** Components of the Unit. */
   //components?: { [category in UnitComponentCategory]?: UnitComponent[] };
+  pool?: IUnitPool;
 }
 
 export interface IUnitUILink {
