@@ -14,7 +14,7 @@ import {
   getBridgeTokens,
   getDAOUnitMetaData,
   IFunding,
-  IUnitMetaData,
+  IUnitEmitData,
   IVesting,
 } from "../src/host";
 import { activities } from "../src/activity";
@@ -182,7 +182,7 @@ describe("testing Host", () => {
       ],
       [
         {
-          ...(daoAliens.unitsMetaData[0] as IUnitMetaData),
+          ...(daoAliens.unitEmitData[0] as IUnitEmitData),
           status: UnitStatus.LIVE,
           ui: [
             {

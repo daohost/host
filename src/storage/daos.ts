@@ -58,8 +58,8 @@ export const daos: IDAOData[] = [
     governanceSettings: {},
     deployer: "0x0",
     salts: {},
-    daoMetaDataLocation: "local",
-    unitsMetaData: [
+    metaDataLocation: "local",
+    unitEmitData: [
       {
         name: "dao.host",
         status: UnitStatus.BUILDING_PROTOTYPE,
@@ -226,8 +226,8 @@ export const daos: IDAOData[] = [
     },
     deployer: "0x0",
     salts: {},
-    daoMetaDataLocation: "local",
-    unitsMetaData: [
+    metaDataLocation: "local",
+    unitEmitData: [
       {
         name: "PVP",
         status: UnitStatus.LIVE,
@@ -334,8 +334,8 @@ export const daos: IDAOData[] = [
     governanceSettings: {},
     deployer: "0x0",
     salts: {},
-    daoMetaDataLocation: "local",
-    unitsMetaData: [
+    metaDataLocation: "local",
+    unitEmitData: [
       {
         name: "EthereumBot",
         status: UnitStatus.BUILDING_PROTOTYPE,
