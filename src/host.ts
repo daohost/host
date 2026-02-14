@@ -400,6 +400,8 @@ export interface IUnit {
 export interface IUnitEmitData {
   /** Short name of the unit */
   name: string;
+  /** Description of the unit */
+  description: string;
   /** Status of unit changes appear when unit starting to work and starting earning revenue */
   status: UnitStatus;
   /** Supported type of the Unit */

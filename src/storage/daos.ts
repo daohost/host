@@ -1,6 +1,7 @@
 import {
   ContractIndices,
   FundingType,
+  HOST_DESCRIPTION,
   IDAOData,
   LifecyclePhase,
 } from "../host";
@@ -62,6 +63,7 @@ export const daos: IDAOData[] = [
     unitEmitData: [
       {
         name: "dao.host",
+        description: HOST_DESCRIPTION,
         status: UnitStatus.BUILDING_PROTOTYPE,
         revenueShare: 100,
         type: UnitType.DEFI_PROTOCOL,
@@ -176,7 +178,7 @@ export const daos: IDAOData[] = [
       vePeriod: 180,
       pvpFee: 80,
       minPower: 4000,
-      recoveryShare: 10,
+      recoveryShare: 20,
       totalSupply: 100_000_000e18,
     },
     funding: [
@@ -230,12 +232,14 @@ export const daos: IDAOData[] = [
     unitEmitData: [
       {
         name: "PVP",
+        description: "xSTBL exit fees",
         status: UnitStatus.LIVE,
         revenueShare: 100,
         type: UnitType.PVP,
       },
       {
         name: "VaaS",
+        description: "DeFi Vault as a Service platform",
         status: UnitStatus.LIVE,
         revenueShare: 100,
         type: UnitType.DEFI_PROTOCOL,
@@ -271,7 +275,8 @@ export const daos: IDAOData[] = [
         },
       },
       {
-        name: "Lending",
+        name: "Sonic Markets",
+        description: "Stability Money Markets on Sonic network (ex-Vicuna)",
         status: UnitStatus.LIVE,
         revenueShare: 25,
         type: UnitType.DEFI_PROTOCOL,
@@ -283,7 +288,7 @@ export const daos: IDAOData[] = [
           },
         ],
         pool: {
-          repos: ["stabilitydao/lending-deploy"],
+          repos: ["stabilitydao/lending-deploy", "stabilitydao/stability-ui"],
           label: {
             name: "STBL:Lending",
             description:
@@ -338,6 +343,7 @@ export const daos: IDAOData[] = [
     unitEmitData: [
       {
         name: "EthereumBot",
+        description: "Ethereum MEV Searcher machine",
         status: UnitStatus.BUILDING_PROTOTYPE,
         revenueShare: 100,
         type: UnitType.MEV_SEARCHER,
