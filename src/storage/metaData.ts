@@ -1,9 +1,9 @@
 import { IDAOMetaData } from "../host";
 import { ArtifactType } from "../activity/builder";
-import { AgentRole, emptyRuntime } from "../agents";
+import { AgentRole } from "../agents";
 import { UnitComponentCategory } from "../host/types";
 
-export const daoMetaData: { [symbol: string]: IDAOMetaData } = {
+export const metaData: { [symbol: string]: IDAOMetaData } = {
   host: {
     builderActivity: {
       multisig: [
@@ -266,22 +266,26 @@ export const daoMetaData: { [symbol: string]: IDAOMetaData } = {
     },
     agents: [
       {
-        roles: [AgentRole.OPERATOR],
+        roles: [AgentRole.API_OPERATOR],
+        unitIds: ["core"],
         name: "Host Operator",
         image: "BUILDER.png",
-        ...emptyRuntime,
-        api: [],
+        api: ["https://api.dao.host"],
       },
     ],
   },
   stbl: {
     agents: [
       {
-        roles: [AgentRole.OPERATOR],
+        roles: [AgentRole.API_OPERATOR, AgentRole.TX_SENDER],
+        unitIds: [
+          "xstbl",
+          "stability:stabilityFarm",
+          "stability:stabilityMarket",
+        ],
         name: "Stability Operator",
         telegram: "@stability_dao_bot",
         image: "OPERATOR.png",
-        ...emptyRuntime,
         api: ["https://api.stability.farm", "https://api.stabilitydao.org"],
       },
     ],
@@ -315,8 +319,8 @@ export const daoMetaData: { [symbol: string]: IDAOMetaData } = {
     agents: [
       {
         roles: [AgentRole.MEV_SEARCHER],
+        unitIds: ["mevbot:ethereum"],
         name: "MEVBOT Agent",
-        ...emptyRuntime,
         api: [],
       },
     ],
