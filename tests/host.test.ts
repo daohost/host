@@ -108,13 +108,6 @@ describe("testing Host", () => {
     );
 
     try {
-      // solve tasks first
-      os56.changePhase(daoAliens.symbol);
-    } catch {}
-
-    os56.revenue(daoAliens.symbol, 0, `0x1`, 10n);
-
-    try {
       // phase cant be changed right now
       os56.changePhase(daoAliens.symbol);
     } catch {}
@@ -239,6 +232,13 @@ describe("testing Host", () => {
     try {
       os56.fund(daoAliens.symbol, 100000000);
     } catch {}
+
+    try {
+      // solve tasks first
+      os56.changePhase(daoAliens.symbol);
+    } catch {}
+
+    os56.revenue(daoAliens.symbol, 0, `0x1`, 10n);
 
     try {
       // too early
@@ -422,7 +422,6 @@ describe("testing Host", () => {
 
     os1.changePhase(daoApes.symbol);
 
-    os1.revenue(daoApes.symbol, 0, `0x1`, 10n);
     os1.changePhase(daoApes.symbol);
 
     // fund small amount
@@ -512,6 +511,8 @@ describe("testing Host", () => {
     os10.changePhase(daoMachines.symbol);
 
     // now DEVELOPMENT
+
+    os1.revenue(daoApes.symbol, 0, `0x1`, 10n);
 
     // 180 days later
     os1.warpDays(180);

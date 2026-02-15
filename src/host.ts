@@ -1020,24 +1020,8 @@ export class Host {
         });
       }
     } else if (dao.phase === LifecyclePhase.INCEPTION) {
-      let hasRevenue = false;
-      if (dao.unitRevenue) {
-        for (const unitRevenue of dao.unitRevenue) {
-          for (const asset of Object.keys(unitRevenue)) {
-            if (unitRevenue[asset as `0x${string}`] > 0n) {
-              hasRevenue = true;
-              break;
-            }
-          }
-        }
-      }
-      // a17: not final logic maybe
-      if (!hasRevenue) {
-        r.push({
-          name: "Built unit prototype and start generate revenue",
-        });
-      }
-      // todo off-chain tasks like minimal socials users number, etc
+      // only off-chain tasks, mean SEED will be started anyway
+      // todo off-chain tasks like minimal socials users number, units emitted data, etc
     } else if (dao.phase === LifecyclePhase.SEED) {
       const seedIndex = this.getFundingIndex(symbol, FundingType.SEED);
       if (
@@ -1072,13 +1056,9 @@ export class Host {
         });
       }
 
-      if (
-        dao.unitEmitData?.filter(
-          (unitMetaData) => unitMetaData.status === UnitStatus.LIVE,
-        ).length === 0
-      ) {
+      if (!this.hasRevenue(dao.symbol)) {
         r.push({
-          name: "Run revenue generating units",
+          name: "Start generate revenue",
         });
       }
     } else if (dao.phase === LifecyclePhase.TGE) {
@@ -1157,6 +1137,20 @@ export class Host {
     }
 
     return dao.deployments[this.chainId][ContractIndices.DAO_TOKEN_5] as string;
+  }
+
+  hasRevenue(symbol: string): boolean {
+    const dao = this.getDAO(symbol);
+    if (dao.unitRevenue) {
+      for (const unitRevenue of dao.unitRevenue) {
+        for (const asset of Object.keys(unitRevenue)) {
+          if (unitRevenue[asset as `0x${string}`] > 0n) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
 
   getTgeData(dao: IDAOData): IFunding | undefined {
