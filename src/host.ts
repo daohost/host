@@ -4,7 +4,7 @@
 
 import { ChainName, chains, getChainByName } from "./chains";
 import { IAgent } from "./agents";
-import { IBuilderActivity, IUnitPool } from "./activity/builder";
+import { IUnitPool } from "./activity/builder";
 import { Activity } from "./activity";
 import { IDAOAPIDataV2 } from "./api";
 import { getTokenData, TokenData } from "./assets";
@@ -133,10 +133,6 @@ export interface IDAOData {
 
 /** Storage for Agents data. */
 export interface IDAOMetaData {
-  /** DAOs engaging BUILDER activity settings */
-  /** @deprecated after simplifying became empty */
-  builderActivity?: IBuilderActivity;
-
   /** Operating agents managed by the organization. */
   agents?: IAgent[];
 }
