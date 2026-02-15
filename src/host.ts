@@ -386,8 +386,6 @@ export interface IDAODeployments {
   };
 }
 
-//export type UnitComponent = StrategyShortId | ChainName | LendingEngine;
-
 /**
  Typescript implementation of the Host
  Object of this class is Host instance deployed on a single blockchain.
@@ -795,6 +793,8 @@ export class Host {
     asset: `0x${string}`,
     amount: bigint,
   ) {
+    // todo implement Host.whitelistedAssets
+
     // receiving money, calculating usd (can appear later by Host Agent)
     if (this.daos[symbol]) {
       if (!this.daos[symbol].unitRevenue) {
