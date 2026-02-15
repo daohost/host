@@ -6,8 +6,6 @@ export enum Activity {
   DEFI = "DEFI",
   /** Owner of Maximum Extractable Value tools */
   MEV = "MEV",
-  /** BUILDER is a team of engineers managed by DAOs. */
-  BUILDER = "BUILDER",
   /** Owner of Software as a Service business */
   //SAAS_OPERATOR = "SAAS_OPERATOR",
 }
@@ -26,9 +24,5 @@ export const activities: {
   [Activity.MEV]: {
     title: "Maximum Extractable Value tools",
     unitTypes: [UnitType.MEV_SEARCHER],
-  },
-  [Activity.BUILDER]: {
-    title: "Team of engineers with multisig wallet.",
-    unitTypes: [],
   },
 };

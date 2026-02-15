@@ -15,7 +15,7 @@ export const daos: IDAOData[] = [
     name: "DAO Host",
     symbol: "HOST",
     socials: ["https://x.com/dao__host", "https://t.me/dao_host"],
-    activity: [Activity.BUILDER, Activity.DEFI],
+    activity: [Activity.DEFI],
     images: {
       token: "/HOST.png",
     },
@@ -315,7 +315,7 @@ export const daos: IDAOData[] = [
     name: "MEV Bot",
     symbol: "MEVBOT",
     socials: [],
-    activity: [Activity.BUILDER, Activity.MEV],
+    activity: [Activity.MEV],
     images: {
       token: "/MEVBOT.png",
     },

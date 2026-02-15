@@ -38,7 +38,7 @@ describe("testing Host", () => {
     const daoAliens = os56.createDAO(
       "Aliens Community",
       "ALIENS",
-      [Activity.BUILDER, Activity.DEFI],
+      [Activity.DEFI],
       {
         vePeriod: 365,
         pvpFee: 100,

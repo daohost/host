@@ -88,9 +88,8 @@ describe("testing DAO data validation", () => {
       Validation.validateActivity([
         Activity.DEFI,
         Activity.MEV,
-        Activity.BUILDER,
       ]);
-      Validation.validateActivity([Activity.DEFI, Activity.BUILDER]);
+      Validation.validateActivity([Activity.DEFI]);
     });
 
     test("validate activity duplicate", () => {
@@ -106,10 +105,10 @@ describe("testing DAO data validation", () => {
       }).toThrow("InvalidActivityCombination");
     });
 
-    test("validate activity single builder", () => {
+    test("validate activities not zero array", () => {
       expect(() => {
-        Validation.validateActivity([Activity.BUILDER]);
-      }).toThrow("SingleBuilderActivityNotAllowed");
+        Validation.validateActivity([]);
+      }).toThrow("ZeroActivityNotAllowed");
     });
   });
 
