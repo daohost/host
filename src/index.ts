@@ -17,7 +17,6 @@ import {
   TokenData,
 } from "./assets";
 import { Activity } from "./activity";
-import { IConveyor, IGithubIssueV2, IUnitPool } from "./activity/builder";
 import {
   LifecyclePhase,
   Host,
@@ -27,8 +26,6 @@ import {
   getUnitMetaData,
   getBridgeTokens,
   IDAOData,
-  IUnit,
-  IUnitMetaData,
   IContractIndex,
   daoContractIndices,
   HOST_DESCRIPTION,
@@ -36,10 +33,11 @@ import {
   STATIC_BASE_URL,
 } from "./host";
 import { daos } from "./storage/daos";
-import { daoMetaData } from "./storage/daoMetaData";
-import { RevenueChart, IHostAgentMemory, IHostAgentMemoryV3 } from "./api";
+import { metaData } from "./storage/metaData";
+import { RevenueChart, IHostAgentMemoryV3 } from "./api";
 import { hostDeployments } from "./deployments";
 import { UnitStatus } from "./host/types";
+import { IGithubIssueV2, IUnit, IUnitEmitData, IUnitPool } from "./unit";
 
 export {
   chains,
@@ -55,7 +53,7 @@ export {
   Host,
   UnitStatus,
   daos,
-  daoMetaData,
+  metaData,
   getDAOUnit,
   getUnit,
   getDAOUnitMetaData,
@@ -76,13 +74,12 @@ export type {
   ChainStatusInfo,
   IDAOData,
   IUnit,
-  IUnitMetaData,
+  IUnitEmitData,
   IUnitPool,
-  IConveyor,
   IGithubIssueV2,
   RevenueChart,
   TokenData,
   IContractIndex,
-  IHostAgentMemory,
   IHostAgentMemoryV3,
 };
+export { activities } from "./activity";

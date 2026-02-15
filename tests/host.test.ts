@@ -2,11 +2,12 @@ import {
   daos,
   getDAOUnit,
   Host,
-  daoMetaData,
+  metaData,
   Activity,
   LifecyclePhase,
   getUnit,
   getUnitMetaData,
+  IUnitEmitData,
 } from "../src";
 import {
   ContractIndices,
@@ -14,7 +15,6 @@ import {
   getBridgeTokens,
   getDAOUnitMetaData,
   IFunding,
-  IUnitMetaData,
   IVesting,
 } from "../src/host";
 import { activities } from "../src/activity";
@@ -38,7 +38,7 @@ describe("testing Host", () => {
     const daoAliens = os56.createDAO(
       "Aliens Community",
       "ALIENS",
-      [Activity.BUILDER, Activity.DEFI],
+      [Activity.DEFI],
       {
         vePeriod: 365,
         pvpFee: 100,
@@ -100,6 +100,12 @@ describe("testing Host", () => {
       ...daoAliens.funding[0],
       maxRaise: 90000,
     });
+
+    os56.changePhase(daoAliens.symbol);
+
+    expect(os56.getDAO(daoAliens.symbol).phase).toEqual(
+      LifecyclePhase.INCEPTION,
+    );
 
     try {
       // phase cant be changed right now
@@ -182,7 +188,7 @@ describe("testing Host", () => {
       ],
       [
         {
-          ...(daoAliens.unitsMetaData[0] as IUnitMetaData),
+          ...(daoAliens.unitEmitData[0] as IUnitEmitData),
           status: UnitStatus.LIVE,
           ui: [
             {
@@ -228,8 +234,16 @@ describe("testing Host", () => {
     } catch {}
 
     try {
+      // solve tasks first
+      os56.changePhase(daoAliens.symbol);
+    } catch {}
+
+    os56.revenue(daoAliens.symbol, 0, `0x1`, 10n);
+
+    try {
       // too early
       os56.changePhase(daoAliens.symbol);
+      console.log("1");
     } catch {}
 
     // 180 days later
@@ -408,6 +422,8 @@ describe("testing Host", () => {
 
     os1.changePhase(daoApes.symbol);
 
+    os1.changePhase(daoApes.symbol);
+
     // fund small amount
     os1.from = "0xseeder1";
     os1.fund(daoApes.symbol, 1000);
@@ -480,6 +496,8 @@ describe("testing Host", () => {
     os56.warpDays();
 
     os10.changePhase(daoMachines.symbol);
+    os10.revenue(daoMachines.symbol, 0, `0x1`, 10n);
+    os10.changePhase(daoMachines.symbol);
 
     // fund enough amount
     os10.from = "0xseeder1";
@@ -493,6 +511,8 @@ describe("testing Host", () => {
     os10.changePhase(daoMachines.symbol);
 
     // now DEVELOPMENT
+
+    os1.revenue(daoApes.symbol, 0, `0x1`, 10n);
 
     // 180 days later
     os1.warpDays(180);
@@ -533,7 +553,7 @@ describe("testing Host", () => {
       getDAOUnitMetaData(daos, daos[1].symbol, daos[1].units[1].unitId)?.name,
     ).toBe("VaaS");
 
-    expect(os.getDAOMetaData(daoMetaData, daos[1].symbol));
+    expect(os.getDAOMetaData(metaData, daos[1].symbol));
     const roadmap = os.roadmap(daos[1].symbol);
     expect(roadmap.length).toBe(4);
     //console.log(roadmap)
@@ -544,7 +564,7 @@ describe("testing Host", () => {
     const dao = _createDAO(os);
     expect(dao.name).toBe("SpaceSwap");
     expect(os.events.length).toBe(1);
-    expect(os.getDAOMetaData(daoMetaData, dao.symbol));
+    expect(os.getDAOMetaData(metaData, dao.symbol));
 
     const funding: IFunding[] = [
       {
@@ -723,9 +743,8 @@ describe("testing Host", () => {
     const os = new Host("146");
     os.addLiveDAO(daos[0]);
     expect(
-      os.getDAOMetaData(daoMetaData, daos[0].symbol).builderActivity?.workers
-        .length,
-    ).toBeGreaterThan(1);
+      os.getDAOMetaData(metaData, daos[0].symbol).agents?.length,
+    ).toBeGreaterThan(0);
   });
 
   test("get DAO", () => {

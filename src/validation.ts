@@ -19,8 +19,8 @@ export class Validation {
     }
 
     // if builder activity exist one more other activity should exist too
-    if (activity.length === 1 && activity.includes(Activity.BUILDER)) {
-      throw new Error("SingleBuilderActivityNotAllowed");
+    if (activity.length === 0) {
+      throw new Error("ZeroActivityNotAllowed");
     }
   }
 
