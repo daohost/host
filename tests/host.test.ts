@@ -101,6 +101,19 @@ describe("testing Host", () => {
       maxRaise: 90000,
     });
 
+    os56.changePhase(daoAliens.symbol);
+
+    expect(os56.getDAO(daoAliens.symbol).phase).toEqual(
+      LifecyclePhase.INCEPTION,
+    );
+
+    try {
+      // solve tasks first
+      os56.changePhase(daoAliens.symbol);
+    } catch {}
+
+    os56.revenue(daoAliens.symbol, 0, `0x1`, 10n);
+
     try {
       // phase cant be changed right now
       os56.changePhase(daoAliens.symbol);
@@ -230,6 +243,7 @@ describe("testing Host", () => {
     try {
       // too early
       os56.changePhase(daoAliens.symbol);
+      console.log("1");
     } catch {}
 
     // 180 days later
@@ -408,6 +422,9 @@ describe("testing Host", () => {
 
     os1.changePhase(daoApes.symbol);
 
+    os1.revenue(daoApes.symbol, 0, `0x1`, 10n);
+    os1.changePhase(daoApes.symbol);
+
     // fund small amount
     os1.from = "0xseeder1";
     os1.fund(daoApes.symbol, 1000);
@@ -479,6 +496,8 @@ describe("testing Host", () => {
     os10.warpDays();
     os56.warpDays();
 
+    os10.changePhase(daoMachines.symbol);
+    os10.revenue(daoMachines.symbol, 0, `0x1`, 10n);
     os10.changePhase(daoMachines.symbol);
 
     // fund enough amount
