@@ -1,81 +1,9 @@
 /**
- BUILDER activity.
- BUILDER is a team of engineers managed by DAOs.
+ DAO can build by installing Host Agent GitHub App and emitting `IUnitPool` by pool key of `IUnitEmitData`
  */
 
-import { UnitComponentCategory } from "../host/types";
-
 /**
- BUILDER activity of a DAO.
- Located at SEGMENT 5: OFF-CHAIN data on custom location
-
- @deprecated after simplifying became empty
- @see IDAOData
- @see IDAOMetaData
- @alpha
- @interface
- */
-export interface IBuilderActivity {
-  /** Safe multisig account of dev team */
-  /** @deprecated Use IDAOChainSettings */
-  multisig: string[];
-  /** Tracked Github repositories where development going on */
-  /** @deprecated Use repos in IUnitPool  */
-  repo?: string[];
-  /** Engineers */
-  /** @deprecated Workers management is task of GitHub organization (GitHub profile in socials)  */
-  workers: IWorker[];
-  /** Conveyors of unit components. */
-  /** @deprecated Use IUnitPool  */
-  conveyors?: IConveyor[];
-  /** Pools of development tasks. */
-  /** @deprecated Use IUnitPool  */
-  pools?: IPool[];
-  /** Total salaries paid */
-  /** @deprecated Use GitHub organization (GitHub profile in socials) */
-  burnRate: {
-    /** Period of burning. Can be 1 month or any other. */
-    period: string;
-    /** How much USD was spent during period. */
-    usdAmount: number;
-  }[];
-}
-
-/**
- Engineer hired by a DAO. Can be human or machine (AI agent).
-
- @alpha
- @interface
- */
-export interface IWorker {
-  /** Github username */
-  github: string;
-  /** USD hourly rate */
-  rate?: number;
-  /** USD xTOKEN hourly rate */
-  xRate?: number;
-}
-
-/**
- * Pool of development tasks. A set of open github issues.
- * @deprecated Use IUnitPool
- * @interface
- */
-export interface IPool {
-  /** Pool is always linked to a set of units. */
-  unitIds: string[];
-  /** Short name of the pool. */
-  name: string;
-  /** Label on github repositories identifying relation to the pool. */
-  label: IGithubLabel;
-  /** What need to be done by the pool? */
-  description?: string;
-  /** Each solved task in the pool must have an artifact of specified type. */
-  artifacts?: ArtifactType[];
-}
-
-/**
- * Pool of development tasks for Unit. A set of open github issues.
+ * Pool of development tasks for Unit. A set of open GitHub issues.
  * @interface
  */
 export interface IUnitPool {
@@ -83,25 +11,6 @@ export interface IUnitPool {
   /** Label on github repositories identifying relation to the pool. */
   label: IGithubLabel;
   contractorSymbol?: string;
-}
-
-/**
- * Conveyor belt for building a components for units.
- * @deprecated All development work goes through IUnitPool for simplifying
- * @interface
- */
-export interface IConveyor {
-  /** Linked unit */
-  unitId: string;
-  componentCategory: UnitComponentCategory;
-  name: string;
-  symbol: string;
-  type: string;
-  label: IGithubLabel;
-  description: string;
-  issueTitleTemplate: string;
-  taskIdIs: string;
-  steps: IConveyorStep[];
 }
 
 export interface IGithubLabel {
@@ -127,31 +36,6 @@ export interface IGithubIssueV2 {
     category?: string;
   }[];
   body?: string;
-}
-
-/** @deprecated Use IUnitPool only */
-export const enum ArtifactType {
-  URL_UI = "URL to UI page",
-  URL_RELEASE = "Github package release link",
-  DEPLOYMENT_ADDRESSES = "Deployment addresses",
-  URL_API = "API endpoint",
-  URL_STATIC = "Static content URL",
-  CONTRACT_ADDRESS = "Address of deployed contract",
-}
-
-/** @deprecated Use IUnitPool only */
-export interface IConveyorStep {
-  name: string;
-  issues: {
-    repo: string;
-    taskList?: string[];
-    issueTemplate?: string;
-    body?: string;
-    generator?: string;
-  }[];
-  artifacts?: ArtifactType[];
-  result?: string;
-  guide?: string;
 }
 
 /** @deprecated Use IBuildersMemoryV3 */

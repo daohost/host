@@ -723,9 +723,8 @@ describe("testing Host", () => {
     const os = new Host("146");
     os.addLiveDAO(daos[0]);
     expect(
-      os.getDAOMetaData(metaData, daos[0].symbol).builderActivity?.workers
-        .length,
-    ).toBeGreaterThan(1);
+      os.getDAOMetaData(metaData, daos[0].symbol).agents?.length,
+    ).toBeGreaterThan(0);
   });
 
   test("get DAO", () => {

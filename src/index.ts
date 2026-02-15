@@ -17,7 +17,7 @@ import {
   TokenData,
 } from "./assets";
 import { Activity } from "./activity";
-import { IConveyor, IGithubIssueV2, IUnitPool } from "./activity/builder";
+import { IGithubIssueV2, IUnitPool } from "./activity/builder";
 import {
   LifecyclePhase,
   Host,
@@ -78,7 +78,6 @@ export type {
   IUnit,
   IUnitEmitData,
   IUnitPool,
-  IConveyor,
   IGithubIssueV2,
   RevenueChart,
   TokenData,
