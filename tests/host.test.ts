@@ -7,6 +7,7 @@ import {
   LifecyclePhase,
   getUnit,
   getUnitMetaData,
+  IUnitEmitData,
 } from "../src";
 import {
   ContractIndices,
@@ -14,7 +15,6 @@ import {
   getBridgeTokens,
   getDAOUnitMetaData,
   IFunding,
-  IUnitEmitData,
   IVesting,
 } from "../src/host";
 import { activities } from "../src/activity";

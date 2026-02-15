@@ -4,12 +4,12 @@
 
 import { ChainName, chains, getChainByName } from "./chains";
 import { IAgent } from "./agents";
-import { IUnitPool } from "./activity/builder";
 import { Activity } from "./activity";
 import { IDAOAPIDataV2 } from "./api";
 import { getTokenData, TokenData } from "./assets";
 import { Validation } from "./validation";
-import { IOSSettings, UnitStatus, UnitType } from "./host/types";
+import { IOSSettings } from "./host/types";
+import { IUnit, IUnitEmitData } from "./unit";
 
 export const HOST_DESCRIPTION = "Where True DAOs Live & Work";
 export const DAO_FEATURES: string[] = [
@@ -384,49 +384,6 @@ export interface IDAODeployments {
   [chainId: string]: {
     [index in ContractIndices]?: `0x${string}`;
   };
-}
-
-/**
- Revenue generating unit owned by a DAO.
- @interface
-*/
-export interface IUnit {
-  /** Unique unit string id. For DeFi protocol its defiOrg:protocolKey. */
-  unitId: string;
-  /** Blockchains where Unit deployed. Filled only for initial DAO chain Host instance. */
-  chainIds?: string[];
-  /** DAO UID of Unit Developer (Pool tasks solver) */
-  developerUid?: string;
-}
-
-/** Unit data that emitted, indexed and saved, translated by Host API later. */
-export interface IUnitEmitData {
-  /** Short name of the unit */
-  name: string;
-  /** Description of the unit */
-  description?: string;
-  /** Status of unit changes appear when unit starting to work and starting earning revenue */
-  status: UnitStatus;
-  /** Supported type of the Unit */
-  type: UnitType;
-  /** The share of a Unit's profit received by the DAO to which it belongs. 100 - 100%. */
-  revenueShare: number;
-  /** A unique emoji for the shortest possible representation of a Unit. */
-  emoji?: string;
-  /** Custom image location for Unit. When not used then DAO image used. */
-  image?: string;
-  /** Frontend endpoints of Unit */
-  ui?: IUnitUILink[];
-  /** Links to API of the Unit */
-  api?: string[];
-  /** Components of the Unit. */
-  //components?: { [category in UnitComponentCategory]?: UnitComponent[] };
-  pool?: IUnitPool;
-}
-
-export interface IUnitUILink {
-  href: `https://${string}`;
-  title: string;
 }
 
 //export type UnitComponent = StrategyShortId | ChainName | LendingEngine;

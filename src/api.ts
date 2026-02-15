@@ -1,4 +1,4 @@
-import { IBuildersMemoryV2, IBuildersMemoryV3 } from "./activity/builder";
+import { IGithubIssueV2, IGithubUser } from "./unit";
 
 export interface IAgentMemory {
   /** When generated */
@@ -39,26 +39,6 @@ export interface IAgentMemory {
 
   /** Data specific for agent */
   data: any;
-}
-
-/** @deprecated use IHostAgentMemoryV3 */
-export interface IHostAgentMemory extends IAgentMemory {
-  data: {
-    /** Prices of assets */
-    prices: Prices;
-
-    /** Total Value Locked in blockchains */
-    chainTvl: { [chainId: string]: number };
-
-    /** DAO runtime data. Updates each minute or faster. */
-    daos: {
-      [symbol: string]: IDAOAPIDataV2;
-    };
-
-    /** Instant Updates by subscribing to github application webhooks */
-    /** @deprecated Use IBuildersMemoryV3 */
-    builders: IBuildersMemoryV2;
-  };
 }
 
 export interface IHostAgentMemoryV3 extends IAgentMemory {
@@ -127,3 +107,22 @@ export type Prices = {
 };
 
 export type RevenueChart = Record<number, string>;
+
+/**
+ DAO can build by installing Host Agent GitHub App and emitting `IUnitPool` by pool key of `IUnitEmitData`
+ */
+export interface IBuildersMemoryV3 {
+  [tokenSymbol: string]: {
+    openIssues: {
+      [unitId: string]: IGithubIssueV2[];
+    };
+    repos: {
+      [repo: string]: {
+        openIssues: number;
+        private: boolean;
+        access?: IGithubUser[];
+        stars?: number;
+      };
+    };
+  };
+}

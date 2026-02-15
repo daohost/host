@@ -85,10 +85,7 @@ describe("testing DAO data validation", () => {
 
   describe("Activity", () => {
     test("validate activity no exceptions", () => {
-      Validation.validateActivity([
-        Activity.DEFI,
-        Activity.MEV,
-      ]);
+      Validation.validateActivity([Activity.DEFI, Activity.MEV]);
       Validation.validateActivity([Activity.DEFI]);
     });
 
