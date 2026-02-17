@@ -60,11 +60,13 @@ export interface IGithubLabel {
   color: string;
 }
 
+/** OFF-CHAIN only */
 export interface IGithubUser {
   username: string;
   img: string;
 }
 
+/** OFF-CHAIN only */
 export interface IGithubIssueV2 {
   repo: string;
   id: number;
