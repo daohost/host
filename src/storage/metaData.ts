@@ -5,11 +5,11 @@ export const metaData: { [symbol: string]: IDAOMetaData } = {
   host: {
     agents: [
       {
-        roles: [AgentRole.API_OPERATOR],
+        roles: [AgentRole.API_OPERATOR, AgentRole.TX_SENDER],
         unitIds: ["core"],
-        name: "Host Operator",
+        name: "Host Agent",
         image: "BUILDER.png",
-        api: ["https://api.dao.host"],
+        api: ["https://api.dao.host/api/host-agent-memory"],
       },
     ],
   },

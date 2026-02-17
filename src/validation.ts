@@ -1,6 +1,6 @@
 import { Activity } from "./activity";
 import { FundingType, IFunding, IVesting, LifecyclePhase } from "./host";
-import { IOSSettings } from "./host/types";
+import { IHostSettings } from "./host/types";
 
 export class Validation {
   /**
@@ -27,7 +27,7 @@ export class Validation {
   public static validateFunding(
     daoPhase: LifecyclePhase,
     fundings: IFunding[],
-    settings: IOSSettings,
+    settings: IHostSettings,
   ) {
     const set = new Set<FundingType>();
     for (const funding of fundings) {
@@ -79,7 +79,7 @@ export class Validation {
   public static validateVesting(
     daoPhase: LifecyclePhase,
     vestings: IVesting[],
-    settings: IOSSettings,
+    settings: IHostSettings,
     tge?: IFunding,
   ) {
     if (
@@ -112,7 +112,7 @@ export class Validation {
 
   private static _validateVesting(
     vesting: IVesting,
-    settings: IOSSettings,
+    settings: IHostSettings,
     tge: IFunding,
   ) {
     if (

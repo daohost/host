@@ -1,6 +1,6 @@
 {
-  "name": "@stabilitydao/host",
-  "version": "0.7.0",
+  "name": "@daohost/host",
+  "version": "0.8.0",
   "description": "Host library",
   "main": "out/index.js",
   "types": "out/index.d.ts",
@@ -10,7 +10,7 @@
     "README.md",
     "package.json"
   ],
-  "repository": "https://github.com/stabilitydao/host.git",
+  "repository": "https://github.com/daohost/host.git",
   "author": "Host Dev",
   "license": "GPL-3.0",
   "scripts": {
