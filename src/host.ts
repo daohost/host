@@ -8,7 +8,7 @@ import { Activity } from "./activity";
 import { IDAOAPIDataV2 } from "./api";
 import { getTokenData, TokenData } from "./assets";
 import { Validation } from "./validation";
-import { IOSSettings } from "./host/types";
+import { IHostSettings } from "./host/types";
 import { IUnit, IUnitEmitData } from "./unit";
 
 export const HOST_DESCRIPTION = "Where True DAOs Live & Work";
@@ -414,11 +414,9 @@ export class Host {
   /** Current user address */
   from: string = "0x00";
 
-  settings: IOSSettings = {
+  settings: IHostSettings = {
     priceDao: 1000,
-    priceUnit: 1000,
-    priceOracle: 1000,
-    priceBridge: 1000,
+    fundingFee: 1000, // 10%
     minNameLength: 1,
     maxNameLength: 20,
     minSymbolLength: 1,

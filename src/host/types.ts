@@ -29,11 +29,11 @@ export enum UnitComponentCategory {
   MEV_STRATEGY = "MEV_STRATEGY",
 }
 
-export interface IOSSettings {
+export interface IHostSettings {
+  /** Create DAO price, ~USD */
   priceDao: number;
-  priceUnit: number;
-  priceOracle: number;
-  priceBridge: number;
+  /** Share of success funding rounds goes to core unit. 1_01 == 1.01%, 100_00 == 100% */
+  fundingFee: number;
   minNameLength: number;
   maxNameLength: number;
   minSymbolLength: number;

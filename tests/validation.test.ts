@@ -1,7 +1,7 @@
 import { Activity, LifecyclePhase } from "../src";
 import { Validation } from "../src/validation";
 import { FundingType, IFunding, IVesting } from "../src/host";
-import { IOSSettings } from "../src/host/types";
+import { IHostSettings } from "../src/host/types";
 
 describe("testing DAO data validation", () => {
   const START_DAO = 1772323200; // Sunday, 1 March 2026
@@ -50,12 +50,10 @@ describe("testing DAO data validation", () => {
     ];
   }
 
-  function getIOSSettings(): IOSSettings {
+  function getIOSSettings(): IHostSettings {
     return {
       priceDao: 1000,
-      priceUnit: 1000,
-      priceOracle: 1000,
-      priceBridge: 1000,
+      fundingFee: 1000,
       minNameLength: 1,
       maxNameLength: 20,
       minSymbolLength: 1,
@@ -259,7 +257,7 @@ describe("testing DAO data validation", () => {
 
   describe("Vesting", () => {
     test("vesting name length", () => {
-      const st: IOSSettings = {
+      const st: IHostSettings = {
         ...getIOSSettings(),
         minVestingNameLen: 5,
         maxVestingNameLen: 7,
@@ -353,7 +351,7 @@ describe("testing DAO data validation", () => {
     });
 
     test("throw if vesting duration is out of range", () => {
-      const st: IOSSettings = {
+      const st: IHostSettings = {
         ...settings,
         minVestingDuration: 10,
         maxVestingDuration: 20,
@@ -422,7 +420,7 @@ describe("testing DAO data validation", () => {
     });
 
     test("vesting.start > tge.claim + min cliff, ok", () => {
-      const st: IOSSettings = { ...settings, minCliff: 5 };
+      const st: IHostSettings = { ...settings, minCliff: 5 };
       expect(() =>
         Validation.validateVesting(
           LifecyclePhase.TGE,
@@ -434,7 +432,7 @@ describe("testing DAO data validation", () => {
     });
 
     test("vesting.start < tge.claim + min cliff => IncorrectVestingStart", () => {
-      const st: IOSSettings = { ...settings, minCliff: 5 };
+      const st: IHostSettings = { ...settings, minCliff: 5 };
       expect(() =>
         Validation.validateVesting(
           LifecyclePhase.TGE,
