@@ -1293,7 +1293,7 @@ export function getDAOUnit(
   }
 }
 
-export function getDAOUnitMetaData(
+export function getDAOUnitEmitData(
   daos: IDAOData[],
   symbol: string,
   unitId: string,
@@ -1310,7 +1310,7 @@ export function getDAOUnitMetaData(
   }
 }
 
-export function getUnitMetaData(
+export function getUnitEmitData(
   daos: IDAOData[],
   unitId: string,
 ): IUnitEmitData | undefined {

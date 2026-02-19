@@ -6,14 +6,14 @@ import {
   Activity,
   LifecyclePhase,
   getUnit,
-  getUnitMetaData,
+  getUnitEmitData,
   IUnitEmitData,
 } from "../src";
 import {
   ContractIndices,
   FundingType,
   getBridgeTokens,
-  getDAOUnitMetaData,
+  getDAOUnitEmitData,
   IFunding,
   IVesting,
 } from "../src/host";
@@ -550,7 +550,7 @@ describe("testing Host", () => {
       getDAOUnit(daos, daos[1].symbol, daos[1].units[1].unitId)?.unitId,
     ).toBe("stability:stabilityFarm");
     expect(
-      getDAOUnitMetaData(daos, daos[1].symbol, daos[1].units[1].unitId)?.name,
+      getDAOUnitEmitData(daos, daos[1].symbol, daos[1].units[1].unitId)?.name,
     ).toBe("VaaS");
 
     expect(os.getDAOMetaData(metaData, daos[1].symbol));
@@ -789,7 +789,7 @@ describe("testing Host", () => {
   });
 
   test("getUnitMetaData", () => {
-    const unitMetadata = getUnitMetaData(daos, "xstbl");
+    const unitMetadata = getUnitEmitData(daos, "xstbl");
     expect(unitMetadata).toBeDefined();
   });
 
