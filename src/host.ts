@@ -421,19 +421,20 @@ export class Host {
     maxNameLength: 20,
     minSymbolLength: 1,
     maxSymbolLength: 7,
-    minVePeriod: 14,
-    maxVePeriod: 365 * 4,
+    minVePeriod: 14, // days
+    maxVePeriod: 365 * 4, // days
     minPvPFee: 10,
     maxPvPFee: 100,
-    minFundingDuration: 1,
-    maxFundingDuration: 180,
-    minFundingRaise: 1000,
-    maxFundingRaise: 1e12,
+    minFunding: 100e8,
+    minFundingDuration: 12 * 3600,
+    maxFundingDuration: 180 * 24 * 3600,
+    minFundingRaise: 10000e8,
+    maxFundingRaise: 1e20,
     minVestingNameLen: 1,
     maxVestingNameLen: 20,
-    minCliff: 15,
-    minVestingDuration: 10,
-    maxVestingDuration: 365,
+    minCliff: 30 * 24 * 3600,
+    minVestingDuration: 10 * 24 * 3600,
+    maxVestingDuration: 10 * 365 * 24 * 3600,
   };
 
   constructor(chainId: string) {
@@ -809,7 +810,7 @@ export class Host {
   }
 
   fund(symbol: string, amount: number) {
-    // todo settings.minFunding
+    // todo check settings.minFunding
     const dao = this.getDAO(symbol);
     if (dao.phase === LifecyclePhase.SEED) {
       const seedIndex = this.getFundingIndex(symbol, FundingType.SEED);

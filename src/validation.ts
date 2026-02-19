@@ -57,8 +57,8 @@ export class Validation {
       // ----------------------- Min/max round duration
       const duration = funding.end - funding.start;
       if (
-        duration < settings.minFundingDuration * 24 * 3600 ||
-        duration > settings.maxFundingDuration * 24 * 3600
+        duration < settings.minFundingDuration ||
+        duration > settings.maxFundingDuration
       ) {
         throw new Error("InvalidFundingPeriod");
       }
@@ -126,14 +126,14 @@ export class Validation {
       throw new Error("ZeroValueNotAllowed");
     }
 
-    if (vesting.start < (tge.claim ?? 0) + settings.minCliff * 24 * 3600) {
+    if (vesting.start < (tge.claim ?? 0) + settings.minCliff) {
       throw new Error("IncorrectVestingStart");
     }
 
     const duration = vesting.end - vesting.start;
     if (
-      duration < settings.minVestingDuration * 24 * 3600 ||
-      duration > settings.maxVestingDuration * 24 * 3600
+      duration < settings.minVestingDuration ||
+      duration > settings.maxVestingDuration
     ) {
       throw new Error("InvalidVestingPeriod");
     }
