@@ -22,8 +22,8 @@ import {
   Host,
   getDAOUnit,
   getUnit,
-  getDAOUnitMetaData,
-  getUnitMetaData,
+  getDAOUnitEmitData,
+  getUnitEmitData,
   getBridgeTokens,
   IDAOData,
   IContractIndex,
@@ -38,6 +38,7 @@ import { RevenueChart, IHostAgentMemoryV3 } from "./api";
 import { hostDeployments } from "./deployments";
 import { UnitStatus } from "./host/types";
 import { IGithubIssueV2, IUnit, IUnitEmitData, IUnitPool } from "./unit";
+import { defi } from "./defi";
 
 export {
   chains,
@@ -56,8 +57,8 @@ export {
   metaData,
   getDAOUnit,
   getUnit,
-  getDAOUnitMetaData,
-  getUnitMetaData,
+  getDAOUnitEmitData,
+  getUnitEmitData,
   getTokenData,
   daoContractIndices,
   HOST_DESCRIPTION,
@@ -67,6 +68,7 @@ export {
   hostDeployments,
   getBridgeTokens,
   getAssetBySymbol,
+  defi,
 };
 
 export type {

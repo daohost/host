@@ -18,8 +18,8 @@ describe("testing DAO data validation", () => {
   }): IFunding {
     const startOffsetDays = opts.startOffsetDays ?? 1;
     const durationDays = opts.durationDays ?? 10;
-    const minRaise = opts.minRaise ?? 1e4;
-    const maxRaise = opts.maxRaise ?? 1e7;
+    const minRaise = opts.minRaise ?? 1e12;
+    const maxRaise = opts.maxRaise ?? 1e15;
 
     const start = START_DAO + startOffsetDays * DAY;
     return {
@@ -62,15 +62,16 @@ describe("testing DAO data validation", () => {
       maxVePeriod: 365 * 4,
       minPvPFee: 10,
       maxPvPFee: 100,
-      minFundingDuration: 1,
-      maxFundingDuration: 180,
-      minFundingRaise: 1e3,
-      maxFundingRaise: 1e12,
+      minFunding: 100e8,
+      minFundingDuration: 86400,
+      maxFundingDuration: 180 * 86400,
+      minFundingRaise: 1e11,
+      maxFundingRaise: 1e19,
       minVestingNameLen: 1,
       maxVestingNameLen: 20,
-      minVestingDuration: 10,
-      maxVestingDuration: 365 * 4,
-      minCliff: 15,
+      minVestingDuration: 10 * 86400,
+      maxVestingDuration: 365 * 4 * 86400,
+      minCliff: 15 * 86400,
     };
   }
 
@@ -165,7 +166,7 @@ describe("testing DAO data validation", () => {
     test("duration < minFundingDuration -> InvalidFundingPeriod", () => {
       const f1 = makeFunding({
         type: FundingType.SEED,
-        durationDays: settings.minFundingDuration,
+        durationDays: settings.minFundingDuration / 86400,
       });
       Validation.validateFunding(LifecyclePhase.DRAFT, [f1], settings);
 
@@ -181,7 +182,7 @@ describe("testing DAO data validation", () => {
     test("duration > maxFundingDuration -> InvalidFundingPeriod", () => {
       const f1 = makeFunding({
         type: FundingType.SEED,
-        durationDays: settings.maxFundingDuration,
+        durationDays: settings.maxFundingDuration / 86400,
       });
       Validation.validateFunding(LifecyclePhase.DRAFT, [f1], settings);
 
@@ -230,7 +231,7 @@ describe("testing DAO data validation", () => {
       const f = makeFunding({
         type: FundingType.SEED,
         minRaise: settings.minFundingRaise,
-        maxRaise: settings.maxFundingRaise + 100,
+        maxRaise: settings.maxFundingRaise + 100e5,
       });
       expect(() =>
         Validation.validateFunding(LifecyclePhase.DRAFT, [f], settings),
@@ -432,7 +433,7 @@ describe("testing DAO data validation", () => {
     });
 
     test("vesting.start < tge.claim + min cliff => IncorrectVestingStart", () => {
-      const st: IHostSettings = { ...settings, minCliff: 5 };
+      const st: IHostSettings = { ...settings, minCliff: 5 * 86400 };
       expect(() =>
         Validation.validateVesting(
           LifecyclePhase.TGE,

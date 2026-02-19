@@ -6,14 +6,14 @@ import {
   Activity,
   LifecyclePhase,
   getUnit,
-  getUnitMetaData,
+  getUnitEmitData,
   IUnitEmitData,
 } from "../src";
 import {
   ContractIndices,
   FundingType,
   getBridgeTokens,
-  getDAOUnitMetaData,
+  getDAOUnitEmitData,
   IFunding,
   IVesting,
 } from "../src/host";
@@ -98,7 +98,7 @@ describe("testing Host", () => {
     // fix funding
     os56.updateFunding(daoAliens.symbol, {
       ...daoAliens.funding[0],
-      maxRaise: 90000,
+      maxRaise: 90000e8,
     });
 
     os56.changePhase(daoAliens.symbol);
@@ -125,7 +125,7 @@ describe("testing Host", () => {
 
     // first seeder
     os56.from = "0xseeder1";
-    os56.fund(daoAliens.symbol, 1000);
+    os56.fund(daoAliens.symbol, 1000e8);
 
     // since seed has funds first governance proposal can be created
     let proposalId = os56.updateSocials(daoAliens.symbol, [
@@ -144,10 +144,10 @@ describe("testing Host", () => {
 
     // second seeder
     os56.from = "0xseeder2";
-    os56.fund(daoAliens.symbol, 10000);
+    os56.fund(daoAliens.symbol, 10000e8);
 
     try {
-      os56.fund(daoAliens.symbol, 1000000);
+      os56.fund(daoAliens.symbol, 1000000e8);
     } catch {}
 
     try {
@@ -230,7 +230,7 @@ describe("testing Host", () => {
 
     // try fund on not funding phase
     try {
-      os56.fund(daoAliens.symbol, 100000000);
+      os56.fund(daoAliens.symbol, 100000000e8);
     } catch {}
 
     try {
@@ -258,11 +258,11 @@ describe("testing Host", () => {
 
     // TGE funders
     os56.from = "0xseeder1";
-    os56.fund(daoAliens.symbol, 10000);
+    os56.fund(daoAliens.symbol, 10000e8);
     os56.from = "0xseeder3";
-    os56.fund(daoAliens.symbol, 100000);
+    os56.fund(daoAliens.symbol, 100000e8);
     try {
-      os56.fund(daoAliens.symbol, 100000000);
+      os56.fund(daoAliens.symbol, 100000000e8);
     } catch {}
 
     try {
@@ -426,7 +426,7 @@ describe("testing Host", () => {
 
     // fund small amount
     os1.from = "0xseeder1";
-    os1.fund(daoApes.symbol, 1000);
+    os1.fund(daoApes.symbol, 1000e8);
 
     // 127 days later
     os1.warpDays(127);
@@ -501,7 +501,7 @@ describe("testing Host", () => {
 
     // fund enough amount
     os10.from = "0xseeder1";
-    os10.fund(daoMachines.symbol, 50000);
+    os10.fund(daoMachines.symbol, 50000e8);
 
     // 127 days later
     os1.warpDays(127);
@@ -550,7 +550,7 @@ describe("testing Host", () => {
       getDAOUnit(daos, daos[1].symbol, daos[1].units[1].unitId)?.unitId,
     ).toBe("stability:stabilityFarm");
     expect(
-      getDAOUnitMetaData(daos, daos[1].symbol, daos[1].units[1].unitId)?.name,
+      getDAOUnitEmitData(daos, daos[1].symbol, daos[1].units[1].unitId)?.name,
     ).toBe("VaaS");
 
     expect(os.getDAOMetaData(metaData, daos[1].symbol));
@@ -789,7 +789,7 @@ describe("testing Host", () => {
   });
 
   test("getUnitMetaData", () => {
-    const unitMetadata = getUnitMetaData(daos, "xstbl");
+    const unitMetadata = getUnitEmitData(daos, "xstbl");
     expect(unitMetadata).toBeDefined();
   });
 
@@ -812,8 +812,8 @@ describe("testing Host", () => {
     os: Host,
     after: number = 30 * 86400, // 1 month
     duration: number = 3 * 30 * 86400, // 3 months
-    minRaise: number = 10000, // 10k USD
-    maxRaise: number = 100000, // 100k USD
+    minRaise: number = 10000e8, // 10k USD
+    maxRaise: number = 100000e8, // 100k USD
   ): IFunding => {
     return {
       type: FundingType.SEED,
@@ -829,8 +829,8 @@ describe("testing Host", () => {
     os: Host,
     after: number = 6 * 30 * 86400, // 6 month
     duration: number = 7 * 86400, // 7 days
-    minRaise: number = 100000, // 100k USD
-    maxRaise: number = 500000, // 500k USD
+    minRaise: number = 100000e8, // 100k USD
+    maxRaise: number = 500000e8, // 500k USD
   ): IFunding => {
     return {
       type: FundingType.TGE,

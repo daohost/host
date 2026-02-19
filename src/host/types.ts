@@ -42,6 +42,7 @@ export interface IHostSettings {
   maxVePeriod: number;
   minPvPFee: number;
   maxPvPFee: number;
+  minFunding: number;
   /** Min funding duration in days */
   minFundingDuration: number;
   /** Max funding duration in days */
