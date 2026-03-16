@@ -99,6 +99,84 @@ export const defi: { [org: string]: IDeFiOrganization } = {
       },
     },
   },
+  pancakeswap: {
+    name: "PancakeSwap",
+    img: "pancakeswap.svg",
+    website: "https://pancakeswap.finance/",
+    defiLlama: "pancakeswap",
+    github: "pancakeswap",
+    protocols: {
+      pancakeswapV2: {
+        name: "PancakeSwap V2",
+        category: DefiCategory.AMM,
+        deployments: {
+          "1": {
+            PancakeFactory: "0x1097053Fd2ea711dad45caCcc45EfF7548fCB362",
+          },
+        },
+        // https://developer.pancakeswap.finance/apis/subgraph
+        subgraph: {
+          // 0.0.1
+          // https://thegraph.com/explorer/subgraphs/9opY17WnEPD4REcC43yHycQthSeUMQE26wyoeMjZTLEx?view=Query&chain=arbitrum-one
+          "1": "https://gateway.thegraph.com/api/subgraphs/id/9opY17WnEPD4REcC43yHycQthSeUMQE26wyoeMjZTLEx",
+        },
+      },
+      pancakeswapV3: {
+        name: "PancakeSwap V3",
+        category: DefiCategory.AMM,
+        deployments: {
+          "1": {
+            PancakeV3Factory: "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
+          },
+        },
+        // https://developer.pancakeswap.finance/apis/subgraph
+        subgraph: {
+          // 0.0.1
+          // https://thegraph.com/explorer/subgraphs/CJYGNhb7RvnhfBDjqpRnD3oxgyhibzc7fkAMa38YV3oS?view=Query&chain=arbitrum-one
+          "1": "https://gateway.thegraph.com/api/subgraphs/id/CJYGNhb7RvnhfBDjqpRnD3oxgyhibzc7fkAMa38YV3oS",
+        },
+      },
+    },
+  },
+  sushi: {
+    name: "Sushi",
+    img: "sushi.svg",
+    website: "https://www.sushi.com/",
+    defiLlama: "sushi",
+    github: "sushi-labs",
+    protocols: {
+      sushiswapV2: {
+        name: "SushiSwap V2",
+        category: DefiCategory.AMM,
+        deployments: {
+          "1": {
+            UniswapV2Factory: "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac",
+          },
+        },
+        // https://docs.sushi.com/subgraphs/cpamm + search
+        subgraph: {
+          // 1.0.2
+          // https://thegraph.com/explorer/subgraphs/GyZ9MgVQkTWuXGMSd3LXESvpevE8S8aD3uktJh7kbVmc?view=Query&chain=arbitrum-one
+          "1": "https://gateway.thegraph.com/api/subgraphs/id/GyZ9MgVQkTWuXGMSd3LXESvpevE8S8aD3uktJh7kbVmc",
+        },
+      },
+      sushiswapV3: {
+        name: "SushiSwap V3",
+        category: DefiCategory.AMM,
+        deployments: {
+          "1": {
+            UniswapV3Factory: "0xbACEB8eC6b9355Dfc0269C18bac9d6E2Bdc29C4F",
+          },
+        },
+        // https://docs.sushi.com/subgraphs/clamm
+        subgraph: {
+          // 1.0.2
+          // https://thegraph.com/explorer/subgraphs/5nnoU1nUFeWqtXgbpC54L9PWdpgo7Y9HYinR3uTMsfzs?view=Query&chain=arbitrum-one
+          "1": "https://gateway.thegraph.com/api/subgraphs/id/5nnoU1nUFeWqtXgbpC54L9PWdpgo7Y9HYinR3uTMsfzs",
+        },
+      },
+    },
+  },
   curve: {
     name: "Curve",
     img: "Curve.svg",
