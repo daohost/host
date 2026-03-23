@@ -8,10 +8,10 @@ import { Activity } from "./activity";
 import { IDAOAPIDataV2 } from "./api";
 import { getTokenData, TokenData } from "./assets";
 import { Validation } from "./validation";
-import { IHostSettings } from "./host/types";
+import { IHostSettings } from "./host.types";
 import { IUnit, IUnitEmitData } from "./unit";
 
-export const HOST_DESCRIPTION = "Where True DAOs Live & Work";
+export const HOST_DESCRIPTION = "Home for DAOs";
 export const DAO_FEATURES: string[] = [
   "True DAO: only holders owns, manage and earn whole value",
   "Inter-chain setup with bridging",
@@ -128,7 +128,7 @@ export interface IDAOData {
   /** Storage for Agents data. */
   metaData?: IDAOMetaData;
 
-  /** SEGMENT 6: API data of DAO */
+  /** SEGMENT 6: API data of DAO provided by HOST */
 
   /** Hot data updates each minute */
   api?: IDAOAPIDataV2;
@@ -524,13 +524,10 @@ export class Host {
     });
   }
 
-  getDAOMetaData(
-    daoMetaData: { [symbolLowerCase: string]: IDAOMetaData },
-    symbol: string,
-  ): IDAOMetaData {
+  getDAOMetaData(symbol: string): IDAOMetaData {
     const dao = this.getDAO(symbol);
-    if (dao.metaDataLocation === "local") {
-      return daoMetaData[symbol.toLowerCase()] as IDAOMetaData;
+    if (dao.metaDataLocation === "local" && dao.metaData) {
+      return dao.metaData;
     }
     return {};
   }

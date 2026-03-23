@@ -20,15 +20,6 @@ export enum UnitStatus {
   LIVE = "LIVE",
 }
 
-/** Supported categories of running units. */
-/** @deprecated Each Unit has own component categories */
-export enum UnitComponentCategory {
-  CHAIN_SUPPORT = "CHAIN_SUPPORT",
-  ENGINE_SUPPORT = "ENGINE_SUPPORT",
-  DEFI_STRATEGY = "DEFI_STRATEGY",
-  MEV_STRATEGY = "MEV_STRATEGY",
-}
-
 export interface IHostSettings {
   /** Create DAO price, ~USD */
   priceDao: number;

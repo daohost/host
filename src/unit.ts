@@ -1,4 +1,4 @@
-import { UnitStatus, UnitType } from "./host/types";
+import { UnitStatus, UnitType } from "./host.types";
 
 /**
  Revenue generating unit owned by a DAO.

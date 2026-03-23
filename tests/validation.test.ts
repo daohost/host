@@ -1,7 +1,7 @@
 import { Activity, LifecyclePhase } from "../src";
 import { Validation } from "../src/validation";
 import { FundingType, IFunding, IVesting } from "../src/host";
-import { IHostSettings } from "../src/host/types";
+import { IHostSettings } from "../src/types";
 
 describe("testing DAO data validation", () => {
   const START_DAO = 1772323200; // Sunday, 1 March 2026
