@@ -4,14 +4,14 @@ import { ChainName } from "../chains";
 import { UnitStatus, UnitType } from "../host.types";
 import { AgentRole } from "../agents";
 
-export const mevbot: IDAOData = {
+export const mevbots: IDAOData = {
   phase: LifecyclePhase.DRAFT,
-  name: "MevBots",
+  name: "MevBots Network",
   symbol: "MEVBOTS",
   socials: [],
   activity: [Activity.MEV],
   images: {
-    token: "/MEVBOT.png",
+    token: "/mevbots.png",
   },
   deployments: {},
   chainSettings: {
@@ -47,12 +47,12 @@ export const mevbot: IDAOData = {
   metaDataLocation: "local",
   unitEmitData: [
     {
-      name: "mevbots network",
+      name: "mevbots",
       description: "Network of MEV Searchers",
       status: UnitStatus.BUILDING_PROTOTYPE,
-      revenueShare: 100,
+      revenueShare: 50,
       type: UnitType.MEV_SEARCHER,
-      emoji: "🧙",
+      emoji: "",
       pool: {
         repos: ["daohost/mevbot"],
         label: {
