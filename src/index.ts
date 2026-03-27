@@ -39,7 +39,7 @@ import { IGithubIssueV2, IUnit, IUnitEmitData, IUnitPool } from "./unit";
 import { defi } from "./defi";
 import { host } from "./daos/host";
 import { stbl } from "./daos/stbl";
-import { mevbot } from "./daos/mevbot";
+import { mevbots } from "./daos/mevbots";
 
 export {
   chains,
@@ -86,4 +86,4 @@ export type {
 
 export { activities } from "./activity";
 
-export const daos: IDAOData[] = [host, stbl, mevbot];
+export const daos: IDAOData[] = [host, stbl, mevbots];
