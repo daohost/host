@@ -84,17 +84,17 @@ export const mevbot: IDAOData = {
 /** 📜 Best MEV strategies */
 export enum MevStrategy {
   /** 🥪 */
-  SANDWICH_SWAP = 'SANDWICH_SWAP',
+  SANDWICH_SWAP = "SANDWICH_SWAP",
   /** 🍔 */
-  SANDWICH_JIT_SWAP = 'SANDWICH_JIT_SWAP',
+  SANDWICH_JIT_SWAP = "SANDWICH_JIT_SWAP",
   /** 🥞 */
-  SANDWICH_JIT = 'SANDWICH_JIT',
+  SANDWICH_JIT = "SANDWICH_JIT",
   /** 🔁 */
-  ARB = 'ARB',
+  ARB = "ARB",
   /** ♻️ */
-  ARB_BACKRUN = 'ARB_BACKRUN',
+  ARB_BACKRUN = "ARB_BACKRUN",
   /** 🔫 */
-  LIQUIDATION = 'LIQUIDATION',
+  LIQUIDATION = "LIQUIDATION",
 }
 
 /** 🧠 MevBot MEV API V1 ABI methods. */
@@ -104,54 +104,54 @@ export enum MevMethod {
    function sandwichSwapFrontrun(bytes calldata data) external payable returns (bytes32 result)
    ```
    */
-  sandwichSwapFrontrun = 'sandwichSwapFrontrun',
+  sandwichSwapFrontrun = "sandwichSwapFrontrun",
 
   /** 🥪 Back-run intercepted transaction by swap in UniswapV2-like pool.
    ```solidity
    function sandwichSwapBackrun(bytes calldata data) external payable returns (bytes32 result)
    ```
    */
-  sandwichSwapBackrun = 'sandwichSwapBackrun',
+  sandwichSwapBackrun = "sandwichSwapBackrun",
 
-  sandwichJitSwapFrontrun = 'sandwichJitSwapFrontrun',
+  sandwichJitSwapFrontrun = "sandwichJitSwapFrontrun",
 
-  sandwichJitFrontrun = 'sandwichJitFrontrun',
+  sandwichJitFrontrun = "sandwichJitFrontrun",
 
-  sandwichJitBackrun = 'sandwichJitBackrun',
+  sandwichJitBackrun = "sandwichJitBackrun",
 
   /** ⚖️ Arbitrage across multiple pools or DEXes.
    ```solidity
    function arb(bytes calldata data) external payable returns (bytes32 result)
    ```
    */
-  arb = 'arb',
+  arb = "arb",
 
-  liquidate = 'liquidate',
+  liquidate = "liquidate",
 
   /** 🧩 Multi-call aggregation for efficiency or chaining. */
-  multicall = 'multicall',
+  multicall = "multicall",
 }
 
 /** 🏷️ The fundamental type of MEV artifact. */
 export enum ArtifactType {
   /** ✨ A discovered opportunity before mining. */
-  OPPORTUNITY = 'OPPORTUNITY',
+  OPPORTUNITY = "OPPORTUNITY",
 
   /** 💰 A mined MEV value, confirmed on-chain. */
-  VALUE = 'VALUE',
+  VALUE = "VALUE",
 
   /** 📦 A container (box) combining several artifacts. */
-  BOX = 'BOX',
+  BOX = "BOX",
 }
 
 /** The type of artifacts the bot obtains depends on its role */
 export enum MevBotRole {
   /** 🟨 Extracts OPPORTUNITY artifacts */
-  EXTRACTOR = 'EXTRACTOR',
+  EXTRACTOR = "EXTRACTOR",
   /** 🟩 listening for Extractors and mines VALUE artifacts */
-  MAKER = 'MAKER',
+  MAKER = "MAKER",
   /** 🟪 Researching and updating artifacts, creating BOX artifacts */
-  RESEARCHER = 'RESEARCHER',
+  RESEARCHER = "RESEARCHER",
 }
 
 /**
@@ -269,7 +269,7 @@ export interface IMevArtifactCallData {
     success: boolean;
     error?: string;
     failureReason?: string;
-  },
+  };
 
   /** Bundle hash of this callData */
   bubbleHash?: `0x${string}`;
@@ -303,13 +303,13 @@ export interface IFlight {
 
   // synced state of services
   services: {
-    [serviceName: string]: IServiceState,
+    [serviceName: string]: IServiceState;
   };
 
   // not default settings
   settings: {
     [envSetting: string]: string;
-  },
+  };
 
   // Created MEV Artifacts IDs
   made: string[];

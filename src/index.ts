@@ -37,9 +37,9 @@ import { hostDeployments } from "./deployments";
 import { UnitStatus } from "./host.types";
 import { IGithubIssueV2, IUnit, IUnitEmitData, IUnitPool } from "./unit";
 import { defi } from "./defi";
-import {host} from "./daos/host";
-import {stbl} from "./daos/stbl";
-import {mevbot} from "./daos/mevbot";
+import { host } from "./daos/host";
+import { stbl } from "./daos/stbl";
+import { mevbot } from "./daos/mevbot";
 
 export {
   chains,
