@@ -32,13 +32,14 @@ import {
   DAO_FEATURES,
   STATIC_BASE_URL,
 } from "./host";
-import { daos } from "./storage/daos";
-import { metaData } from "./storage/metaData";
 import { RevenueChart, IHostAgentMemoryV3 } from "./api";
 import { hostDeployments } from "./deployments";
-import { UnitStatus } from "./host/types";
+import { UnitStatus } from "./host.types";
 import { IGithubIssueV2, IUnit, IUnitEmitData, IUnitPool } from "./unit";
 import { defi } from "./defi";
+import { host } from "./daos/host";
+import { stbl } from "./daos/stbl";
+import { mevbot } from "./daos/mevbot";
 
 export {
   chains,
@@ -53,8 +54,6 @@ export {
   LifecyclePhase,
   Host,
   UnitStatus,
-  daos,
-  metaData,
   getDAOUnit,
   getUnit,
   getDAOUnitEmitData,
@@ -84,4 +83,7 @@ export type {
   IContractIndex,
   IHostAgentMemoryV3,
 };
+
 export { activities } from "./activity";
+
+export const daos: IDAOData[] = [host, stbl, mevbot];

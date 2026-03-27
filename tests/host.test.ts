@@ -2,7 +2,6 @@ import {
   daos,
   getDAOUnit,
   Host,
-  metaData,
   Activity,
   LifecyclePhase,
   getUnit,
@@ -17,8 +16,8 @@ import {
   IFunding,
   IVesting,
 } from "../src/host";
-import { activities } from "../src/activity";
-import { UnitStatus, UnitType } from "../src/host/types";
+import { activities } from "../src";
+import { UnitStatus, UnitType } from "../src/host.types";
 
 describe("testing Host", () => {
   test("Lifecycle", () => {
@@ -553,7 +552,7 @@ describe("testing Host", () => {
       getDAOUnitEmitData(daos, daos[1].symbol, daos[1].units[1].unitId)?.name,
     ).toBe("VaaS");
 
-    expect(os.getDAOMetaData(metaData, daos[1].symbol));
+    expect(os.getDAOMetaData(daos[1].symbol));
     const roadmap = os.roadmap(daos[1].symbol);
     expect(roadmap.length).toBe(4);
     //console.log(roadmap)
@@ -564,7 +563,7 @@ describe("testing Host", () => {
     const dao = _createDAO(os);
     expect(dao.name).toBe("SpaceSwap");
     expect(os.events.length).toBe(1);
-    expect(os.getDAOMetaData(metaData, dao.symbol));
+    expect(os.getDAOMetaData(dao.symbol));
 
     const funding: IFunding[] = [
       {
@@ -741,10 +740,8 @@ describe("testing Host", () => {
 
   test("getDAOMetaData", () => {
     const os = new Host("146");
-    os.addLiveDAO(daos[0]);
-    expect(
-      os.getDAOMetaData(metaData, daos[0].symbol).agents?.length,
-    ).toBeGreaterThan(0);
+    os.addLiveDAO(daos[1]);
+    expect(os.getDAOMetaData(daos[1].symbol).agents?.length).toBeGreaterThan(0);
   });
 
   test("get DAO", () => {
