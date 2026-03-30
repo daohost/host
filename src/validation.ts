@@ -1,5 +1,11 @@
 import { Activity } from "./activity";
-import {FundingType, IFunding, IHostSettings, IVesting, LifecyclePhase} from "./host.types";
+import {
+  FundingType,
+  IFunding,
+  IHostSettings,
+  IVesting,
+  LifecyclePhase,
+} from "./host.types";
 
 export class Validation {
   /**

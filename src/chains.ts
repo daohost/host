@@ -1,6 +1,6 @@
 /** Blockchains data */
 
-import {STATIC_BASE_URL} from "./host.types";
+import { STATIC_BASE_URL } from "./host.types";
 
 export interface IChain {
   name: ChainName;

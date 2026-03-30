@@ -25,9 +25,6 @@ import {
   getUnitEmitData,
   getBridgeTokens,
   daoContractIndices,
-
-
-
 } from "./host";
 import { RevenueChart, IHostAgentMemoryV3 } from "./api";
 import { hostDeployments } from "./deployments";
@@ -38,7 +35,7 @@ import {
   IDAOData,
   LifecyclePhase,
   STATIC_BASE_URL,
-  UnitStatus
+  UnitStatus,
 } from "./host.types";
 import { IGithubIssueV2, IUnit, IUnitEmitData, IUnitPool } from "./unit";
 import { defi } from "./defi";

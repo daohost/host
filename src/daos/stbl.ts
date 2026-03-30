@@ -1,6 +1,13 @@
 import { Activity } from "../activity";
 import { ChainName } from "../chains";
-import {ContractIndices, FundingType, IDAOData, LifecyclePhase, UnitStatus, UnitType} from "../host.types";
+import {
+  ContractIndices,
+  FundingType,
+  IDAOData,
+  LifecyclePhase,
+  UnitStatus,
+  UnitType,
+} from "../host.types";
 import { AgentRole } from "../agents";
 
 export const stbl: IDAOData = {

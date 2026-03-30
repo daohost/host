@@ -7,7 +7,7 @@ import {
   IDAOData,
   LifecyclePhase,
   UnitStatus,
-  UnitType
+  UnitType,
 } from "../host.types";
 import { AgentRole } from "../agents";
 

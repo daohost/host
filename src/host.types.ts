@@ -1,8 +1,8 @@
-import {IAgent} from "./agents";
-import {ChainName} from "./chains";
-import {Activity} from "./activity";
-import {IUnit, IUnitEmitData} from "./unit";
-import {IDAOAPIDataV2} from "./api";
+import { IAgent } from "./agents";
+import { ChainName } from "./chains";
+import { Activity } from "./activity";
+import { IUnit, IUnitEmitData } from "./unit";
+import { IDAOAPIDataV2 } from "./api";
 
 /** Supported unit types */
 export enum UnitType {

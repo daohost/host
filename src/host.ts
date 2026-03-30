@@ -2,10 +2,10 @@
  Host prototype.
 */
 
-import {chains, getChainByName} from "./chains";
-import {Activity} from "./activity";
-import {getTokenData, TokenData} from "./assets";
-import {Validation} from "./validation";
+import { chains, getChainByName } from "./chains";
+import { Activity } from "./activity";
+import { getTokenData, TokenData } from "./assets";
+import { Validation } from "./validation";
 import {
   ContractIndices,
   FundingType,
@@ -17,9 +17,9 @@ import {
   IFunding,
   IHostSettings,
   IVesting,
-  LifecyclePhase
+  LifecyclePhase,
 } from "./host.types";
-import {IUnit, IUnitEmitData} from "./unit";
+import { IUnit, IUnitEmitData } from "./unit";
 
 export const daoContractIndices: {
   [index in ContractIndices]?: IContractIndex;
