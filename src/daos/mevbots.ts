@@ -26,7 +26,7 @@ export const mevbots: IDAOData = {
     },
   ],
   params: {
-    vePeriod: 120,
+    vePeriod: 180,
     pvpFee: 100,
     totalSupply: 1_000_000e18,
   },
@@ -34,9 +34,9 @@ export const mevbots: IDAOData = {
     {
       type: FundingType.SEED,
       start: 1777593600, // Friday, 1 May 2026
-      end: 1782864000, // Wednesday, 1 July 2026
-      minRaise: 50000,
-      maxRaise: 250000,
+      end: 1790726400, // Wednesday, 30 September 2026
+      minRaise: 10000,
+      maxRaise: 2500000,
       raised: 0,
     },
   ],
@@ -67,7 +67,7 @@ export const mevbots: IDAOData = {
     agents: [
       {
         roles: [AgentRole.MEV_SEARCHER],
-        unitIds: ["mevbot:ethereum"],
+        unitIds: ["net"],
         name: "MEVBOTS Agent",
         api: [],
       },
@@ -76,10 +76,44 @@ export const mevbots: IDAOData = {
 };
 
 /**
- 🤖 MEVBOTS
- Network of Maximum Extractable Value Searcher bots.
- Bots creates MEV Artifacts using MEV Strategies.
+ ◆◆ MEVBOTS DAO Knowledge
+ ◆◆◆ mevbots.net Architecture
+ MevBots is a network of Maximum Extractable Value (MEV) searcher bots.
+ Bot generates value by creating an `IMevArtifact` depending on its role.
+ `MevBotRole.EXTRACTOR` creates `ArtifactType.OPPORTUNITY` and `ArtifactType.BOX` artifacts for supported `DeX`s.
+ `MevBotRole.MAKER`  extracts mined value by processing `MevStrategy` opportunities and executing `MevMethod` on their contract. Upon success, it creates `ArtifactType.VALUE` artifacts.
+ Maker's `IMevMiner` contract contains proprietary `IMevLogic` implementations.
+ Each artifact includes an `IMevArtifactCallData` array and other data required for its execution or research.
+ A bot session is represented by a public `IFlight` object.
  */
+
+/** Contract implementing `IMev*` interface */
+export interface IMevMiner {
+  account: `0x${string}`;
+  bundleSigner: `0x${string}`;
+  contract: `0x${string}`;
+  logic: {
+    sandwich: IMevLogic;
+    arbitrage: IMevLogic;
+    liquidation: IMevLogic;
+  };
+}
+
+export interface IMevLogic {
+  name: string;
+  implementation: `0x${string}`;
+  methods: MevMethod[];
+}
+
+/** The type of artifacts the bot obtains depends on its role */
+export enum MevBotRole {
+  /** 🟨 Extracts OPPORTUNITY artifacts */
+  EXTRACTOR = "EXTRACTOR",
+  /** 🟩 listening for Extractors and mines VALUE artifacts */
+  MAKER = "MAKER",
+  /** 🟪 Researching and updating artifacts, creating BOX artifacts */
+  RESEARCHER = "RESEARCHER",
+}
 
 /** 📜 Best MEV strategies */
 export enum MevStrategy {
@@ -144,16 +178,6 @@ export enum ArtifactType {
   BOX = "BOX",
 }
 
-/** The type of artifacts the bot obtains depends on its role */
-export enum MevBotRole {
-  /** 🟨 Extracts OPPORTUNITY artifacts */
-  EXTRACTOR = "EXTRACTOR",
-  /** 🟩 listening for Extractors and mines VALUE artifacts */
-  MAKER = "MAKER",
-  /** 🟪 Researching and updating artifacts, creating BOX artifacts */
-  RESEARCHER = "RESEARCHER",
-}
-
 /**
  💎 Maximum Extractable Value Artifact
  ◆
@@ -165,6 +189,7 @@ export enum MevBotRole {
  ◆
  🧠 Represents a single unit of MEV intelligence — opportunity, mined value,
  or even a curated collection (BOX) of multiple artifacts.
+ @alpha
  */
 export interface IMevArtifact {
   /** 🧬 Unique identifier for this artifact.
@@ -222,7 +247,10 @@ export interface IMevArtifact {
   data: any;
 }
 
-/** 📒 Call data and profitability details for executing an artifact. */
+/**
+ 📒 Call data and profitability details for executing an artifact.
+ @alpha
+ */
 export interface IMevArtifactCallData {
   /** 💵 Token address representing the asset in which profit is counted. */
   incomeAsset: `0x${string}`;
@@ -278,7 +306,10 @@ export interface IMevArtifactCallData {
   mined?: boolean;
 }
 
-/** 🚀 Bot session */
+/**
+ 🚀 Bot session
+ @alpha
+ */
 export interface IFlight {
   // unique flight id
   id: string;
