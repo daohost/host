@@ -9,15 +9,13 @@ import {
   IUnitEmitData,
 } from "../src";
 import {
-  ContractIndices,
-  FundingType,
   getBridgeTokens,
   getDAOUnitEmitData,
-  IFunding,
-  IVesting,
+
+
 } from "../src/host";
 import { activities } from "../src";
-import { UnitStatus, UnitType } from "../src/host.types";
+import {ContractIndices, FundingType, IFunding, IVesting, UnitStatus, UnitType} from "../src/host.types";
 
 describe("testing Host", () => {
   test("Lifecycle", () => {

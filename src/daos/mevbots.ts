@@ -1,7 +1,6 @@
-import { FundingType, IDAOData, LifecyclePhase } from "../host";
 import { Activity } from "../activity";
 import { ChainName } from "../chains";
-import { UnitStatus, UnitType } from "../host.types";
+import {FundingType, IDAOData, LifecyclePhase, UnitStatus, UnitType} from "../host.types";
 import { AgentRole } from "../agents";
 
 export const mevbots: IDAOData = {
