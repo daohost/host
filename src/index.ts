@@ -18,23 +18,25 @@ import {
 } from "./assets";
 import { Activity } from "./activity";
 import {
-  LifecyclePhase,
   Host,
   getDAOUnit,
   getUnit,
   getDAOUnitEmitData,
   getUnitEmitData,
   getBridgeTokens,
-  IDAOData,
-  IContractIndex,
   daoContractIndices,
-  HOST_DESCRIPTION,
-  DAO_FEATURES,
-  STATIC_BASE_URL,
 } from "./host";
 import { RevenueChart, IHostAgentMemoryV3 } from "./api";
 import { hostDeployments } from "./deployments";
-import { UnitStatus } from "./host.types";
+import {
+  DAO_FEATURES,
+  HOST_DESCRIPTION,
+  IContractIndex,
+  IDAOData,
+  LifecyclePhase,
+  STATIC_BASE_URL,
+  UnitStatus,
+} from "./host.types";
 import { IGithubIssueV2, IUnit, IUnitEmitData, IUnitPool } from "./unit";
 import { defi } from "./defi";
 import { host } from "./daos/host";
