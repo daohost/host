@@ -1,6 +1,6 @@
 {
   "name": "@daohost/host",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Host library",
   "main": "out/index.js",
   "types": "out/index.d.ts",

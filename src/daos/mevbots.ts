@@ -185,13 +185,13 @@ export enum ArtifactType {
 
 /**
  💎 Maximum Extractable Value Artifact
- ◆
- ◆◆◆◆◆
- ◆◆◆◆◆◆◆◆◆◆◆
+ _______ ◆
+ _____ ◆◆◆◆◆
+ __ ◆◆◆◆◆◆◆◆◆◆◆
  ◆◆◆◆◆◆ MEV ◆◆◆◆◆◆
- ◆◆◆◆◆◆◆◆◆◆◆
- ◆◆◆◆◆
- ◆
+ __ ◆◆◆◆◆◆◆◆◆◆◆
+ _____ ◆◆◆◆◆
+ _______ ◆
  🧠 Represents a single unit of MEV intelligence — opportunity, mined value,
  or even a curated collection (BOX) of multiple artifacts.
  @alpha
@@ -234,6 +234,17 @@ export interface IMevArtifact {
 
   /** Short description how this MEV Artifact work. */
   description?: string;
+
+  /** Hashes of intercepted pending mempool transactions */
+  intercepts?: `0x${string}`[];
+
+  /** Result of intercepted transactions execution */
+  interceptsExecution?: {
+    intercept: `0x${string}`;
+    success?: boolean;
+    blockNumber?: number;
+    replacedBy?: `0x${string}`;
+  }[];
 
   /** 📒 Input data — instructions or transactions describing how profit was made. */
   callData: IMevArtifactCallData[];
