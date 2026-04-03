@@ -300,18 +300,27 @@ export interface IMevArtifactCallData {
     value?: bigint;
     /** 🧱 Logical name of the contract (for reference). */
     contract?: string;
-    /** 🕳️ Victim transaction hash (used when composing an artifact). */
+    /** 🕳️ Transaction hash (used when composing an artifact and on VALUE artifacts). */
     hash?: `0x${string}`;
+    /** max_fee_per_gas from EIP-1559 */
+    maxFee?: bigint;
+    /** Gas used */
+    gas?: bigint;
   }[];
 
   /** Bundle simulation */
   simulation?: {
-    /** Custom simulation name, ex phase0 */
+    /** 🏷️ Custom simulation name (e.g., "phase0") */
     name?: string;
+    /** ⏰ Simulation start time, ms */
     start: number;
+    /** 🏁 Simulation finish time, ms */
     finish: number;
+    /** ✅ Indicates if the simulation was successful */
     success: boolean;
+    /** ⚠️ Revert error text */
     error?: string;
+    /** 💡 Parsed fail reason text */
     failureReason?: string;
   };
 
