@@ -378,5 +378,5 @@ export interface IFlight {
 }
 
 export interface IServiceState {
-  [key: string]: number | string | boolean | string[];
+  [key: string]: number | string | boolean | string[] | object;
 }
