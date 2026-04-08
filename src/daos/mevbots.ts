@@ -258,7 +258,8 @@ export interface IMevArtifact {
     ethPrice: number;
   };
 
-  mevMinedBy?: `0x${string}`;
+  /** Mined value data */
+  mevMined?: any;
 
   /** 📃 Strategy-specific data — e.g. `ISandwichOpportunity` or `IArbOpportunity`. */
   data: any;
