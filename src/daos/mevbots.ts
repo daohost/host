@@ -306,6 +306,8 @@ export interface IMevArtifactCallData {
     hash?: `0x${string}`;
     /** max_fee_per_gas from EIP-1559 */
     maxFee?: bigint;
+    /** max_priority_fee_per_gas from EIP-1559 */
+    maxPriorityFee?: bigint;
     /** Gas used */
     gas?: bigint;
   }[];
