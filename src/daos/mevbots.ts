@@ -243,6 +243,7 @@ export interface IMevArtifact {
     intercept: `0x${string}`;
     success?: boolean;
     blockNumber?: number;
+    index?: number;
     replacedBy?: `0x${string}`;
   }[];
 
