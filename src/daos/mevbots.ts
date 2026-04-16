@@ -239,13 +239,7 @@ export interface IMevArtifact {
   intercepts?: `0x${string}`[];
 
   /** Result of intercepted transactions execution */
-  interceptsExecution?: {
-    intercept: `0x${string}`;
-    success?: boolean;
-    blockNumber?: number;
-    index?: number;
-    replacedBy?: `0x${string}`;
-  }[];
+  interceptsExecution?: IInterceptExecution[];
 
   /** 📒 Input data — instructions or transactions describing how profit was made. */
   callData: IMevArtifactCallData[];
@@ -263,6 +257,24 @@ export interface IMevArtifact {
 
   /** 📃 Strategy-specific data — e.g. `ISandwichOpportunity` or `IArbOpportunity`. */
   data: any;
+}
+
+export interface IInterceptExecution {
+  /** Pending transaction hash */
+  intercept: `0x${string}`;
+  /**
+   true - success tx mined
+   false - fail tx mined
+   null - gone from mempool
+   undefined - not known yet
+   */
+  success?: boolean|null;
+  /** Block number where tx was mined */
+  blockNumber?: number;
+  /** Transaction index in block */
+  index?: number;
+  /** Hash of other tx with such nonce of sender */
+  replacedBy?: `0x${string}`;
 }
 
 /**
