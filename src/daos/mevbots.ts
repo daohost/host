@@ -268,7 +268,7 @@ export interface IInterceptExecution {
    null - gone from mempool
    undefined - not known yet
    */
-  success?: boolean|null;
+  success?: boolean | null;
   /** Block number where tx was mined */
   blockNumber?: number;
   /** Transaction index in block */
