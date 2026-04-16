@@ -340,6 +340,9 @@ export interface IMevArtifactCallData {
     failureReason?: string;
   };
 
+  /** Is it ready to be submitted to flashbots and other relays */
+  readyToSubmit: boolean;
+
   /** Bundle hash of this callData */
   bubbleHash?: `0x${string}`;
 
@@ -358,6 +361,26 @@ export interface IFlight {
   // human readable flight status string
   status: string;
 
+  // software used
+  software: string;
+
+  // dashboard gauges
+  dashboard: {
+    [title: string]: {
+      [key: string]: string;
+    };
+  };
+
+  // synced state of services
+  services: {
+    [serviceName: string]: IServiceState;
+  };
+
+  // not default settings
+  settings: {
+    [envSetting: string]: string;
+  };
+
   // roles of bot in this flight
   roles: MevBotRole[];
 
@@ -373,26 +396,13 @@ export interface IFlight {
   // stop time
   complete?: number;
 
-  // synced state of services
-  services: {
-    [serviceName: string]: IServiceState;
-  };
-
-  // not default settings
-  settings: {
-    [envSetting: string]: string;
-  };
-
   // Created MEV Artifacts IDs
   made: string[];
 
   // Received MEV Artifacts IDs
   received?: string[];
-
-  // software used
-  software: string;
 }
 
 export interface IServiceState {
-  [key: string]: number | string | boolean | string[] | object;
+  [key: string]: number | string | boolean | string[] | object | undefined;
 }
