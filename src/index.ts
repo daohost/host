@@ -42,7 +42,13 @@ import { defi } from "./defi";
 import { host } from "./daos/host";
 import { stbl } from "./daos/stbl";
 import { mevbots } from "./daos/mevbots";
-import { type IFlight, IServiceState, IFeature, FeatureStatus } from "./bot";
+import {
+  type IFlight,
+  IServiceState,
+  IFeature,
+  FeatureStatus,
+  IWorkflow,
+} from "./bot";
 
 export {
   chains,
@@ -89,6 +95,7 @@ export type {
   IFlight,
   IServiceState,
   IFeature,
+  IWorkflow,
 };
 
 export { activities } from "./activity";

@@ -49,6 +49,9 @@ export interface IFlight {
 
   // Received Artifacts IDs or other value type IDs
   received?: string[];
+
+  // workflows
+  workflows: IWorkflow[];
 }
 
 export interface IServiceState {
@@ -65,4 +68,11 @@ export enum FeatureStatus {
   LIVE = "Live",
   DEVELOPMENT = "Development",
   BACKLOG = "Backlog",
+}
+
+export interface IWorkflow {
+  /** Unique ID of workflow, as example block number */
+  id: string;
+  /** Compact storage of workflow items. Format: time:name:any_data */
+  items: string[];
 }
