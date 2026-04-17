@@ -42,6 +42,7 @@ import { defi } from "./defi";
 import { host } from "./daos/host";
 import { stbl } from "./daos/stbl";
 import { mevbots } from "./daos/mevbots";
+import { type IFlight, IServiceState, IFeature, FeatureStatus } from "./bot";
 
 export {
   chains,
@@ -70,6 +71,7 @@ export {
   getBridgeTokens,
   getAssetBySymbol,
   defi,
+  FeatureStatus,
 };
 
 export type {
@@ -84,6 +86,9 @@ export type {
   TokenData,
   IContractIndex,
   IHostAgentMemoryV3,
+  IFlight,
+  IServiceState,
+  IFeature,
 };
 
 export { activities } from "./activity";
