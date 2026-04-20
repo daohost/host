@@ -54,14 +54,23 @@ export interface IFlight {
   workflows: IWorkflow[];
 }
 
+/** Bot's Service */
+export interface IService {
+  name: string;
+  version: string;
+  features: IFeature[];
+  state: IServiceState;
+}
+
 export interface IServiceState {
   [key: string]: number | string | boolean | string[] | object | undefined;
 }
 
-/** Bot's Service or Module feature */
+/** Bot's Service feature */
 export interface IFeature {
   name: string;
   status: FeatureStatus;
+  image?: string;
 }
 
 export enum FeatureStatus {

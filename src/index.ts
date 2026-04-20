@@ -48,6 +48,7 @@ import {
   IFeature,
   FeatureStatus,
   IWorkflow,
+  IService,
 } from "./bot";
 
 export {
@@ -96,6 +97,7 @@ export type {
   IServiceState,
   IFeature,
   IWorkflow,
+  IService,
 };
 
 export { activities } from "./activity";
