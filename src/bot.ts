@@ -1,4 +1,19 @@
 /**
+ 🤖 Bot
+ @alpha
+ */
+export interface IBot {
+  // software name and version
+  software: string;
+
+  description?: string;
+
+  services: {
+    [serviceName: string]: IServiceMetaData;
+  };
+}
+
+/**
  🚀 Bot session
  @alpha
  */
@@ -9,7 +24,7 @@ export interface IFlight {
   // human readable flight status string
   status: string;
 
-  // software used
+  // software name and version
   software: string;
 
   // dashboard gauges
@@ -55,11 +70,15 @@ export interface IFlight {
 }
 
 /** Bot's Service */
-export interface IService {
+export interface IService extends IServiceMetaData {
+  state: IServiceState;
+}
+
+export interface IServiceMetaData {
   name: string;
   version: string;
   features: IFeature[];
-  state: IServiceState;
+  description?: string;
 }
 
 export interface IServiceState {
@@ -71,6 +90,7 @@ export interface IFeature {
   name: string;
   status: FeatureStatus;
   image?: string;
+  description?: string;
 }
 
 export enum FeatureStatus {
