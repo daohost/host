@@ -78,6 +78,10 @@ export interface IServiceMetaData {
   name: string;
   version: string;
   features: IFeature[];
+  providers?: IProvider[];
+  gauges?: IGauge[];
+  miniGauges?: IMiniGauge[];
+  stateObjects?: IStateObject[];
   description?: string;
 }
 
@@ -97,6 +101,35 @@ export enum FeatureStatus {
   LIVE = "Live",
   DEVELOPMENT = "Development",
   BACKLOG = "Backlog",
+}
+
+export interface IProvider {
+  name: string;
+  image?: string;
+  plan?: string;
+  stateKeyCalls?: string;
+  stateKeyCost?: string;
+  description?: string;
+}
+
+export interface IGauge {
+  title: string;
+  stateKeyValue: string;
+  subTitle?: string;
+  stateKeySubValue?: string;
+  description?: string;
+}
+
+export interface IMiniGauge {
+  title: string;
+  stateKeyValue: string;
+  description?: string;
+}
+
+export interface IStateObject {
+  title: string;
+  stateKey: string;
+  description?: string;
 }
 
 export interface IWorkflow {

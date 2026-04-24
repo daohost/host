@@ -50,6 +50,10 @@ import {
   IWorkflow,
   IService,
   IBot,
+  IProvider,
+  IGauge,
+  IMiniGauge,
+  IStateObject,
 } from "./bot";
 
 export {
@@ -100,6 +104,10 @@ export type {
   IWorkflow,
   IService,
   IBot,
+  IProvider,
+  IGauge,
+  IMiniGauge,
+  IStateObject,
 };
 
 export { activities } from "./activity";
