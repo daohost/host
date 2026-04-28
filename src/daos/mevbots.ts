@@ -92,24 +92,6 @@ export const mevbots: IDAOData = {
  A bot session is represented by a public `IFlight` object.
  */
 
-/** Contract implementing `IMev*` interface */
-export interface IMevMiner {
-  account: `0x${string}`;
-  bundleSigner: `0x${string}`;
-  contract: `0x${string}`;
-  logic: {
-    sandwich: IMevLogic;
-    arbitrage: IMevLogic;
-    liquidation: IMevLogic;
-  };
-}
-
-export interface IMevLogic {
-  name: string;
-  implementation: `0x${string}`;
-  methods: MevMethod[];
-}
-
 /** The type of artifacts the bot obtains depends on its role */
 export enum MevBotRole {
   /** 🟨 Extracts OPPORTUNITY artifacts */

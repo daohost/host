@@ -1,4 +1,26 @@
 /**
+ 💰 Mined Value
+ @alpha
+ */
+export interface IMinedValue {
+  id: string;
+  miner: string;
+  name: string;
+  strategies: string[];
+  profit: number;
+  income: number;
+  cost: number;
+  time?: number;
+  location?: string;
+  protocols?: string[];
+  description?: string;
+  inputAssets?: string[];
+  inputAmounts?: bigint[];
+  outputAssets?: string[];
+  outputAmounts?: bigint[];
+}
+
+/**
  🤖 Bot
  @alpha
  */
@@ -53,20 +75,29 @@ export interface IFlight {
   // last update time (ms)
   time: number;
 
+  // Created artifacts IDs or other value type IDs
+  made: string[];
+
+  // Tracked value
+  value: IMinedValue[];
+
+  // workflows
+  workflows: IWorkflow[];
+
   // bootstrapped and launched time
   takeOff?: number;
 
   // stop time
   complete?: number;
 
-  // Created artifacts IDs or other value type IDs
-  made: string[];
-
   // Received Artifacts IDs or other value type IDs
   received?: string[];
 
-  // workflows
-  workflows: IWorkflow[];
+  // keep bot's account address used in flight
+  account?: string;
+
+  // keep bot's contract address used in flight
+  contract?: string;
 }
 
 /** Bot's Service */
@@ -130,6 +161,7 @@ export interface IStateObject {
   title: string;
   stateKey: string;
   description?: string;
+  goodOrBad?: boolean;
 }
 
 export interface IWorkflow {

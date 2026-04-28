@@ -44,16 +44,18 @@ import { stbl } from "./daos/stbl";
 import { mevbots } from "./daos/mevbots";
 import {
   type IFlight,
+  IBot,
+  IService,
   IServiceState,
+  IServiceMetaData,
   IFeature,
   FeatureStatus,
   IWorkflow,
-  IService,
-  IBot,
   IProvider,
   IGauge,
   IMiniGauge,
   IStateObject,
+  IMinedValue,
 } from "./bot";
 
 export {
@@ -108,6 +110,8 @@ export type {
   IGauge,
   IMiniGauge,
   IStateObject,
+  IServiceMetaData,
+  IMinedValue,
 };
 
 export { activities } from "./activity";
