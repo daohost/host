@@ -8,6 +8,7 @@ import {
   UnitType,
 } from "../host.types";
 import { AgentRole } from "../agents";
+import { IMinedValue } from "../bot";
 
 export const mevbots: IDAOData = {
   phase: LifecyclePhase.DRAFT,
@@ -233,6 +234,9 @@ export interface IMevArtifact {
     baseFeePerGas: bigint;
     ethPrice: number;
   };
+
+  /** A value mined by artifact */
+  value?: IMinedValue;
 
   /** Mined value data */
   mevMined?: any;
