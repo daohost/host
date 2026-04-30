@@ -44,19 +44,19 @@ export const host: IDAOData = {
   funding: [
     {
       type: FundingType.SEED,
-      start: 1775001600, // Wednesday, 1 April 2026
-      end: 1780272000, // Monday, 1 June 2026
-      minRaise: 40000,
+      start: 1796083200, // Tuesday, 1 December 2026 at 0:00:00
+      end: 1803772800, // Sunday, 28 February 2027 at 0:00:00
+      minRaise: 10000,
       maxRaise: 500000,
       raised: 0,
     },
     {
       type: FundingType.TGE,
-      start: 1793577600, // Monday, 2 November 2026
-      end: 1794182399, // Sunday, 8 November 2026, 23:59:59
-      claim: 1794268800, // Tuesday, 10 November 2026
+      start: 1819324800, // Friday, 27 August 2027 at 0:00:00
+      end: 1819929600, // Friday, 3 September 2027 at 0:00:00
+      claim: 1820188800, // Monday, 6 September 2027 at 0:00:00
       minRaise: 400000,
-      maxRaise: 1200000,
+      maxRaise: 2000000,
       raised: 0,
     },
   ],
