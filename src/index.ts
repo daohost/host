@@ -117,3 +117,5 @@ export type {
 export { activities } from "./activity";
 
 export const daos: IDAOData[] = [host, stbl, mevbots];
+
+export * as mev from "./daos/mevbots";

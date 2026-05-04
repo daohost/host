@@ -247,8 +247,24 @@ export interface IMevArtifact {
   /** Mined value data */
   mevMined?: any;
 
+  /** NEV comparing object */
+  compare?: {
+    /** Lose reason/s */
+    result: string;
+    /** Actions triggered depend of result */
+    actions?: string;
+    /** Rows of compare table */
+    items: ICompareItem[];
+  };
+
   /** 📃 Strategy-specific data — e.g. `ISandwichOpportunity` or `IArbOpportunity`. */
   data: any;
+}
+
+export interface ICompareItem {
+  title: string;
+  we: string | number | bigint;
+  competitor: string | number | bigint;
 }
 
 export interface IInterceptExecution {
