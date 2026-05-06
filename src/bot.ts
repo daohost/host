@@ -14,8 +14,10 @@ export interface IMinedValue {
   location?: string;
   protocols?: string[];
   description?: string;
+  inputSenders?: string[];
   inputAssets?: string[];
   inputAmounts?: bigint[];
+  outputReceivers?: string[];
   outputAssets?: string[];
   outputAmounts?: bigint[];
 }

@@ -8,7 +8,6 @@ import {
   UnitStatus,
   UnitType,
 } from "../host.types";
-import { AgentRole } from "../agents";
 import { IMinedValue } from "../bot";
 
 export const mevbots: IDAOData = {
@@ -90,14 +89,43 @@ export const mevbots: IDAOData = {
 /**
  ◆◆ MEVBOTS DAO Knowledge
  ◆◆◆ mevbots.net Architecture
- MevBots is a network of Maximum Extractable Value (MEV) searcher bots.
- Bot generates value by creating an `IMevArtifact` depending on its role.
- `MevBotRole.EXTRACTOR` creates `ArtifactType.OPPORTUNITY` and `ArtifactType.BOX` artifacts for supported `DeX`s.
- `MevBotRole.MAKER`  extracts mined value by processing `MevStrategy` opportunities and executing `MevMethod` on their contract. Upon success, it creates `ArtifactType.VALUE` artifacts.
- Maker's `IMevMiner` contract contains proprietary `IMevLogic` implementations.
- Each artifact includes an `IMevArtifactCallData` array and other data required for its execution or research.
+ MevBots is a network of Maximum Extractable Value (MEV) machines.
+ Nodes (bots) generates value by creating an `IMevArtifact`.
+ Each artifact includes complete data to research or execute MEV opportunity.
  A bot session is represented by a public `IFlight` object.
+
+ @todo move knowledge to separate @daohost/mev library
  */
+
+export interface IMevMiner {
+  name?: string;
+  links?: string[];
+  contracts: { [addr: `0x${string}`]: IMevContract };
+}
+
+export interface IMevContract {
+  tag?: string;
+  selectors?: { [selector: `0x${string}`]: string };
+}
+
+export const mevMiners: { [addr: `0x${string}`]: IMevMiner } = {
+  ["0xae2Fc483527B8EF99EB5D9B44875F005ba1FaE13".toLowerCase()]: {
+    name: "JaredFromSubway",
+    contracts: {
+      ["0x1f2F10D1C40777AE1Da742455c65828FF36Df387".toLowerCase()]: {
+        tag: "MEV Bot 2",
+      },
+    },
+  },
+  ["0x11111215b72E894C60F24E91ac2c8cCb1D373911".toLowerCase()]: {
+    name: "mevbots",
+    contracts: {
+      ["0x3F7F239206b2949dDcADFA4C1beb82e2E8215cFf".toLowerCase()]: {
+        tag: "Test contract",
+      },
+    },
+  },
+};
 
 /** The type of artifacts the bot obtains depends on its role */
 export enum MevBotRole {
@@ -291,7 +319,7 @@ export interface IInterceptExecution {
  */
 export interface IMevArtifactCallData {
   /** 💵 Token address representing the asset in which profit is counted. */
-  incomeAsset: `0x${string}`;
+  incomeAssets: `0x${string}`[];
 
   /** 💼 Tokens that must be available in the maker’s contract to realize profit. */
   investAssets?: `0x${string}`[];
