@@ -30,8 +30,8 @@ export interface IDeFiProtocol {
 export enum DefiCategory {
   ORACLE = "Oracle",
   AMM = "AMM",
-  ALM = "ALM",
   LENDING = "Lending",
+  ALM = "ALM",
   DEX_AGG = "DeX agg",
   YIELD_AGG = "Yield agg",
   VE_AGG = "VE-agg",
@@ -213,6 +213,7 @@ export const defi: { [org: string]: IDeFiOrganization } = {
         deployments: {
           "1": {
             AuthorizedForwarder: "0x87B331d3bb9Cf70Dd85c3dc606B684a0bd61c772",
+            feed_ETH_USD: "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
           },
         },
       },
@@ -254,5 +255,23 @@ export const defi: { [org: string]: IDeFiOrganization } = {
         },
       },
     },
+  },
+  compound: {
+    name: "Compound",
+    img: "Compound.png",
+    website: "https://compound.finance",
+    protocols: {
+      compoundV2: {
+        name: "Compound V2",
+        category: DefiCategory.LENDING,
+      },
+      compoundV3: {
+        name: "Compound V3",
+        category: DefiCategory.LENDING,
+        // todo fill deployments
+      },
+    },
+    defiLlama: "compound-finance",
+    github: "compound-finance",
   },
 };
