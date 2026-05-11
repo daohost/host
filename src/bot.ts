@@ -148,6 +148,8 @@ export interface IProvider {
 export interface IGauge {
   title: string;
   stateKeyValue: string;
+  redZoneStart?: number;
+  yellowZoneStart?: number;
   subTitle?: string;
   stateKeySubValue?: string;
   description?: string;
@@ -156,6 +158,8 @@ export interface IGauge {
 export interface IMiniGauge {
   title: string;
   stateKeyValue: string;
+  redZoneStart?: number;
+  yellowZoneStart?: number;
   description?: string;
 }
 
