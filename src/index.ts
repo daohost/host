@@ -57,6 +57,16 @@ import {
   IStateObject,
   IMinedValue,
 } from "./bot";
+import { IArtifact, ArtifactType, ICompareItem } from "./artifact";
+import {
+  IMevMiner,
+  IMevContract,
+  MevStrategy,
+  IMevArtifact,
+  IMevArtifactCallData,
+  IInterceptExecution,
+  mevMiners,
+} from "./mev";
 
 export {
   chains,
@@ -86,6 +96,9 @@ export {
   getAssetBySymbol,
   defi,
   FeatureStatus,
+  ArtifactType,
+  MevStrategy,
+  mevMiners,
 };
 
 export type {
@@ -111,11 +124,16 @@ export type {
   IMiniGauge,
   IStateObject,
   IServiceMetaData,
+  IArtifact,
   IMinedValue,
+  IMevMiner,
+  IMevContract,
+  IMevArtifact,
+  IMevArtifactCallData,
+  IInterceptExecution,
+  ICompareItem,
 };
 
 export { activities } from "./activity";
 
 export const daos: IDAOData[] = [host, stbl, mevbots];
-
-export * as mev from "./daos/mevbots";

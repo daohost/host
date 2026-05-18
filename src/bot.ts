@@ -45,6 +45,9 @@ export interface IFlight {
   // unique flight id
   id: string;
 
+  // symbol of tradable DAO token lowercased
+  dao: string;
+
   // human readable flight status string
   status: string;
 
