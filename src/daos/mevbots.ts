@@ -16,6 +16,7 @@ export const mevbots: IDAOData = {
   socials: ["https://t.me/mevmachines"],
   activity: [Activity.MEV],
   images: {
+    seedToken: "/seedMEVBOTS.png",
     token: "/mevbots.png",
   },
   deployments: {},
@@ -31,7 +32,7 @@ export const mevbots: IDAOData = {
     },
   ],
   params: {
-    vePeriod: 180,
+    vePeriod: 360,
     pvpFee: 100,
     totalSupply: 1_000_000e18,
   },
