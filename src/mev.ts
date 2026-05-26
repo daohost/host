@@ -20,11 +20,13 @@ export enum MevStrategy {
   SANDWICH_JIT_SWAP = "SANDWICH_JIT_SWAP",
   /** 🥞 */
   SANDWICH_JIT = "SANDWICH_JIT",
+  /** 🌯 */
+  SANDWICH_ARB = "SANDWICH_ARB",
   /** 🔁 */
   ARB = "ARB",
   /** ♻️ */
   ARB_BACKRUN = "ARB_BACKRUN",
-  /** 🔫 */
+  /** 💸 */
   LIQUIDATION = "LIQUIDATION",
 }
 
