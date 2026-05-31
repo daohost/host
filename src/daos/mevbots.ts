@@ -39,8 +39,8 @@ export const mevbots: IDAOData = {
   funding: [
     {
       type: FundingType.SEED,
-      start: 1780272000, // Monday, 1 June 2026 at 0:00:00
-      end: 1796083200, // Tuesday, 1 December 2026 at 0:00:00
+      start: 1785542400, // 1 aug 2026
+      end: 1801440000, // 1 feb 2027
       minRaise: 10000,
       maxRaise: 5000000,
       raised: 0,
