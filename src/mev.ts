@@ -194,6 +194,15 @@ export interface IMevArtifactCallData {
   /** Is it ready to be submitted to flashbots and other relays */
   readyToSubmit: boolean;
 
+  /** When calldata sending was started */
+  sendStart?: number;
+
+  /** When calldata sending was finished */
+  sendFinish?: number;
+
+  /** Errors when sending calldata */
+  sendError?: string;
+
   /** Bundle hash of this callData */
   bubbleHash?: `0x${string}`;
 
@@ -202,14 +211,6 @@ export interface IMevArtifactCallData {
 }
 
 export const mevMiners: { [addr: `0x${string}`]: IMevMiner } = {
-  ["0xae2Fc483527B8EF99EB5D9B44875F005ba1FaE13".toLowerCase()]: {
-    name: "JaredFromSubway",
-    contracts: {
-      ["0x1f2F10D1C40777AE1Da742455c65828FF36Df387".toLowerCase()]: {
-        tag: "MEV Bot 2",
-      },
-    },
-  },
   ["0x11111215b72E894C60F24E91ac2c8cCb1D373911".toLowerCase()]: {
     name: "mevbots",
     contracts: {
@@ -218,6 +219,14 @@ export const mevMiners: { [addr: `0x${string}`]: IMevMiner } = {
       },
       ["0x2eF1d1792457eA38e6aC89f61507A6Cf7fABAC7e".toLowerCase()]: {
         tag: "Fighter 0.3.1",
+      },
+    },
+  },
+  ["0xae2Fc483527B8EF99EB5D9B44875F005ba1FaE13".toLowerCase()]: {
+    name: "JaredFromSubway",
+    contracts: {
+      ["0x1f2F10D1C40777AE1Da742455c65828FF36Df387".toLowerCase()]: {
+        tag: "MEV Bot 2",
       },
     },
   },
