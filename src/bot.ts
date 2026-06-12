@@ -118,6 +118,7 @@ export interface IServiceMetaData {
   gauges?: IGauge[];
   miniGauges?: IMiniGauge[];
   stateObjects?: IStateObject[];
+  charts?: IChart[];
   description?: string;
 }
 
@@ -146,6 +147,7 @@ export interface IProvider {
   stateKeyCalls?: string;
   stateKeyCost?: string;
   description?: string;
+  showInFlightWindow?: boolean;
 }
 
 export interface IGauge {
@@ -156,6 +158,7 @@ export interface IGauge {
   subTitle?: string;
   stateKeySubValue?: string;
   description?: string;
+  showInFlightWindow?: boolean;
 }
 
 export interface IMiniGauge {
@@ -164,6 +167,7 @@ export interface IMiniGauge {
   redZoneStart?: number;
   yellowZoneStart?: number;
   description?: string;
+  showInFlightWindow?: boolean;
 }
 
 export interface IStateObject {
@@ -171,6 +175,16 @@ export interface IStateObject {
   stateKey: string;
   description?: string;
   goodOrBad?: boolean;
+  showInFlightWindow?: boolean;
+}
+
+export interface IChart {
+  title: string;
+  workflowKey: string[];
+  workflowValueIndex: (number | "all")[];
+  subTitle?: string;
+  description?: string;
+  showInFlightWindow?: boolean;
 }
 
 export interface IWorkflow {
