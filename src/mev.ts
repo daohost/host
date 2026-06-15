@@ -110,6 +110,9 @@ export interface IMevArtifact extends IArtifact {
     /** Rows of compare table */
     items: ICompareItem[];
   };
+
+  /** Block when artifact must be mined */
+  targetBlock?: bigint;
 }
 
 export interface IInterceptExecution {

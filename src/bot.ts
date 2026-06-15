@@ -185,6 +185,11 @@ export interface IChart {
   subTitle?: string;
   description?: string;
   showInFlightWindow?: boolean;
+  lines?: {
+    name: string;
+    value: number;
+    color?: `#${string}`;
+  }[];
 }
 
 export interface IWorkflow {
