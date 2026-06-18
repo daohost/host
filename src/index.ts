@@ -38,7 +38,16 @@ import {
   UnitStatus,
 } from "./host.types";
 import { IGithubIssueV2, IUnit, IUnitEmitData, IUnitPool } from "./unit";
-import { defi } from "./defi";
+import {
+  defi,
+  IDeFiOrganization,
+  IDeFiProtocol,
+  IDefiProtocolDeployments,
+  DefiCategory,
+  DexEngine,
+  LendingEngine,
+  OracleEngine,
+} from "./defi";
 import { host } from "./daos/host";
 import { stbl } from "./daos/stbl";
 import { mevbots } from "./daos/mevbots";
@@ -56,6 +65,7 @@ import {
   IMiniGauge,
   IStateObject,
   IMinedValue,
+  IChart,
 } from "./bot";
 import { IArtifact, ArtifactType, ICompareItem } from "./artifact";
 import {
@@ -99,6 +109,10 @@ export {
   ArtifactType,
   MevStrategy,
   mevMiners,
+  DefiCategory,
+  DexEngine,
+  LendingEngine,
+  OracleEngine,
 };
 
 export type {
@@ -132,6 +146,10 @@ export type {
   IMevArtifactCallData,
   IInterceptExecution,
   ICompareItem,
+  IChart,
+  IDeFiOrganization,
+  IDeFiProtocol,
+  IDefiProtocolDeployments,
 };
 
 export { activities } from "./activity";

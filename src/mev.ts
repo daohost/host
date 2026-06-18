@@ -1,5 +1,5 @@
 import { IArtifact, ICompareItem } from "./artifact";
-import { IMinedValue } from "./bot";
+import { IMinedValue, IWorkflow } from "./bot";
 
 export interface IMevMiner {
   name?: string;
@@ -113,6 +113,9 @@ export interface IMevArtifact extends IArtifact {
 
   /** Block when artifact must be mined */
   targetBlock?: bigint;
+
+  /** Block processing workflow */
+  workflow?: IWorkflow;
 }
 
 export interface IInterceptExecution {

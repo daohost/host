@@ -1,10 +1,7 @@
-import { defi } from "../src";
-import { DefiCategory } from "../src/defi";
+import { defi, DefiCategory } from "../src";
 
 describe("testing defi", () => {
   test("view org", () => {
-    expect(defi["uniswap"].protocols["uniswapV2"].category).toEqual(
-      DefiCategory.AMM,
-    );
+    expect(defi["uniswap"].protocols["v2"].category).toEqual(DefiCategory.AMM);
   });
 });
