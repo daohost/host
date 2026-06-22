@@ -220,11 +220,11 @@ export const mevMiners: { [addr: `0x${string}`]: IMevMiner } = {
   ["0x11111215b72E894C60F24E91ac2c8cCb1D373911".toLowerCase()]: {
     name: "mevbots",
     contracts: {
-      ["0x3F7F239206b2949dDcADFA4C1beb82e2E8215cFf".toLowerCase()]: {
-        tag: "Test contract 1.1.0",
-      },
       ["0x2eF1d1792457eA38e6aC89f61507A6Cf7fABAC7e".toLowerCase()]: {
         tag: "Fighter 0.3.1",
+      },
+      ["0x672061B75F770331b0c7C2a566a9Ac0A9BA331D2".toLowerCase()]: {
+        tag: "Fighter 0.5",
       },
     },
   },
