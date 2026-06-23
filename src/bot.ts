@@ -123,7 +123,14 @@ export interface IServiceMetaData {
 }
 
 export interface IServiceState {
-  [key: string]: number | string | boolean | string[] | object | undefined;
+  [key: string]:
+    | number
+    | string
+    | boolean
+    | string[]
+    | object
+    | undefined
+    | { [leve2Key: string]: string[] };
 }
 
 /** Bot's Service feature */
