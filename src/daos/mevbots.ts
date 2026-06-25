@@ -11,9 +11,9 @@ import {
 
 export const mevbots: IDAOData = {
   phase: LifecyclePhase.DRAFT,
-  name: "MevBots Network",
+  name: "MEV Machines",
   symbol: "MEVBOTS",
-  socials: ["https://t.me/mevmachines"],
+  socials: ["https://t.me/mevmachines", "https://github.com/mevmachines"],
   activity: [Activity.MEV],
   images: {
     seedToken: "/seedMEVBOTS.png",
@@ -28,7 +28,7 @@ export const mevbots: IDAOData = {
   initialChain: ChainName.ETHEREUM,
   units: [
     {
-      unitId: "eth",
+      unitId: "mevminer",
     },
   ],
   params: {
@@ -45,8 +45,24 @@ export const mevbots: IDAOData = {
       maxRaise: 5000000,
       raised: 0,
     },
+    {
+      type: FundingType.TGE,
+      start: 1827619200, // 1 dec 2027
+      end: 1828223999, // 7 dec 2027
+      minRaise: 1000000,
+      maxRaise: 1500000,
+      raised: 0,
+    },
   ],
-  vesting: [],
+  vesting: [
+    {
+      name: "Development",
+      allocation: 300_000,
+      start: 1843430400, // 1 jun 2028
+      end: 2158963200, // 1 jun 2038
+      address: "0xe6C2AA6e67EF1B806B9Daec7147b113051a445E8",
+    },
+  ],
   governanceSettings: {},
   deployer: "0x0",
   salts: {
@@ -65,18 +81,18 @@ export const mevbots: IDAOData = {
   metaDataLocation: "local",
   unitEmitData: [
     {
-      name: "Ethereum MEV",
+      name: "mevminer",
       description: "MEV-searcher for Ethereum blockchain",
       status: UnitStatus.BUILDING_PROTOTYPE,
       revenueShare: 50,
       type: UnitType.MEV_SEARCHER,
       emoji: "",
       pool: {
-        repos: ["daohost/mevbot"],
+        repos: ["mevmachines/mevminer"],
         label: {
-          name: "MEVBOT:Ethereum",
-          description: "Building MEVBOT for Ethereum chain",
-          color: "#4cbaff",
+          name: "MEVBOTS:mevminer",
+          description: "Building MEV machine for Ethereum",
+          color: "#ae4cff",
         },
       },
     },
