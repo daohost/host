@@ -66,6 +66,7 @@ import {
   IStateObject,
   IMinedValue,
   IChart,
+  IChangelog,
 } from "./bot";
 import { IArtifact, ArtifactType, ICompareItem } from "./artifact";
 import {
@@ -150,6 +151,7 @@ export type {
   IDeFiOrganization,
   IDeFiProtocol,
   IDefiProtocolDeployments,
+  IChangelog,
 };
 
 export { activities } from "./activity";

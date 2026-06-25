@@ -113,13 +113,18 @@ export interface IService extends IServiceMetaData {
 export interface IServiceMetaData {
   name: string;
   version: string;
-  features: IFeature[];
+  changelog?: IChangelog;
+  features?: IFeature[];
   providers?: IProvider[];
   gauges?: IGauge[];
   miniGauges?: IMiniGauge[];
   stateObjects?: IStateObject[];
   charts?: IChart[];
   description?: string;
+}
+
+export interface IChangelog {
+  [version: string]: string | string[];
 }
 
 export interface IServiceState {
