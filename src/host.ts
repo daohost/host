@@ -939,10 +939,10 @@ export class Host {
       let vestingStart = this.blockTimestamp;
       let vestingEnd = this.blockTimestamp;
       for (const vesting of dao.vesting) {
-        if (vesting.start < vestingStart) {
+        if (!!vesting?.start) {
           vestingStart = vesting.start;
         }
-        if (vesting.end > vestingEnd) {
+        if (!!vesting?.end) {
           vestingEnd = vesting.end;
         }
       }
