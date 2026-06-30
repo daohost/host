@@ -1,23 +1,23 @@
 export interface IHostDeployment {
   proxyFactory: `0x${string}`;
-  initCodeHash: string;
+  proxyInitCode: string;
   host?: `0x${string}`;
 }
 
 export const hostDeployments: { [chainId: string]: IHostDeployment } = {
   ["1"]: {
-    proxyFactory: "0x8CB6E685B14eD9176EB98FA4240F1FC54bf32953",
-    initCodeHash:
-      "0xbfa868ffd76ce3f4cec7c8358e958221afc21ea923aaff7ba57279e071a285eb",
+    proxyFactory: "0xf2fb1E671d0c0D896e2faFB8c6f3ad5535bCfC57",
+    proxyInitCode:
+      "0x3d602d80600a3d3981f3363d3d373d3d3d363d73182cb8b926b4b946cff1e80d4edc7ce4621bff675af43d82803e903d91602b57fd5bf3",
   },
   ["146"]: {
-    proxyFactory: "0x046e7a007C331e0d4DafA66104744dB14a52bBBb",
-    initCodeHash:
-      "0xee56006017bf7ee8564162672c3f31da7be3ed5c3afc7e321070e3ff384ce42d",
+    proxyFactory: "0xaf4712B03a83466327aAC3aB45561Bf9765b0A9E",
+    proxyInitCode:
+      "0x3d602d80600a3d3981f3363d3d373d3d3d363d73e383e946c97034b1ba7b4d572418f8202e7495425af43d82803e903d91602b57fd5bf3",
   },
   ["9745"]: {
-    proxyFactory: "0x7d6530aA46F5a72F4d1CA658d372A7eDe5De4Ce1",
-    initCodeHash:
-      "0xdf3aeaee70da7d0d1eecf8fdcd9cd051c74d50d897172f8771142f3c5f8b4e46",
+    proxyFactory: "0x0C82e8Cb352C8A92cE8c7e8440FB05B5A82070eA",
+    proxyInitCode:
+      "0x3d602d80600a3d3981f3363d3d373d3d3d363d739004546965dc71acdeeb55c1b15277545bf41d5c5af43d82803e903d91602b57fd5bf3",
   },
 };

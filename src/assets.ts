@@ -3,9 +3,9 @@ import { tokenlist } from "./index";
 export type Asset = {
   addresses: { [chainId: string]: `0x${string}` | `0x${string}`[] };
   symbol: string;
-  description: string;
+  description?: string;
   website: string;
-  color: string;
+  color?: string;
   mintApp?: string;
 };
 
@@ -150,6 +150,7 @@ export const assets: Asset[] = [
     addresses: {
       "137": "0x03b54A6e9a984069379fae1a4fC4dBAE93B3bCCD",
       "8453": "0xc1CBa3fCea344f92D9239c08C0568f6F2F0ee452",
+      "9745": "0xe48D935e6C9e735463ccCf29a7F11e32bC09136E",
       "534352": "0xf610A9dfB7C89644979b4A0f27063E9e7d7Cda32",
     },
     symbol: "wstETH",
@@ -959,6 +960,7 @@ export const assets: Asset[] = [
   },
   {
     addresses: {
+      "1": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
       "9745": "0x5d3a1Ff2b6BAb83b63cd9AD0787074081a52ef34",
     },
     symbol: "USDe",
@@ -970,6 +972,7 @@ export const assets: Asset[] = [
   },
   {
     addresses: {
+      "1": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
       "9745": "0x211Cc4DD073734dA055fbF44a2b4667d5E5fE5d2",
     },
     symbol: "sUSDe",
@@ -1306,15 +1309,6 @@ export const assets: Asset[] = [
   },
   {
     addresses: {
-      "1": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
-    },
-    symbol: "USDe",
-    description: "USDe",
-    website: "https://ethena.fi/",
-    color: "#4f4f4f",
-  },
-  {
-    addresses: {
       "1": "0xA35b1B31Ce002FBF2058D22F30f95D405200A15b",
     },
     symbol: "ETHx",
@@ -1556,6 +1550,91 @@ export const assets: Asset[] = [
     color: "#bc43c0ff",
     description: "Staked USDp",
   },
+  {
+    addresses: {
+      "1": "0xacA92E438df0B2401fF60dA7E4337B687a2435DA",
+    },
+    symbol: "mUSD",
+    website: "https://metamask.io/price/metamask-usd",
+  },
+  {
+    addresses: {
+      "1": "0x356B8d89c1e1239Cbbb9dE4815c39A1474d5BA7D",
+      "9745": "0xC4374775489CB9C56003BF2C9b12495fC64F0771",
+    },
+    symbol: "syrupUSDT",
+    website: "https://maple.finance",
+  },
+  {
+    addresses: {
+      "1": "0xe343167631d89B6Ffc58B88d6b7fB0228795491D",
+    },
+    symbol: "USDG",
+    website: "https://globaldollar.com",
+  },
+  {
+    addresses: {
+      "1": "0xAeBf0Bb9f57E89260d57f31AF34eB58657d96Ce0",
+    },
+    symbol: "PT-USDe-7MAY2026",
+    website: "https://app.pendle.finance",
+  },
+  {
+    addresses: {
+      "1": "0x3de0ff76E8b528C092d47b9DaC775931cef80F49",
+    },
+    symbol: "PT-sUSDE-7MAY2026",
+    website: "https://app.pendle.finance",
+  },
+  {
+    addresses: {
+      "1": "0x9Bf45ab47747F4B4dD09B3C2c73953484b4eB375",
+    },
+    symbol: "PT-srUSDe-2APR2026",
+    website: "https://app.pendle.finance",
+  },
+  {
+    addresses: {
+      "9745": "0x1B64B9025EEbb9A6239575dF9Ea4b9Ac46D4d193",
+    },
+    symbol: "XAUt0",
+    website: "https://usdt0.to/gold",
+  },
+  {
+    addresses: {
+      "9745": "0x93B544c330F60A2aa05ceD87aEEffB8D38FD8c9a",
+    },
+    symbol: "PT-USDe-15JAN2026",
+    website: "https://app.pendle.finance",
+  },
+  {
+    addresses: {
+      "9745": "0x02FCC4989B4C9D435b7ceD3fE1Ba4CF77BBb5Dd8",
+    },
+    symbol: "PT-sUSDE-15JAN2026",
+    website: "https://app.pendle.finance",
+  },
+  {
+    addresses: {
+      "9745": "0xab509448ad489e2E1341e25CC500f2596464Cc82",
+    },
+    symbol: "PT-sUSDE-9APR2026",
+    website: "https://app.pendle.finance",
+  },
+  {
+    addresses: {
+      "9745": "0x54Dc267be2839303ff1e323584A16e86CeC4Aa44",
+    },
+    symbol: "PT-USDe-9APR2026",
+    website: "https://app.pendle.finance",
+  },
+  {
+    addresses: {
+      "9745": "0xe561FE05C39075312Aa9Bc6af79DdaE981461359",
+    },
+    symbol: "wrsETH",
+    website: "https://kerneldao.com/kelp/",
+  },
 ];
 
 export const getAsset = (
@@ -1580,6 +1659,14 @@ export const getAsset = (
   }
   return undefined;
 };
+
+export function getAssetBySymbol(symbol: string): Asset | undefined {
+  for (const asset of assets) {
+    if (asset.symbol.toLowerCase() == symbol.toLowerCase()) {
+      return asset;
+    }
+  }
+}
 
 export type TokenData = {
   address: `0x${string}`;

@@ -18,10 +18,17 @@ Unit Status: **BUILDING_PROTOTYPE**
 
 This repository contains the core Host integration library and its typescript implementation.
 
-## Use
+## Use in project
 
 ```shell
 yarn add @stabilitydao/host
+```
+
+## Tools
+
+```shell
+yarn overview
+yarn draw:dao
 ```
 
 ## Develop

@@ -1,4 +1,4 @@
-import { IBuildersMemory, IBuildersMemoryV2 } from "./activity/builder";
+import { IGithubIssueV2, IGithubUser } from "./unit";
 
 export interface IAgentMemory {
   /** When generated */
@@ -41,7 +41,7 @@ export interface IAgentMemory {
   data: any;
 }
 
-export interface IHostAgentMemory extends IAgentMemory {
+export interface IHostAgentMemoryV3 extends IAgentMemory {
   data: {
     /** Prices of assets */
     prices: Prices;
@@ -55,7 +55,7 @@ export interface IHostAgentMemory extends IAgentMemory {
     };
 
     /** Instant Updates by subscribing to github application webhooks */
-    builders: IBuildersMemoryV2;
+    builders: IBuildersMemoryV3;
   };
 }
 
@@ -73,60 +73,30 @@ export interface IDAOAPIDataV2 {
       staked: number;
       units: {
         [unitId: string]: {
-          pendingRevenue: number;
-          pendingRevenueAssetSymbol?: string;
-          pendingRevenueAssetAmount?: number;
-        };
+          pendingRevenueUSD: number;
+          pendingRevenueAssetAmount: number;
+          pendingRevenueAssetSymbol: string;
+          pendingRevenueAssetAddress?: string;
+        }[];
       };
+      revenueTokens?: `0x${string}`[];
     };
   };
   /** Users / followers in tracked socials */
   socialUsers: {
     [socialLink: string]: number;
   };
+  holders?: IDAOHolders;
 }
 
-/**
- Hot memory with indexed and aggregated data. OS API reply.
- @deprecated
- @interface
- */
-export interface IOSMemory {
-  /** Prices of assets */
-  prices: Prices;
-
-  /** Total Value Locked in blockchains */
-  chainTvl: { [chainId: string]: number };
-
-  /** DAO runtime data. Updates each minute or faster. */
-  daos: {
-    [symbol: string]: IDAOAPIData;
-  };
-
-  /** Instant Updates by subscribing to github application webhooks */
-  builders: IBuildersMemory;
+export interface IDAOHolders {
+  [addr: string]: IDAOHoldings;
 }
 
-/** @deprecated */
-export interface IDAOAPIData {
-  /** Price from Stability interchain oracle */
-  oraclePrice: string;
-  /** Coingecko price */
-  coingeckoPrice?: string;
-  /** Data for total revenue chart */
-  revenueChart: RevenueChart;
-  /** Extracted on-chain data */
-  onChainData: {
-    [chainId: string]: {
-      stakingAPR: number;
-      staked: number;
-      units: {
-        [unitId: string]: {
-          pendingRevenue: number;
-        };
-      };
-    };
-  };
+export interface IDAOHoldings {
+  address: `0x${string}`;
+  balance: string;
+  percentage?: string;
 }
 
 export type Prices = {
@@ -137,3 +107,22 @@ export type Prices = {
 };
 
 export type RevenueChart = Record<number, string>;
+
+/**
+ DAO can build by installing Host Agent GitHub App and emitting `IUnitPool` by pool key of `IUnitEmitData`
+ */
+export interface IBuildersMemoryV3 {
+  [tokenSymbol: string]: {
+    openIssues: {
+      [unitId: string]: IGithubIssueV2[];
+    };
+    repos: {
+      [repo: string]: {
+        openIssues: number;
+        private: boolean;
+        access?: IGithubUser[];
+        stars?: number;
+      };
+    };
+  };
+}

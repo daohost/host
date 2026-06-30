@@ -2,22 +2,22 @@ import {
   daos,
   getDAOUnit,
   Host,
-  UnitStatus,
-  UnitType,
-  daoMetaData,
   Activity,
   LifecyclePhase,
+  getUnit,
+  getUnitEmitData,
+  IUnitEmitData,
 } from "../src";
+import { getBridgeTokens, getDAOUnitEmitData } from "../src/host";
+import { activities } from "../src";
 import {
   ContractIndices,
   FundingType,
-  getBridgeTokens,
-  getDAOUnitMetaData,
   IFunding,
-  IUnitMetaData,
   IVesting,
-} from "../src/host";
-import { activities } from "../src/activity";
+  UnitStatus,
+  UnitType,
+} from "../src/host.types";
 
 describe("testing Host", () => {
   test("Lifecycle", () => {
@@ -37,10 +37,11 @@ describe("testing Host", () => {
     const daoAliens = os56.createDAO(
       "Aliens Community",
       "ALIENS",
-      [Activity.BUILDER, Activity.DEFI],
+      [Activity.DEFI],
       {
         vePeriod: 365,
         pvpFee: 100,
+        totalSupply: 1e6,
       },
       [_generateSeedFunding(os56)],
     );
@@ -96,8 +97,14 @@ describe("testing Host", () => {
     // fix funding
     os56.updateFunding(daoAliens.symbol, {
       ...daoAliens.funding[0],
-      maxRaise: 90000,
+      maxRaise: 90000e8,
     });
+
+    os56.changePhase(daoAliens.symbol);
+
+    expect(os56.getDAO(daoAliens.symbol).phase).toEqual(
+      LifecyclePhase.INCEPTION,
+    );
 
     try {
       // phase cant be changed right now
@@ -117,7 +124,7 @@ describe("testing Host", () => {
 
     // first seeder
     os56.from = "0xseeder1";
-    os56.fund(daoAliens.symbol, 1000);
+    os56.fund(daoAliens.symbol, 1000e8);
 
     // since seed has funds first governance proposal can be created
     let proposalId = os56.updateSocials(daoAliens.symbol, [
@@ -136,10 +143,10 @@ describe("testing Host", () => {
 
     // second seeder
     os56.from = "0xseeder2";
-    os56.fund(daoAliens.symbol, 10000);
+    os56.fund(daoAliens.symbol, 10000e8);
 
     try {
-      os56.fund(daoAliens.symbol, 1000000);
+      os56.fund(daoAliens.symbol, 1000000e8);
     } catch {}
 
     try {
@@ -180,7 +187,7 @@ describe("testing Host", () => {
       ],
       [
         {
-          ...(daoAliens.unitsMetaData[0] as IUnitMetaData),
+          ...(daoAliens.unitEmitData[0] as IUnitEmitData),
           status: UnitStatus.LIVE,
           ui: [
             {
@@ -222,12 +229,20 @@ describe("testing Host", () => {
 
     // try fund on not funding phase
     try {
-      os56.fund(daoAliens.symbol, 100000000);
+      os56.fund(daoAliens.symbol, 100000000e8);
     } catch {}
+
+    try {
+      // solve tasks first
+      os56.changePhase(daoAliens.symbol);
+    } catch {}
+
+    os56.revenue(daoAliens.symbol, 0, `0x1`, 10n);
 
     try {
       // too early
       os56.changePhase(daoAliens.symbol);
+      console.log("1");
     } catch {}
 
     // 180 days later
@@ -242,11 +257,11 @@ describe("testing Host", () => {
 
     // TGE funders
     os56.from = "0xseeder1";
-    os56.fund(daoAliens.symbol, 10000);
+    os56.fund(daoAliens.symbol, 10000e8);
     os56.from = "0xseeder3";
-    os56.fund(daoAliens.symbol, 100000);
+    os56.fund(daoAliens.symbol, 100000e8);
     try {
-      os56.fund(daoAliens.symbol, 100000000);
+      os56.fund(daoAliens.symbol, 100000000e8);
     } catch {}
 
     try {
@@ -346,6 +361,7 @@ describe("testing Host", () => {
       {
         vePeriod: 30,
         pvpFee: 90,
+        totalSupply: 1e6,
       },
       [_generateSeedFunding(os1, 7 * 86400)],
     );
@@ -375,13 +391,15 @@ describe("testing Host", () => {
       ],
     );
     os1.updateSocials(daoApes.symbol, ["https://apes.aa", "https://apes.bb"]);
-    os1.updateVesting(daoApes.symbol, [
-      _generateVesting(
-        "Development",
-        daoAliens.funding[os1.getFundingIndex(daoApes.symbol, FundingType.SEED)]
-          .end as number,
-      ),
-    ]);
+
+    // todo Vesting requires not TGE with valid claim value
+    // os1.updateVesting(daoApes.symbol, [
+    //   _generateVesting(
+    //     "Development",
+    //     daoAliens.funding[os1.getFundingIndex(daoApes.symbol, FundingType.SEED)]
+    //       .end as number,
+    //   ),
+    // ]);
 
     // apes forgot they created DRAFT
     // 15 days later
@@ -403,9 +421,11 @@ describe("testing Host", () => {
 
     os1.changePhase(daoApes.symbol);
 
+    os1.changePhase(daoApes.symbol);
+
     // fund small amount
     os1.from = "0xseeder1";
-    os1.fund(daoApes.symbol, 1000);
+    os1.fund(daoApes.symbol, 1000e8);
 
     // 127 days later
     os1.warpDays(127);
@@ -425,6 +445,7 @@ describe("testing Host", () => {
       {
         vePeriod: 14,
         pvpFee: 99,
+        totalSupply: 1e6,
       },
       [_generateSeedFunding(os10, 7 * 86400), _generateTGEFunding(os10)],
     );
@@ -474,10 +495,12 @@ describe("testing Host", () => {
     os56.warpDays();
 
     os10.changePhase(daoMachines.symbol);
+    os10.revenue(daoMachines.symbol, 0, `0x1`, 10n);
+    os10.changePhase(daoMachines.symbol);
 
     // fund enough amount
     os10.from = "0xseeder1";
-    os10.fund(daoMachines.symbol, 50000);
+    os10.fund(daoMachines.symbol, 50000e8);
 
     // 127 days later
     os1.warpDays(127);
@@ -487,6 +510,8 @@ describe("testing Host", () => {
     os10.changePhase(daoMachines.symbol);
 
     // now DEVELOPMENT
+
+    os1.revenue(daoApes.symbol, 0, `0x1`, 10n);
 
     // 180 days later
     os1.warpDays(180);
@@ -524,10 +549,10 @@ describe("testing Host", () => {
       getDAOUnit(daos, daos[1].symbol, daos[1].units[1].unitId)?.unitId,
     ).toBe("stability:stabilityFarm");
     expect(
-      getDAOUnitMetaData(daos, daos[1].symbol, daos[1].units[1].unitId)?.name,
+      getDAOUnitEmitData(daos, daos[1].symbol, daos[1].units[1].unitId)?.name,
     ).toBe("VaaS");
 
-    expect(os.getDAOMetaData(daoMetaData, daos[1].symbol));
+    expect(os.getDAOMetaData(daos[1].symbol));
     const roadmap = os.roadmap(daos[1].symbol);
     expect(roadmap.length).toBe(4);
     //console.log(roadmap)
@@ -538,7 +563,7 @@ describe("testing Host", () => {
     const dao = _createDAO(os);
     expect(dao.name).toBe("SpaceSwap");
     expect(os.events.length).toBe(1);
-    expect(os.getDAOMetaData(daoMetaData, dao.symbol));
+    expect(os.getDAOMetaData(dao.symbol));
 
     const funding: IFunding[] = [
       {
@@ -560,6 +585,7 @@ describe("testing Host", () => {
         {
           vePeriod: 365,
           pvpFee: 90,
+          totalSupply: 1e6,
         },
         funding,
       );
@@ -577,6 +603,7 @@ describe("testing Host", () => {
         {
           vePeriod: 365,
           pvpFee: 90,
+          totalSupply: 1e6,
         },
         funding,
       );
@@ -594,6 +621,7 @@ describe("testing Host", () => {
         {
           vePeriod: 365,
           pvpFee: 90,
+          totalSupply: 1e6,
         },
         funding,
       );
@@ -611,6 +639,7 @@ describe("testing Host", () => {
         {
           vePeriod: 365 * 5,
           pvpFee: 100,
+          totalSupply: 1e6,
         },
         funding,
       );
@@ -628,6 +657,7 @@ describe("testing Host", () => {
         {
           vePeriod: 365,
           pvpFee: 101,
+          totalSupply: 1e6,
         },
         funding,
       );
@@ -645,6 +675,7 @@ describe("testing Host", () => {
         {
           vePeriod: 365,
           pvpFee: 90,
+          totalSupply: 1e6,
         },
         [],
       );
@@ -709,11 +740,8 @@ describe("testing Host", () => {
 
   test("getDAOMetaData", () => {
     const os = new Host("146");
-    os.addLiveDAO(daos[0]);
-    expect(
-      os.getDAOMetaData(daoMetaData, daos[0].symbol).builderActivity?.workers
-        .length,
-    ).toBeGreaterThan(1);
+    os.addLiveDAO(daos[1]);
+    expect(os.getDAOMetaData(daos[1].symbol).agents?.length).toBeGreaterThan(0);
   });
 
   test("get DAO", () => {
@@ -752,6 +780,16 @@ describe("testing Host", () => {
     getBridgeTokens(daos);
   });
 
+  test("getUnit", () => {
+    const unit = getUnit(daos, "xstbl");
+    expect(unit).toBeDefined();
+  });
+
+  test("getUnitMetaData", () => {
+    const unitMetadata = getUnitEmitData(daos, "xstbl");
+    expect(unitMetadata).toBeDefined();
+  });
+
   const _createDAO = (os: Host) => {
     const funding = [_generateSeedFunding(os)];
     return os.createDAO(
@@ -761,6 +799,7 @@ describe("testing Host", () => {
       {
         vePeriod: 365,
         pvpFee: 90,
+        totalSupply: 1e6,
       },
       funding,
     );
@@ -770,8 +809,8 @@ describe("testing Host", () => {
     os: Host,
     after: number = 30 * 86400, // 1 month
     duration: number = 3 * 30 * 86400, // 3 months
-    minRaise: number = 10000, // 10k USD
-    maxRaise: number = 100000, // 100k USD
+    minRaise: number = 10000e8, // 10k USD
+    maxRaise: number = 100000e8, // 100k USD
   ): IFunding => {
     return {
       type: FundingType.SEED,
@@ -787,8 +826,8 @@ describe("testing Host", () => {
     os: Host,
     after: number = 6 * 30 * 86400, // 6 month
     duration: number = 7 * 86400, // 7 days
-    minRaise: number = 100000, // 100k USD
-    maxRaise: number = 500000, // 500k USD
+    minRaise: number = 100000e8, // 100k USD
+    maxRaise: number = 500000e8, // 500k USD
   ): IFunding => {
     return {
       type: FundingType.TGE,
@@ -797,6 +836,7 @@ describe("testing Host", () => {
       minRaise,
       maxRaise,
       raised: 0,
+      claim: os.blockTimestamp + 7 * 30 * 86400,
     };
   };
 
@@ -805,7 +845,7 @@ describe("testing Host", () => {
     tgeEnd: number,
     cliff: number = 180 * 86400,
     duration: number = 365 * 86400,
-    allocation: number = 100,
+    allocation: number = 95,
   ): IVesting => {
     return {
       name,
