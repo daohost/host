@@ -72,6 +72,13 @@ export interface IMevArtifact extends IArtifact {
   /** 🧰 Software or service name and version that created this artifact. */
   createdBy: string;
 
+  /** Structured artifact updates */
+  updates?: {
+    time: number;
+    updatedBy: string;
+    updatedItems: string[];
+  }[];
+
   /** 🕰️ Last updated time in milliseconds (optional). */
   updated?: number;
 
