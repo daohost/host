@@ -120,6 +120,7 @@ export interface IServiceMetaData {
   miniGauges?: IMiniGauge[];
   stateObjects?: IStateObject[];
   charts?: IChart[];
+  activityIndicator?: IActivityIndicator;
   description?: string;
 }
 
@@ -144,6 +145,8 @@ export interface IFeature {
   status: FeatureStatus;
   image?: string;
   description?: string;
+  level?: number;
+  blockedBy?: string[];
 }
 
 export enum FeatureStatus {
@@ -202,6 +205,19 @@ export interface IChart {
     value: number;
     color?: `#${string}`;
   }[];
+}
+
+export interface IActivityIndicator {
+  /** Title shows on mouse over */
+  title: string;
+  /** Good/bad, green/red, etc. indicator */
+  booleanStateKey?: string;
+  /** State key with color of indicator */
+  colorStateKey?: string;
+  /** Impulse triggered by workflow item */
+  impulseWorkflowKey?: string;
+  /** Waiting / ready triggered status by workflow item */
+  waitingOrReadyWorkflowKey?: string;
 }
 
 export interface IWorkflow {

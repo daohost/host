@@ -67,6 +67,7 @@ import {
   IMinedValue,
   IChart,
   IChangelog,
+  IActivityIndicator,
 } from "./bot";
 import { IArtifact, ArtifactType, ICompareItem } from "./artifact";
 import {
@@ -152,6 +153,7 @@ export type {
   IDeFiProtocol,
   IDefiProtocolDeployments,
   IChangelog,
+  IActivityIndicator,
 };
 
 export { activities } from "./activity";

@@ -225,7 +225,7 @@ export interface IMevArtifactCallData {
 
 export const mevMiners: { [addr: `0x${string}`]: IMevMiner } = {
   ["0x11111215b72E894C60F24E91ac2c8cCb1D373911".toLowerCase()]: {
-    name: "mevbots",
+    name: "mevminer",
     contracts: {
       ["0x2eF1d1792457eA38e6aC89f61507A6Cf7fABAC7e".toLowerCase()]: {
         tag: "Fighter 0.3.1",
