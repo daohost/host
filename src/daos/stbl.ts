@@ -191,7 +191,7 @@ export const stbl: IDAOData = {
           "stabilitydao/stability-contracts",
           "stabilitydao/stability-ui",
           "stabilitydao/stability-subgraph",
-          "stabilitydao/stability-node-pro",
+          //"stabilitydao/stability-node-pro",
         ],
         label: {
           // symbol:unitName

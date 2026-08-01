@@ -111,7 +111,7 @@ export const host: IDAOData = {
           "daohost/host",
           "daohost/host-contracts",
           "daohost/host-agent",
-          "daohost/host-ui",
+          //"daohost/host-ui",
         ],
         label: {
           name: "HOST:dao.host",
