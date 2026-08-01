@@ -14,11 +14,11 @@ export interface IMevContract {
 
 /** 📜 Best MEV strategies */
 export enum MevStrategy {
-  /** 🥪 */
+  /** 🥪💱 */
   SANDWICH_SWAP = "SANDWICH_SWAP",
-  /** 🍔 */
+  /** 🥪⚡️💱 */
   SANDWICH_JIT_SWAP = "SANDWICH_JIT_SWAP",
-  /** 🥞 */
+  /** 🥪⚡️ */
   SANDWICH_JIT = "SANDWICH_JIT",
   /** 🌯 */
   SANDWICH_ARB = "SANDWICH_ARB",

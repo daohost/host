@@ -7,7 +7,7 @@ export enum Activity {
   /** Owner of Maximum Extractable Value tools */
   MEV = "MEV",
   /** Owner of Software as a Service business */
-  //SAAS_OPERATOR = "SAAS_OPERATOR",
+  SAAS = "SAAS",
 }
 
 export const activities: {
@@ -24,5 +24,9 @@ export const activities: {
   [Activity.MEV]: {
     title: "Maximum Extractable Value tools",
     unitTypes: [UnitType.MEV_SEARCHER],
+  },
+  [Activity.SAAS]: {
+    title: "Software as a Service",
+    unitTypes: [UnitType.SAAS],
   },
 };

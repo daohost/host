@@ -10,14 +10,17 @@ import {
 } from "../host.types";
 
 export const mevbots: IDAOData = {
-  phase: LifecyclePhase.DRAFT,
+  phase: LifecyclePhase.INCEPTION,
   name: "MEV Machines",
   symbol: "MEVBOTS",
   socials: ["https://t.me/mevmachines", "https://github.com/mevmachines"],
   activity: [Activity.MEV],
   images: {
     seedToken: "/seedMEVBOTS.png",
+    tgeToken: "/tgeMEVBOTS.png",
     token: "/mevbots.png",
+    xToken: "/xMEVBOTS.png",
+    daoToken: "/daoMEVBOTS.png",
   },
   deployments: {},
   chainSettings: {
@@ -39,10 +42,10 @@ export const mevbots: IDAOData = {
   funding: [
     {
       type: FundingType.SEED,
-      start: 1785542400, // 1 aug 2026
-      end: 1801440000, // 1 feb 2027
+      start: 1785769200, // 3 aug 2026 15:00
+      end: 1809097200, // 30 apr 2027
       minRaise: 10000,
-      maxRaise: 5000000,
+      maxRaise: 10000000,
       raised: 0,
     },
     {
@@ -57,10 +60,9 @@ export const mevbots: IDAOData = {
   vesting: [
     {
       name: "Development",
-      allocation: 300_000,
+      allocation: 200_000,
       start: 1843430400, // 1 jun 2028
       end: 2158963200, // 1 jun 2038
-      address: "0xe6C2AA6e67EF1B806B9Daec7147b113051a445E8",
     },
   ],
   governanceSettings: {},
@@ -70,28 +72,34 @@ export const mevbots: IDAOData = {
       // 0x999995c72dd0c41241552c9c889a93dc78d99999
       [ContractIndices.SEED_TOKEN_1]:
         "0xce4effbbe3dba0a28d68fe6584e88165ba2a39782cf737cb4864a5b02be9f6ed",
-      // 0x411111111ccda11471c111a2413a3a5f31153a1a
+      // 0x7777042a204de85811a07ead6f4c9c89e3ec7777
       [ContractIndices.TGE_TOKEN_2]:
-        "0x7ae69a9d46cb4ab73f53a2302cbb063d917a85b525e72fda632cdee74e3214a8",
+        "0xc8a9d2a62d142f596413fc1a84af18b3cd3cfd0fb7f1f304a20c335f04eb94e8",
       // 0x888889b59aaa4530d8fbda42abec985037288888
       [ContractIndices.TOKEN_3]:
         "0x8fc8bb7c859462873fd4de28df77eb5c0b992ed92e363a52e5e3bbecb6521644",
+      // 0x1111e50b7cf1614a9307b1bdf8b3fd243d431111
+      [ContractIndices.X_TOKEN_4]:
+        "0x80f98a15e0b5b0ae7fdca5b6c2dc2313cc5b0ed83bfddc08fb9fa81c19a3297e",
+      // 0x33335a92befed42e6db65707f5330e62f8413333
+      [ContractIndices.DAO_TOKEN_5]:
+        "0x41431bb0020c6598ee776b162ba7a777d2998acb844aa1d64b26a21fc36fa26f",
     },
   },
   metaDataLocation: "local",
   unitEmitData: [
     {
       name: "mevminer",
-      description: "MEV-searcher for Ethereum blockchain",
-      status: UnitStatus.BUILDING_PROTOTYPE,
+      description: "Ethereum MEV-searcher",
+      status: UnitStatus.PROTOTYPE,
       revenueShare: 50,
       type: UnitType.MEV_SEARCHER,
-      emoji: "",
+      emoji: "🤖",
       pool: {
         repos: ["mevmachines/mevminer"],
         label: {
-          name: "MEVBOTS:mevminer",
-          description: "Building MEV machine for Ethereum",
+          name: "track:by:host",
+          description: "Issue for tracking by Host Agent",
           color: "#ae4cff",
         },
       },
