@@ -147,10 +147,12 @@ export interface IFeature {
   description?: string;
   level?: number;
   blockedBy?: string[];
+  issues?: string[] | number[];
 }
 
 export enum FeatureStatus {
   LIVE = "Live",
+  BATTLE_TEST = "Battle test",
   DEVELOPMENT = "Development",
   BACKLOG = "Backlog",
 }
@@ -191,6 +193,14 @@ export interface IStateObject {
   description?: string;
   goodOrBad?: boolean;
   showInFlightWindow?: boolean;
+  categories?: IStateObjectItemCategory[];
+}
+
+export interface IStateObjectItemCategory {
+  name: string;
+  reasons: string[];
+  description?: string;
+  color?: string;
 }
 
 export interface IChart {

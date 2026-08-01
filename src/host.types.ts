@@ -13,7 +13,7 @@ export enum UnitType {
   /** Maximum Extractable Value opportunities searcher and submitter. */
   MEV_SEARCHER = "MEV_SEARCHER",
   /** Software as a Service business */
-  //SAAS = "SAAS",
+  SAAS = "SAAS",
 }
 
 /** Unit status can be changed manually by DAO holders. Revenue of a unit matter. */
