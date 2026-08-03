@@ -2,6 +2,9 @@ export interface IHostDeployment {
   proxyFactory: `0x${string}`;
   proxyInitCode: string;
   host?: `0x${string}`;
+  dataReader?: `0x${string}`;
+  authority?: `0x${string}`;
+  codec?: `0x${string}`;
 }
 
 export const hostDeployments: { [chainId: string]: IHostDeployment } = {
@@ -9,6 +12,10 @@ export const hostDeployments: { [chainId: string]: IHostDeployment } = {
     proxyFactory: "0xf2fb1E671d0c0D896e2faFB8c6f3ad5535bCfC57",
     proxyInitCode:
       "0x3d602d80600a3d3981f3363d3d373d3d3d363d73182cb8b926b4b946cff1e80d4edc7ce4621bff675af43d82803e903d91602b57fd5bf3",
+    host: "0xaAAAAaaaaa0E3D26D4733570F4e4584D7872dDE2",
+    dataReader: "0xddDDdDDDDd9cA61A2CA1D4997AAA79422AC7a3e9",
+    authority: "0xEd56870529341277C579d6B056869b8B6BDc4065",
+    codec: "0xccccccccccacbe27f2bbe1886dd47f11ea2ecfe7",
   },
   ["146"]: {
     proxyFactory: "0xaf4712B03a83466327aAC3aB45561Bf9765b0A9E",
