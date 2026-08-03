@@ -10,7 +10,7 @@ import {
 } from "../host.types";
 
 export const mevbots: IDAOData = {
-  phase: LifecyclePhase.INCEPTION,
+  phase: LifecyclePhase.SEED,
   name: "MEV Machines",
   symbol: "MEVBOTS",
   socials: ["https://t.me/mevmachines", "https://github.com/mevmachines"],
@@ -22,7 +22,12 @@ export const mevbots: IDAOData = {
     xToken: "/xMEVBOTS.png",
     daoToken: "/daoMEVBOTS.png",
   },
-  deployments: {},
+  deployments: {
+    ["1"]: {
+      [ContractIndices.SEED_TOKEN_1]:
+        "0x999995c72dd0c41241552c9c889a93dc78d99999",
+    },
+  },
   chainSettings: {
     ["1"]: {
       bbRate: 50,
@@ -66,7 +71,7 @@ export const mevbots: IDAOData = {
     },
   ],
   governanceSettings: {},
-  deployer: "0x0",
+  deployer: "0x88888887C3ebD4a33E34a15Db4254C74C75E5D4A",
   salts: {
     "1": {
       // 0x999995c72dd0c41241552c9c889a93dc78d99999

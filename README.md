@@ -8,7 +8,7 @@
 
 <p align="left">
 <a href="https://dao.host">
-<img src="/logo.png" title="Infrastructure layer for strategic DeFi Assets Management">
+<img src="/logo.png" title="Home for DAOs">
 </a>
 </p>
 
@@ -16,7 +16,7 @@ Unit Status: **BUILDING_PROTOTYPE**
 
 **Host** is an Operating System of Self-developing Decentralized Autonomous Organizations.
 
-This repository contains the core Host integration library and its typescript implementation.
+This repository contains integration library and typescript implementation of the **Host**.
 
 ## Use in project
 
