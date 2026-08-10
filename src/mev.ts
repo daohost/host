@@ -1,18 +1,7 @@
 import { IArtifact, ICompareItem } from "./artifact";
 import { IMinedValue, IWorkflow } from "./bot";
 
-export interface IMevMiner {
-  name?: string;
-  links?: string[];
-  contracts: { [addr: `0x${string}`]: IMevContract };
-}
-
-export interface IMevContract {
-  tag?: string;
-  selectors?: { [selector: `0x${string}`]: string };
-}
-
-/** 📜 Best MEV strategies */
+/** 📜 MEV strategies */
 export enum MevStrategy {
   /** 🥪💱 */
   SANDWICH_SWAP = "SANDWICH_SWAP",
@@ -121,8 +110,20 @@ export interface IMevArtifact extends IArtifact {
   /** Block when artifact must be mined */
   targetBlock?: bigint;
 
-  /** Block processing workflow */
+  /** @deprecated use private.workflow */
   workflow?: IWorkflow;
+
+  /** Data with restricted access */
+  private?: {
+    /** Bot logs */
+    logs?: any[];
+    /** Liquidity data */
+    liquidity?: any;
+    /** Block processing workflow */
+    workflow?: IWorkflow;
+    /** Any custom data */
+    [customKey: `c-${string}`]: any;
+  };
 }
 
 export interface IInterceptExecution {
@@ -223,6 +224,17 @@ export interface IMevArtifactCallData {
   mined?: boolean;
 }
 
+export interface IMevMiner {
+  name?: string;
+  links?: string[];
+  contracts: { [addr: `0x${string}`]: IMevContract };
+}
+
+export interface IMevContract {
+  tag?: string;
+  selectors?: { [selector: `0x${string}`]: string };
+}
+
 export const mevMiners: { [addr: `0x${string}`]: IMevMiner } = {
   ["0x11111215b72E894C60F24E91ac2c8cCb1D373911".toLowerCase()]: {
     name: "mevminer",
@@ -240,6 +252,28 @@ export const mevMiners: { [addr: `0x${string}`]: IMevMiner } = {
     contracts: {
       ["0x1f2F10D1C40777AE1Da742455c65828FF36Df387".toLowerCase()]: {
         tag: "MEV Bot 2",
+      },
+    },
+  },
+  ["0x3EE92Cd00993a4488Ae153AB41ac7947cBCBC1de".toLowerCase()]: {
+    name: "mevrevolutionx",
+    contracts: {
+      ["0x9205A569B0ff45dF1E4f5ae48E21bC7F0656f0BB".toLowerCase()]: {},
+    },
+  },
+  ["0x27c2a1733f14e1247C5feB1C37CD52Ae7D0D2bf2".toLowerCase()]: {
+    name: "MEV Funder 0x27",
+    contracts: {
+      ["0x140022B7000081000001094700609300D2187Dab".toLowerCase()]: {
+        tag: "MEV Bot: 0x140...dab",
+      },
+    },
+  },
+  ["0xd7E1236C08731C3632519DCd1A581bFe6876a3B2".toLowerCase()]: {
+    name: "Mev Funder: 0xd7",
+    contracts: {
+      ["0x06CFf7088619C7178F5e14f0B119458d08d2f5ef".toLowerCase()]: {
+        tag: "MEV Bot: 0x06cf...5ef",
       },
     },
   },
