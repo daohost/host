@@ -111,6 +111,81 @@ export const mevbots: IDAOData = {
     },
   ],
   metaData: {
+    unitDevelopmentTree: {
+      mevminer: {
+        leafs: [
+          {
+            name: "Base services",
+            parent: null,
+            status: "DONE",
+            description:
+              "Base components for building an MEV machine for Ethereum",
+            features: [
+              "🌀 Core",
+              "🔍 DeFiScan",
+              "🔌 RPC",
+              "🗄️ Mempool",
+              "🤝 MEV-Share",
+              "💰 Asset Manager",
+            ],
+          },
+          {
+            name: "🥪 Sandwich Engine Prototype",
+            parent: "Base services",
+            status: "DONE",
+            description: "Mine MEV sandwiches",
+          },
+          {
+            name: "🥪 Sandwich Engine Beta",
+            parent: "🥪 Sandwich Engine Prototype",
+            status: "DEVELOPMENT",
+            description: "Mine MEV sandwiches without DEBUG lose reasons",
+          },
+          {
+            name: "🥪 Sandwich Engine",
+            parent: "🥪 Sandwich Engine Beta",
+            status: "BLOCKED",
+            description: "Mine all possible MEV sandwiches",
+          },
+          {
+            name: "♻️ Arbitrage Engine Prototype",
+            parent: "Base services",
+            status: "BACKLOG",
+            description: "Mine arbitrage",
+          },
+          {
+            name: "♻️ Arbitrage Engine Beta",
+            parent: "♻️ Arbitrage Engine Prototype",
+            status: "BLOCKED",
+            description: "Mine arbitrage without DEBUG lose reasons",
+          },
+          {
+            name: "♻️ Arbitrage Engine",
+            parent: "♻️ Arbitrage Engine Beta",
+            status: "BLOCKED",
+            description: "Mine all possible arbitrage",
+          },
+          {
+            name: "💸 Liquidation Engine Prototype",
+            parent: "Base services",
+            status: "BACKLOG",
+            description: "Mine liquidations",
+          },
+          {
+            name: "💸 Liquidation Engine Beta",
+            parent: "💸 Liquidation Engine Prototype",
+            status: "BLOCKED",
+            description: "Mine liquidations without DEBUG lose reasons",
+          },
+          {
+            name: "💸 Liquidation Engine",
+            parent: "💸 Liquidation Engine Beta",
+            status: "BLOCKED",
+            description: "Mine all possible liquidations",
+          },
+        ],
+      },
+    },
     agents: [],
   },
 };

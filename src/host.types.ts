@@ -1,7 +1,7 @@
 import { IAgent } from "./agents";
 import { ChainName } from "./chains";
 import { Activity } from "./activity";
-import { IUnit, IUnitEmitData } from "./unit";
+import { IUnit, IUnitDevelopmentTree, IUnitEmitData } from "./unit";
 import { IDAOAPIDataV2 } from "./api";
 
 /** Supported unit types */
@@ -173,6 +173,7 @@ export interface IDAOData {
 
 /** Storage for Agents data. */
 export interface IDAOMetaData {
+  unitDevelopmentTree?: { [unitId: string]: IUnitDevelopmentTree };
   /** Operating agents managed by the organization. */
   agents?: IAgent[];
 }
