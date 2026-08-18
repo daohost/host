@@ -87,6 +87,21 @@ export interface IDAOAPIDataV2 {
     [socialLink: string]: number;
   };
   holders?: IDAOHolders;
+  merkl?: {
+    [chainId: string]: {
+      [tokenId: string]: {
+        apr: number;
+        campaignId: string;
+        rewards: {
+          address: `0x${string}`;
+          symbol: string;
+          name: string;
+        }[];
+        name?: string;
+        endDate?: string;
+      };
+    };
+  };
 }
 
 export interface IDAOHolders {
