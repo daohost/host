@@ -54,6 +54,16 @@ export interface IUnitPool {
   contractorSymbol?: string;
 }
 
+export interface IUnitDevelopmentTree {
+  leafs: {
+    name: string;
+    description: string;
+    features?: string[];
+    parent: string | null;
+    status: "DONE" | "DEVELOPMENT" | "BLOCKED" | "BACKLOG";
+  }[];
+}
+
 export interface IGithubLabel {
   name: string;
   description: string;
