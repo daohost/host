@@ -99,7 +99,7 @@ export const mevbots: IDAOData = {
       status: UnitStatus.PROTOTYPE,
       revenueShare: 50,
       type: UnitType.MEV_SEARCHER,
-      emoji: "🤖",
+      emoji: "⛏️",
       pool: {
         repos: ["mevmachines/mevminer"],
         label: {
