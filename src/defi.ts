@@ -287,6 +287,7 @@ export const defi: { [org: string]: IDeFiOrganization } = {
         deployments: {
           "1": {
             PoolAddressesProvider: "0x2f39d218133afab8f2b819b1066c7e434ad94e9e",
+            ProtocolDataProvider: "0x0a16f2FCC0D44FaE41cc54e079281D84A363bECD",
             PoolInstance: "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
             UIPoolDataProvider: "0x3f78bbd206e4d3c504eb854232eda7e47e9fd8fc",
           },
