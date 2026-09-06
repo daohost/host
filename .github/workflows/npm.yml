@@ -10,10 +10,14 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
-          node-version: '24.x'
+          node-version: 24
           registry-url: 'https://registry.npmjs.org'
       - run: yarn
       - run: yarn build
-      - run: yarn publish --access public
+      # We use npm here because it natively handles the OIDC token exchange
+      - run: npm publish --provenance --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # NOT REQUIRED with OIDC, leave this out!
+      #- run: yarn publish --access public
+      #  env:
+      #    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
