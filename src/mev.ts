@@ -208,6 +208,9 @@ export interface IMevArtifactCallData {
   /** Is it ready to be submitted to flashbots and other relays */
   readyToSubmit: boolean;
 
+  /** Used protocols */
+  protocols?: string[];
+
   /** When calldata sending was started */
   sendStart?: number;
 

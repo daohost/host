@@ -1,40 +1,43 @@
 /**
- 💰 Mined Value
- @alpha
+ Bot is software with known compatible metadata to track running sessions ("flights") and generate user interface.
  */
-export interface IMinedValue {
-  id: string;
-  miner: string;
-  name: string;
-  strategies: string[];
-  profit: number;
-  income: number;
-  cost: number;
-  time?: number;
-  location?: string;
-  protocols?: string[];
-  description?: string;
-  inputSenders?: string[];
-  inputAssets?: string[];
-  inputAmounts?: bigint[];
-  outputReceivers?: string[];
-  outputAssets?: string[];
-  outputAmounts?: bigint[];
-}
 
 /**
- 🤖 Bot
+ 🤖 Bot metadata.
+ Default location is `metadata.json` in software folder.
+
  @alpha
  */
 export interface IBot {
-  // software name and version
+  /** Software name and version */
   software: string;
 
-  description?: string;
+  /** Required description. What this software doing. */
+  description: string;
 
+  /** Layout and positioning of services on a flight page at https://dao.host */
+  flightUI: {
+    layout: FlightLayout;
+    serviceNameGrid: string[][];
+  };
+
+  /** Metadata of services */
   services: {
     [serviceName: string]: IServiceMetaData;
   };
+}
+
+/**
+ Flight page layout in cols x rows format for big album screens like 16x9 ratio.
+ Can be used for 1-12 services.
+ */
+export enum FlightLayout {
+  _1x1 = "_1x1",
+  _2x1 = "_2x1",
+  _3x1 = "_3x1",
+  _3x2 = "_3x2",
+  _3x3 = "_3x3",
+  _4x3 = "_4x3",
 }
 
 /**
@@ -105,6 +108,30 @@ export interface IFlight {
   contract?: string;
 }
 
+/**
+ 💰 Mined Value
+ @alpha
+ */
+export interface IMinedValue {
+  id: string;
+  miner: string;
+  name: string;
+  strategies: string[];
+  profit: number;
+  income: number;
+  cost: number;
+  time?: number;
+  location?: string;
+  protocols?: string[];
+  description?: string;
+  inputSenders?: string[];
+  inputAssets?: string[];
+  inputAmounts?: bigint[];
+  outputReceivers?: string[];
+  outputAssets?: string[];
+  outputAmounts?: bigint[];
+}
+
 /** Bot's Service */
 export interface IService extends IServiceMetaData {
   state: IServiceState;
@@ -144,6 +171,7 @@ export interface IFeature {
   name: string;
   status: FeatureStatus;
   image?: string;
+  imagePostfix?: string;
   description?: string;
   level?: number;
   blockedBy?: string[];
