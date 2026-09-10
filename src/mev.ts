@@ -1,5 +1,6 @@
 import { IArtifact, ICompareItem } from "./artifact";
 import { IMinedValue, IWorkflow } from "./bot";
+import { TxType } from "./evm";
 
 /** 📜 MEV strategies */
 export enum MevStrategy {
@@ -169,6 +170,8 @@ export interface IMevArtifactCallData {
 
   /** 🔁 All calls included in the MEV bundle. */
   calls: {
+    /** 🧬 Optional transaction type */
+    txType?: TxType;
     /** 🎯 Target contract address. */
     to?: `0x${string}`;
     /** 🧾 Raw calldata for this transaction. */
@@ -185,6 +188,8 @@ export interface IMevArtifactCallData {
     maxFee?: bigint;
     /** max_priority_fee_per_gas from EIP-1559 */
     maxPriorityFee?: bigint;
+    /** gasPrice from legacy and EIP-2930 */
+    gasPrice?: bigint;
     /** Gas used */
     gas?: bigint;
   }[];

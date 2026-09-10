@@ -229,6 +229,7 @@ export interface IStateObjectItemCategory {
   reasons: string[];
   description?: string;
   color?: string;
+  bgColor?: string;
 }
 
 export interface IChart {
