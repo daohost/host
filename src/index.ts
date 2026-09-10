@@ -80,6 +80,7 @@ import {
   IInterceptExecution,
   mevMiners,
 } from "./mev";
+import { TxType } from "./evm";
 
 export {
   chains,
@@ -156,6 +157,7 @@ export type {
   IChangelog,
   IActivityIndicator,
   IStateObjectItemCategory,
+  TxType,
 };
 
 export { activities } from "./activity";
