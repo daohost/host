@@ -10,8 +10,8 @@ export enum MevStrategy {
   SANDWICH_JIT_SWAP = "SANDWICH_JIT_SWAP",
   /** 🥪⚡️ */
   SANDWICH_JIT = "SANDWICH_JIT",
-  /** 🌯 */
-  SANDWICH_ARB = "SANDWICH_ARB",
+  /** 🥪💱💱 */
+  SANDWICH_CHAIN_SWAP = "SANDWICH_CHAIN_SWAP",
   /** 🔁 */
   ARB = "ARB",
   /** ♻️ */
@@ -213,6 +213,9 @@ export interface IMevArtifactCallData {
   /** Is it ready to be submitted to flashbots and other relays */
   readyToSubmit: boolean;
 
+  /** Used strategies */
+  strategies?: MevStrategy[];
+
   /** Used protocols */
   protocols?: string[];
 
@@ -283,6 +286,11 @@ export const mevMiners: { [addr: `0x${string}`]: IMevMiner } = {
       ["0x06CFf7088619C7178F5e14f0B119458d08d2f5ef".toLowerCase()]: {
         tag: "MEV Bot: 0x06cf...5ef",
       },
+    },
+  },
+  ["0xC68d3bA67e2755c9a2F46a0B51A1694ef53c0Ea0".toLowerCase()]: {
+    contracts: {
+      ["0xBDB939c9cd180E400027a64a3EA6660F80817FA6".toLowerCase()]: {},
     },
   },
 };
