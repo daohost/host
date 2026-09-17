@@ -148,6 +148,7 @@ export interface IServiceMetaData {
   stateObjects?: IStateObject[];
   charts?: IChart[];
   activityIndicator?: IActivityIndicator;
+  workflow?: true | undefined;
   description?: string;
 }
 
@@ -185,42 +186,42 @@ export enum FeatureStatus {
   BACKLOG = "Backlog",
 }
 
-export interface IProvider {
-  name: string;
+export interface IFlightUIElement {
+  title: string;
+  group?: string;
+  description?: string;
+  showInFlightWindow?: boolean;
+  showInServicePopupWindow?: boolean;
+}
+
+export interface IProvider extends IFlightUIElement {
   image?: string;
   plan?: string;
   stateKeyCalls?: string;
   stateKeyCost?: string;
   description?: string;
-  showInFlightWindow?: boolean;
 }
 
-export interface IGauge {
-  title: string;
+export interface IGauge extends IFlightUIElement {
   stateKeyValue: string;
   redZoneStart?: number;
   yellowZoneStart?: number;
   subTitle?: string;
   stateKeySubValue?: string;
   description?: string;
-  showInFlightWindow?: boolean;
 }
 
-export interface IMiniGauge {
-  title: string;
+export interface IMiniGauge extends IFlightUIElement {
   stateKeyValue: string;
   redZoneStart?: number;
   yellowZoneStart?: number;
   description?: string;
-  showInFlightWindow?: boolean;
 }
 
-export interface IStateObject {
-  title: string;
+export interface IStateObject extends IFlightUIElement {
   stateKey: string;
-  description?: string;
+  loseReasonsCollection?: true;
   goodOrBad?: boolean;
-  showInFlightWindow?: boolean;
   categories?: IStateObjectItemCategory[];
 }
 
@@ -232,13 +233,10 @@ export interface IStateObjectItemCategory {
   bgColor?: string;
 }
 
-export interface IChart {
-  title: string;
+export interface IChart extends IFlightUIElement {
   workflowKey: string[];
   workflowValueIndex: (number | "all")[];
   subTitle?: string;
-  description?: string;
-  showInFlightWindow?: boolean;
   lines?: {
     name: string;
     value: number;
@@ -246,9 +244,7 @@ export interface IChart {
   }[];
 }
 
-export interface IActivityIndicator {
-  /** Title shows on mouse over */
-  title: string;
+export interface IActivityIndicator extends IFlightUIElement {
   /** Good/bad, green/red, etc. indicator */
   booleanStateKey?: string;
   /** State key with color of indicator */
