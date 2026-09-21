@@ -79,6 +79,7 @@ import {
   IMevArtifactCallData,
   IInterceptExecution,
   mevMiners,
+  IBundleSubmissionData,
 } from "./mev";
 import { TxType } from "./evm";
 
@@ -158,6 +159,7 @@ export type {
   IActivityIndicator,
   IStateObjectItemCategory,
   TxType,
+  IBundleSubmissionData,
 };
 
 export { activities } from "./activity";

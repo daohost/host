@@ -219,20 +219,26 @@ export interface IMevArtifactCallData {
   /** Used protocols */
   protocols?: string[];
 
-  /** When calldata sending was started */
-  sendStart?: number;
-
-  /** When calldata sending was finished */
-  sendFinish?: number;
-
-  /** Errors when sending calldata */
-  sendError?: string;
-
-  /** Bundle hash of this callData */
-  bubbleHash?: `0x${string}`;
+  /** Bundle submissions to builders  */
+  submissions: {
+    [builderName: string]: IBundleSubmissionData;
+  };
 
   /** ⛏️ Whether the artifact was actually mined on-chain. */
   mined?: boolean;
+}
+
+export interface IBundleSubmissionData {
+  /** When calldata sending was started */
+  start: number;
+  /** When calldata sending was finished */
+  finish: number;
+  /** Errors when sending calldata */
+  error?: string;
+  /** Bundle hash of this callData */
+  bubbleHash?: `0x${string}`;
+  /** Bundle Tracing result */
+  traceResult?: any;
 }
 
 export interface IMevMiner {
