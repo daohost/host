@@ -89,6 +89,7 @@ export interface IMevArtifact extends IArtifact {
     number: number;
     timestamp: number;
     baseFeePerGas: bigint;
+    gasUsed: bigint;
     ethPrice: number;
   };
 
@@ -125,6 +126,9 @@ export interface IMevArtifact extends IArtifact {
     /** Any custom data */
     [customKey: `c-${string}`]: any;
   };
+
+  /** Lose reason primary location */
+  loseReason?: string;
 }
 
 export interface IInterceptExecution {
